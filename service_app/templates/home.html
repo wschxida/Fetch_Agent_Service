@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例</title>
+</head>
+<body>
+
+<h1>示例：</h1>
+<hr>
+    <h2>----------Instagram----------</h2>
+    <a href="/service_app?website_name=instagram&page_type=profile&target_account=bill">Fetch Instagram Author Profile</a>
+    <p>http://{% print(my_host) %}/service_app?website_name=instagram&page_type=profile&target_account=bill</p>
+    <p>target输入必须是account</p>
+    <br>
+    <a href="/service_app?website_name=instagram&page_type=message&target_id=34&page_count=1">Fetch Instagram Author Message</a></h5>
+    <p>http://{% print(my_host) %}/service_app?website_name=instagram&page_type=message&target_id=34&page_count=1</p>
+    <p>target输入必须是id, 目前还没支持翻页</p>
+    <br>
+<hr>
+    <h2>----------Facebook----------</h2>
+    <a href="/service_app?website_name=facebook&page_type=profile&target_account=bnbarry34">Fetch Facebook Author Profile</a></h5>
+    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=profile&target_account=bnbarry34</p>
+    <p>target输入可以是id也可以是account</p>
+    <br>
+    <a href="/service_app?website_name=facebook&page_type=message&target_account=bnbarry34&page_count=1">Fetch Facebook Author Message</a></h5>
+    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=message&target_account=bnbarry34&page_count=1</p>
+    <p>target输入可以是id也可以是account</p>
+    <br>
+    <a href="/service_app?website_name=facebook&page_type=friend&target_account=bnbarry34&page_count=1">Fetch Facebook Author Friends</a></h5>
+    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=friend&target_account=bnbarry34&page_count=1</p>
+    <p>target输入可以是id也可以是account</p>
+<hr>
+
+</body>
+</html>
