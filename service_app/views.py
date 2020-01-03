@@ -8,7 +8,7 @@
 
 from flask import render_template, request
 from service_app import app
-from service_app.controller import PageAgentManager
+from service_app.controller import FetchAgentManager
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -18,7 +18,7 @@ def home():
 
 
 @app.route('/service_app', methods=['GET', 'POST'])
-def page_agent_service():
+def fetch_agent_service():
 
     try:
         if request.method == 'GET':
@@ -26,8 +26,8 @@ def page_agent_service():
         else:
             request_params = dict(request.form)
 
-        # PageAgentManager选择相对应的类，获取数据
-        response = PageAgentManager(request_params).get_page_content_by_agent()
+        # FetchAgentManager选择相对应的类，获取数据
+        response = FetchAgentManager(request_params).get_fetch_result_by_agent()
 
         if not response:
             response = "Failed Request! Please try again"

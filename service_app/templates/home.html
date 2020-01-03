@@ -8,29 +8,37 @@
 
 <h1>示例：</h1>
 <hr>
-    <h2>----------Instagram----------</h2>
-    <a href="/service_app?website_name=instagram&page_type=profile&target_account=bill">Fetch Instagram Author Profile</a>
-    <p>http://{% print(my_host) %}/service_app?website_name=instagram&page_type=profile&target_account=bill</p>
-    <p>target输入必须是account</p>
+    <h2>----------Twitter----------</h2>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah">get_common_follower</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah</p>
+    <p>target_list输入必须是account，以逗号隔开</p>
     <br>
-    <a href="/service_app?website_name=instagram&page_type=message&target_id=34&page_count=1">Fetch Instagram Author Message</a></h5>
-    <p>http://{% print(my_host) %}/service_app?website_name=instagram&page_type=message&target_id=34&page_count=1</p>
-    <p>target输入必须是id, 目前还没支持翻页</p>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah">get_common_following</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah</p>
+    <p>target_list输入必须是account，以逗号隔开</p>
+    <br>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker">get_friend</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker</p>
+    <p>target_express输入必须是account</p>
+    <br>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_tweet_mention_the_target&target_express=BillGates">get_tweet_mention_the_target</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_tweet_mention_the_target&target_express=BillGates</p>
+    <p>target_express输入必须是account</p>
+    <br>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_tweet_reply_to_the_target&target_express=BillGates">get_tweet_reply_to_the_target</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_tweet_reply_to_the_target&target_express=BillGates</p>
+    <p>target_express输入必须是account</p>
+    <br>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_deleted_tweet&target_express=RCoteNPD">get_deleted_tweet</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_deleted_tweet&target_express=RCoteNPD</p>
+    <p>target_express输入必须是account</p>
+    <br>
+    <a href="/service_app?agent_type=twitter&fetch_type=get_tweet_of_suspended_author&target_express=M7MD_SHAMRANI">get_tweet_of_suspended_author</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_tweet_of_suspended_author&target_express=M7MD_SHAMRANI</p>
+    <p>target_express输入必须是account</p>
     <br>
 <hr>
-    <h2>----------Facebook----------</h2>
-    <a href="/service_app?website_name=facebook&page_type=profile&target_account=bnbarry34">Fetch Facebook Author Profile</a></h5>
-    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=profile&target_account=bnbarry34</p>
-    <p>target输入可以是id也可以是account</p>
-    <br>
-    <a href="/service_app?website_name=facebook&page_type=message&target_account=bnbarry34&page_count=1">Fetch Facebook Author Message</a></h5>
-    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=message&target_account=bnbarry34&page_count=1</p>
-    <p>target输入可以是id也可以是account</p>
-    <br>
-    <a href="/service_app?website_name=facebook&page_type=friend&target_account=bnbarry34&page_count=1">Fetch Facebook Author Friends</a></h5>
-    <p>http://{% print(my_host) %}/service_app?website_name=facebook&page_type=friend&target_account=bnbarry34&page_count=1</p>
-    <p>target输入可以是id也可以是account</p>
-<hr>
+
 
 </body>
 </html>

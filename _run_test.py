@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : runserver.py.py
+# @File  : runserver.py
 # @Author: Cedar
 # @Date  : 2019/12/11
 # @Desc  :
