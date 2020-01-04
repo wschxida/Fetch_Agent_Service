@@ -11,6 +11,10 @@
 
 
 import requests
+from lxml import etree
+import html
+import json
+import re
 
 
 def extractor_get_friend(target_account, proxies=None):
@@ -26,10 +30,53 @@ def extractor_get_friend(target_account, proxies=None):
 
     url = 'https://tweepdiff.com/' + target_account + '/' + target_account + '.followers?n=1000'
     # url = 'https://tweepdiff.com/KimberBollacker/KimberBollacker.followers?n=1000'
-    response = requests.get(url, headers=headers, timeout=10, proxies=proxies)
-    response.encoding = "utf-8"
-    text = response.text
-    return text
+    author_list = []
+    status = '0'
+    try:
+        response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
+        response.encoding = "utf-8"
+        if response.content:
+            status = '1'
+        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
+        items = root.xpath('//div[@class="person"]')
+        for item in items:
+            # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
+            # author_id页面上没有
+            # author_id = ""
+            author_account = "".join(item.xpath('.//a[@class="person_link"]/text()'))
+            author_account = "".join(re.findall("[(](.*?)[)]", author_account))  # 取括号里面的字符
+            author_name = "".join(item.xpath('.//a[@class="person_link"]/text()'))
+            author_name = "".join(re.findall("[\n](.*)[(]", author_name))  # 取\n和(之间的字符
+            author_url = "".join(item.xpath('.//h2/a/@href'))
+            author_img_url = "".join(item.xpath('.//h2//img/@src'))
+            author_description = "".join(item.xpath('.//div[@class="bio"]/span[2]/text()'))
+            author_follower_count = "".join(item.xpath('.//div[@class="followers"]/div[@class="count"]/text()'))
+            author_following_count = "".join(item.xpath('.//div[@class="friends"]/div[@class="count"]/text()'))
+            author_message_count = "".join(item.xpath('.//div[@class="updates"]/div[@class="count"]/text()'))
+
+            author_item = {
+                # "author_id": author_id,
+                "author_account": author_account,
+                "author_name": author_name,
+                "author_url": author_url,
+                "author_img_url": author_img_url,
+                "author_description": author_description,
+                "author_follower_count": author_follower_count,
+                "author_following_count": author_following_count,
+                "author_message_count": author_message_count,
+            }
+            author_list.append(author_item)
+
+    except Exception as e:
+        status = str(e)
+        print(e)
+
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_friend",
+              "data": author_list}
+    json_result = json.dumps(result, ensure_ascii=False)
+    # 再进行html编码，这样最终flask输出才是合法的json
+    html_result = html.escape(json_result)
+    return html_result
 
 
 def main():

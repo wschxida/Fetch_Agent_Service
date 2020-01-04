@@ -11,8 +11,8 @@ from service_app.model.base.base_fetch_agent import BaseFetchAgent
 from service_app.model.twitter.extractor_get_common_follower import extractor_get_common_follower
 from service_app.model.twitter.extractor_get_common_following import extractor_get_common_following
 from service_app.model.twitter.extractor_get_friend import extractor_get_friend
-from service_app.model.twitter.extractor_get_tweet_mention_the_target import extractor_get_tweet_mention_the_target
-from service_app.model.twitter.extractor_get_tweet_reply_to_the_target import extractor_get_tweet_reply_to_the_target
+from service_app.model.twitter.extractor_get_author_mention_the_target import extractor_get_author_mention_the_target
+from service_app.model.twitter.extractor_get_author_reply_to_the_target import extractor_get_author_reply_to_the_target
 from service_app.model.twitter.extractor_get_deleted_tweet import extractor_get_deleted_tweet
 from service_app.model.twitter.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
 
@@ -51,10 +51,10 @@ class TwitterAgent(BaseFetchAgent):
             return extractor_get_common_following(self.target_list, self.proxies)
         if self.fetch_type == 'get_friend':
             return extractor_get_friend(self.target_express, self.proxies)
-        if self.fetch_type == 'get_tweet_mention_the_target':
-            return extractor_get_tweet_mention_the_target(self.target_express, self.proxies)
-        if self.fetch_type == 'get_tweet_reply_to_the_target':
-            return extractor_get_tweet_reply_to_the_target(self.target_express, self.proxies)
+        if self.fetch_type == 'get_author_mention_the_target':
+            return extractor_get_author_mention_the_target(self.target_express, self.proxies)
+        if self.fetch_type == 'get_author_reply_to_the_target':
+            return extractor_get_author_reply_to_the_target(self.target_express, self.proxies)
         if self.fetch_type == 'get_deleted_tweet':
             return extractor_get_deleted_tweet(self.target_express, self.proxies)
         if self.fetch_type == 'get_tweet_of_suspended_author':

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : extractor_get_deleted_tweet.py
+# @File  : extractor_get_author_mention_the_target.py
 # @Author: Cedar
 # @Date  : 2019/12/31
 # @Desc  :
@@ -13,9 +13,9 @@ import json
 import re
 
 
-def extractor_get_deleted_tweet(target_account, proxies=None):
+def extractor_get_author_mention_the_target(target_account, proxies=None):
     headers = {
-        'Host': 'politwoops.com',
+        'Host': 'twitter.com',
         'Connection': 'keep-alive',
         'Cache-Control': 'max-age=0',
         'Upgrade-Insecure-Requests': '1',
@@ -24,8 +24,9 @@ def extractor_get_deleted_tweet(target_account, proxies=None):
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
-    url = 'https://politwoops.com/p/unknown/' + target_account
-    # url = 'https://politwoops.com/p/unknown/RCoteNPD'
+
+    url = 'https://twitter.com/search?q=(%40' + target_account + ')%20-filter%3Areplies%20-filter%3A(from%3A-' + target_account + ')%20&src=typed_query'
+    # url = 'https://twitter.com/search?q=(%40BillGates)%20-filter%3Areplies%20-filter%3A(from%3A-BillGates)%20&src=typed_query'
     author_list = []
     status = '0'
     try:
@@ -34,20 +35,19 @@ def extractor_get_deleted_tweet(target_account, proxies=None):
         if response.content:
             status = '1'
         root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
-        items = root.xpath('//div[contains(@class,"tweet-container")]')
+        items = root.xpath('//li[@data-item-type="tweet"]')
         for item in items:
             # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
-            # author_id = "".join(item.xpath('.//div/@data-user-id'))
-            author_account = target_account
-            author_name = "".join(item.xpath('.//a[@class="user_name"]/text()'))
+            author_id = "".join(item.xpath('.//div/@data-user-id'))
+            author_account = "".join(item.xpath('.//div/@data-screen-name'))
+            author_name = "".join(item.xpath('.//div/@data-name'))
             author_url = "https://twitter.com/" + author_account
-            author_img_url = "".join(item.xpath('.//img[@class="img-responsive"]/@src'))
-            article_id = "".join(item.xpath('.//div[@class="tweet row"]/@id')).replace('tweet-', '')
-            article_url = author_url + "/status/" + article_id
-            article_content = "".join(item.xpath('.//div[contains(@class,"tweet-content")]//text()'))
+            author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
+            article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
+            article_content = "".join(item.xpath('.//div[@class="js-tweet-text-container"]//text()'))
 
             author_item = {
-                # "author_id": author_id,
+                "author_id": author_id,
                 "author_account": author_account,
                 "author_name": author_name,
                 "author_url": author_url,
@@ -61,7 +61,7 @@ def extractor_get_deleted_tweet(target_account, proxies=None):
         status = str(e)
         print(e)
 
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_deleted_tweet",
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_mention_the_target",
               "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
@@ -70,12 +70,12 @@ def extractor_get_deleted_tweet(target_account, proxies=None):
 
 
 def main():
-    target_account = 'RCoteNPD'
+    target_account = 'BillGates'
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
     }
-    result = extractor_get_deleted_tweet(target_account, proxies)
+    result = extractor_get_author_mention_the_target(target_account, proxies)
     print(result)
 
 

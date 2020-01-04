@@ -21,6 +21,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
     url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/' + target_account
+    # url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/M7MD_SHAMRANI'
     response = requests.get(url, headers=headers, timeout=10, proxies=proxies)
     response.encoding = "utf-8"
     text = response.text
