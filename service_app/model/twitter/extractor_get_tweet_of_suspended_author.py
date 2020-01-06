@@ -7,6 +7,10 @@
 
 
 import requests
+from lxml import etree
+import html
+import json
+import re
 
 
 def extractor_get_tweet_of_suspended_author(target_account, proxies):
@@ -22,10 +26,82 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
     }
     url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/' + target_account
     # url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/M7MD_SHAMRANI'
-    response = requests.get(url, headers=headers, timeout=10, proxies=proxies)
-    response.encoding = "utf-8"
-    text = response.text
-    return text
+    author_list = []
+    status = '0'
+    try:
+        response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
+        response.encoding = "utf-8"
+        if response.content:
+            status = '1'
+        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
+        items = root.xpath('//li[@data-item-type="tweet"]')
+        for item in items:
+            # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
+            # author
+            author_id = "".join(item.xpath('.//div/@data-user-id'))
+            author_account = "".join(item.xpath('.//div/@data-screen-name'))
+            author_name = "".join(item.xpath('.//div/@data-name'))
+            author_url = "https://twitter.com/" + author_account
+            author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
+            author_description = "".join(item.xpath('//p[@class="ProfileHeaderCard-bio u-dir"]/text()'))
+            author_follower_count = "".join(item.xpath('//a[@data-nav="followers"]/span[@data-count]/@data-count'))
+            author_following_count = "".join(item.xpath('//a[@data-nav="following"]/span[@data-count]/@data-count'))
+            author_message_count = "".join(item.xpath('//a[@data-nav="tweets"]/span[@data-count]/@data-count'))
+            author_like_count = "".join(item.xpath('//a[@data-nav="favorites"]/span[@data-count]/@data-count'))
+            # article
+            article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
+            created_time = "".join(item.xpath('.//span[@data-time]/@data-time'))
+            article_reply_count = "".join(item.xpath('.//button[contains(@class,"js-actionReply")][1]'
+                                                     '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+            article_retweet_count = "".join(item.xpath('.//button[contains(@class,"js-actionRetweet")][1]'
+                                                       '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+            article_favorite_count = "".join(item.xpath('.//button[contains(@class,"js-actionFavorite")][1]'
+                                                        '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+            article_content_text = item.find('.//div[@class="js-tweet-text-container"]')
+            article_content_media = item.find('.//div[@class="AdaptiveMediaOuterContainer"]')
+            article_content_quote = item.find('.//div[@class="QuoteTweet-container"]')
+            article_content_text = etree.tostring(article_content_text)  # 转为bytes
+            article_content_text = str(article_content_text, encoding="utf-8")  # 转为字符串
+            article_content = article_content_text
+            if article_content_media is not None:
+                article_content_media = etree.tostring(article_content_media)  # 转为bytes
+                article_content_media = str(article_content_media, encoding="utf-8")  # 转为字符串
+                article_content = article_content + article_content_media
+            if article_content_quote is not None:
+                article_content_quote = etree.tostring(article_content_quote)  # 转为bytes
+                article_content_quote = str(article_content_quote, encoding="utf-8")  # 转为字符串
+                article_content = article_content + article_content_quote
+
+            author_item = {
+                "author_id": author_id,
+                "author_account": author_account,
+                "author_name": author_name,
+                "author_url": author_url,
+                "author_img_url": author_img_url,
+                "author_description": author_description,
+                "author_follower_count": author_follower_count,
+                "author_following_count": author_following_count,
+                "author_message_count": author_message_count,
+                "author_like_count": author_like_count,
+                "article_url": article_url,
+                "created_time": created_time,
+                "article_reply_count": article_reply_count,
+                "article_retweet_count": article_retweet_count,
+                "article_favorite_count": article_favorite_count,
+                "article_content": article_content,
+            }
+            author_list.append(author_item)
+
+    except Exception as e:
+        status = str(e)
+        print(e)
+
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_tweet_of_suspended_author",
+              "data": author_list}
+    json_result = json.dumps(result, ensure_ascii=False)
+    # 再进行html编码，这样最终flask输出才是合法的json
+    html_result = html.escape(json_result)
+    return html_result
 
 
 def main():

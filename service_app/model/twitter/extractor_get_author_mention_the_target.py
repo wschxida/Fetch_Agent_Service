@@ -44,7 +44,9 @@ def extractor_get_author_mention_the_target(target_account, proxies=None):
             author_url = "https://twitter.com/" + author_account
             author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
             article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
-            article_content = "".join(item.xpath('.//div[@class="js-tweet-text-container"]//text()'))
+            article_content = item.find('.//div[@class="js-tweet-text-container"]')
+            article_content = etree.tostring(article_content)  # 转为bytes
+            article_content = str(article_content, encoding="utf-8")   # 转为字符串
 
             author_item = {
                 "author_id": author_id,
