@@ -38,7 +38,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
         items = root.xpath('//li[@data-item-type="tweet"]')
 
-        # 到这里可能会因为账户时suspended，所以会跳转到已suspended的页面，
+        # 到这里可能会因为账户suspended，所以会跳转到已suspended的页面，
         # https://web.archive.org/web/20191206214616/https://twitter.com/account/suspended
         # 需要进行搜索，找到最近的有数据的镜像
         if len(items) == 0:
@@ -54,6 +54,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
             root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
             items = root.xpath('//li[@data-item-type="tweet"]')
 
+        # 解析数据到具体字段
         for item in items:
             # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
             # author
