@@ -24,17 +24,36 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
-    url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/' + target_account
-    # url = 'https://web.archive.org/web/20191206212201/https:/twitter.com/M7MD_SHAMRANI'
+    # 这里日期写20即可，网站会自动去获取最新一次的镜像
+    url = 'https://web.archive.org/web/20/https://twitter.com/' + target_account
+    # url = 'https://web.archive.org/web/20191206212201/https://twitter.com/M7MD_SHAMRANI'
     author_list = []
     status = '0'
     try:
-        response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
+        print('--------------1---------------')
+        response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
         response.encoding = "utf-8"
         if response.content:
             status = '1'
         root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
         items = root.xpath('//li[@data-item-type="tweet"]')
+
+        # 到这里可能会因为账户时suspended，所以会跳转到已suspended的页面，
+        # https://web.archive.org/web/20191206214616/https://twitter.com/account/suspended
+        # 需要进行搜索，找到最近的有数据的镜像
+        if len(items) == 0:
+            search_url = 'https://web.archive.org/__wb/sparkline?url=https%3A%2F%2Ftwitter.com%2F' + target_account + '&collection=web&output=json'
+            search_response = requests.get(search_url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
+            search_response_json = search_response.json()
+            last_ts = search_response_json["last_ts"]
+            url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + 'M7MD_SHAMRANI'
+            # 请求最终数据
+            print('--------------2---------------')
+            response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
+            response.encoding = "utf-8"
+            root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
+            items = root.xpath('//li[@data-item-type="tweet"]')
+
         for item in items:
             # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
             # author

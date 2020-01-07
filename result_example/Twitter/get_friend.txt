@@ -1,0 +1,180 @@
+// 20200107150941
+// http://127.0.0.1:5000/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker
+
+{
+  "status": "1",
+  "agent_type": "twitter",
+  "fetch_type": "get_friend",
+  "data": [
+    {
+      "author_account": "ottijobs",
+      "author_name": "Otti und Partner – Ihr Personal Management ",
+      "author_url": "http://twitter.com/ottijobs",
+      "author_img_url": "http://pbs.twimg.com/profile_images/876359086819987456/N2qlN5vN_normal.jpg",
+      "author_description": "Job, Bewerbung und Karriere-Hotspot für Experten, Fach- und Führungskräfte",
+      "author_follower_count": "5011",
+      "author_following_count": "2732",
+      "author_message_count": "16061"
+    },
+    {
+      "author_account": "1stChoiceRec",
+      "author_name": "1st Choice Rec ",
+      "author_url": "http://twitter.com/1stChoiceRec",
+      "author_img_url": "http://pbs.twimg.com/profile_images/494134898274226176/9xYnyFxA_normal.png",
+      "author_description": "#Recruiting temporary, permanent and contract staff for a variety of industries in #Bedford, #MiltonKeynes, #Huntingdon, #Biggleswade & #Northampton since 1989.",
+      "author_follower_count": "726",
+      "author_following_count": "944",
+      "author_message_count": "8703"
+    },
+    {
+      "author_account": "Virtumente",
+      "author_name": "Virtumente ",
+      "author_url": "http://twitter.com/Virtumente",
+      "author_img_url": "http://pbs.twimg.com/profile_images/956150757530595329/xGLJFEap_normal.jpg",
+      "author_description": "Collaborator | Incubator | Freelancers | Portfolios | Projects | Studios | ...\nJoin us @ https://t.co/t6uRCAk4w0",
+      "author_follower_count": "4356",
+      "author_following_count": "3858",
+      "author_message_count": "101369"
+    },
+    {
+      "author_account": "stephenjobiri",
+      "author_name": "Stephen Dynasty🇰🇪🇰🇪🇰🇪 ",
+      "author_url": "http://twitter.com/stephenjobiri",
+      "author_img_url": "http://pbs.twimg.com/profile_images/1196106486423990280/QlW5LWZb_normal.jpg",
+      "author_description": "Handling contingent issues about the youth and minority groups in our society,PLWDs,\nContact no. 0704-260613",
+      "author_follower_count": "3176",
+      "author_following_count": "4028",
+      "author_message_count": "6375"
+    },
+    {
+      "author_account": "MisterSpock2n",
+      "author_name": "Nick Rajotte ",
+      "author_url": "http://twitter.com/MisterSpock2n",
+      "author_img_url": "http://pbs.twimg.com/profile_images/578389882000814080/Y85gteaj_normal.jpeg",
+      "author_description": "Marine Corps Veteran, Currently a Sitefinity Support Engineer @ Telerik/Progress working in C# and ASP .NET. by day Smite player by night #RedSox #Boston #Gamer",
+      "author_follower_count": "1933",
+      "author_following_count": "2392",
+      "author_message_count": "4540"
+    },
+    {
+      "author_account": "RNupuf",
+      "author_name": "Dr. Robert G. Nupuf OD ",
+      "author_url": "http://twitter.com/RNupuf",
+      "author_img_url": "http://pbs.twimg.com/profile_images/953453253101985792/hAqVWfZl_normal.jpg",
+      "author_description": "Scientist, theoretical economist, inventor, Vet, pvt. pilot, Mason,  fear & love the Almighty, Trump for 2020, against global warming& irrational economics, IFB",
+      "author_follower_count": "1375",
+      "author_following_count": "1405",
+      "author_message_count": "14135"
+    },
+    {
+      "author_account": "Boasta_T",
+      "author_name": "Tiro ",
+      "author_url": "http://twitter.com/Boasta_T",
+      "author_img_url": "http://pbs.twimg.com/profile_images/1213842570641588224/4ei8XV3l_normal.jpg",
+      "author_description": "Those who don't remember the past are condemned to repeat it again. \n♐A Lone Wolf♐\n♋Fun Lover♋",
+      "author_follower_count": "2290",
+      "author_following_count": "2784",
+      "author_message_count": "30742"
+    },
+    {
+      "author_account": "WNemencha",
+      "author_name": "William Nemencha ",
+      "author_url": "http://twitter.com/WNemencha",
+      "author_img_url": "http://pbs.twimg.com/profile_images/1063841456413126656/umO4Q1y0_normal.jpg",
+      "author_description": "Full-Stack Developer. UI/UX Designer 👌. Open-Source Contributor. Privacy Advocate. Code Teacher. 22yo. GraphQL All The Things. https://t.co/ZlwmuO9x82",
+      "author_follower_count": "633",
+      "author_following_count": "1353",
+      "author_message_count": "989"
+    },
+    {
+      "author_account": "Marley084",
+      "author_name": "Grant ",
+      "author_url": "http://twitter.com/Marley084",
+      "author_img_url": "http://pbs.twimg.com/profile_images/886603782536085506/ImYE-R6l_normal.jpg",
+      "author_description": "Father, husband, steward of 63,000 acres, scientific method works, arts, soldier in #TheResistance #FBR #BLM #FB, Blocked by Dana Loesch @DLoesch #DemCastCA🌊🌊",
+      "author_follower_count": "12000",
+      "author_following_count": "12123",
+      "author_message_count": "13827"
+    },
+    {
+      "author_account": "FredKwint",
+      "author_name": "Fred Kwint ",
+      "author_url": "http://twitter.com/FredKwint",
+      "author_img_url": "http://pbs.twimg.com/profile_images/943602074289430529/zD1LnB_D_normal.jpg",
+      "author_description": "Senior editor for public television in the Netherlands. Presentation coach and LGBT rights and human rights activist. I tweet my own opinion.",
+      "author_follower_count": "8776",
+      "author_following_count": "9317",
+      "author_message_count": "98098"
+    },
+    {
+      "author_account": "ivorroy",
+      "author_name": "ivorroy ",
+      "author_url": "http://twitter.com/ivorroy",
+      "author_img_url": "http://pbs.twimg.com/profile_images/2856974892/a344662cc57af9c1cee11d38feb5e7d2_normal.jpeg",
+      "author_description": "US Army Vietnam Vet.You want fries with that? No answers, just questions. Had a lucid thought,once. Investor. Retiree, Free lance writer. Read at your own risk.",
+      "author_follower_count": "1198",
+      "author_following_count": "1858",
+      "author_message_count": "30053"
+    },
+    {
+      "author_account": "PatrickCanos",
+      "author_name": "Patrick Canos ",
+      "author_url": "http://twitter.com/PatrickCanos",
+      "author_img_url": "http://pbs.twimg.com/profile_images/1088172107752603648/42aLPDHZ_normal.jpg",
+      "author_description": "WBU Recruiting Manager for Cancun Resort @DiamondResorts | Virginia Tech & Theta Chi Alum | Golf Enthusiast ⛳️ | #PCfoundMe",
+      "author_follower_count": "469",
+      "author_following_count": "1373",
+      "author_message_count": "1404"
+    },
+    {
+      "author_account": "LondonDiem",
+      "author_name": "😋 London FOOD X ",
+      "author_url": "http://twitter.com/LondonDiem",
+      "author_img_url": "http://pbs.twimg.com/profile_images/941267399223005185/KAzBfF8X_normal.jpg",
+      "author_description": "#london #luxury #luxurylife #luxuryliving #food #fun #luxurytravel  #luxuryfood #londonbridge",
+      "author_follower_count": "1208",
+      "author_following_count": "1996",
+      "author_message_count": "20682"
+    },
+    {
+      "author_account": "EmceePure",
+      "author_name": "Daniel Carl Luz Jr. ",
+      "author_url": "http://twitter.com/EmceePure",
+      "author_img_url": "http://pbs.twimg.com/profile_images/873241719852023808/T1fgCAYi_normal.jpg",
+      "author_description": "Proud Father & Hiphop Artist: Government Name: Daniel, Stage Name: Pure, GOAL: Reunite the falsely separated! #BZBFAM Music Rank#1 local https://t.co/kLF7PRvRKE",
+      "author_follower_count": "6660",
+      "author_following_count": "6764",
+      "author_message_count": "41528"
+    },
+    {
+      "author_account": "ergasiaedo",
+      "author_name": "Εργασία Εδώ και Τώρα ",
+      "author_url": "http://twitter.com/ergasiaedo",
+      "author_img_url": "http://pbs.twimg.com/profile_images/554923986308440065/2H3YN03P_normal.jpeg",
+      "author_description": "Εργασία εδώ και τώρα",
+      "author_follower_count": "2831",
+      "author_following_count": "2340",
+      "author_message_count": "893858"
+    },
+    {
+      "author_account": "7GG78",
+      "author_name": "عذبي ",
+      "author_url": "http://twitter.com/7GG78",
+      "author_img_url": "http://pbs.twimg.com/profile_images/940967523901730816/zk4JzoZH_normal.jpg",
+      "author_description": "إحلم بما شئت فالله لا يخذل من آمن به",
+      "author_follower_count": "4733",
+      "author_following_count": "3737",
+      "author_message_count": "26403"
+    },
+    {
+      "author_account": "JawadJzahid",
+      "author_name": "Jawad Zahid ",
+      "author_url": "http://twitter.com/JawadJzahid",
+      "author_img_url": "http://pbs.twimg.com/profile_images/687060112360407042/xPZPFkqv_normal.jpg",
+      "author_description": "sr. Recruiter @ Systems Limited",
+      "author_follower_count": "185",
+      "author_following_count": "772",
+      "author_message_count": "2407"
+    }
+  ]
+}

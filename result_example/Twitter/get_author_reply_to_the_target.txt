@@ -1,0 +1,190 @@
+// 20200107150943
+// http://127.0.0.1:5000/service_app?agent_type=twitter&fetch_type=get_author_reply_to_the_target&target_express=BillGates
+
+{
+  "status": "1",
+  "agent_type": "twitter",
+  "fetch_type": "get_author_reply_to_the_target",
+  "data": [
+    {
+      "author_id": "1153115955217620992",
+      "author_account": "yoole15",
+      "author_name": "yoole",
+      "author_url": "https://twitter.com/yoole15",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1153116196792758272/p0qiqHnW_bigger.jpg",
+      "article_url": "https://twitter.com/yoole15/status/1210171279736594437",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"zh\" data-aria-label-part=\"0\">&#27426;&#36814;&#27604;&#23572;&#30422;&#33576;&#20808;&#29983;&#26469;&#24191;&#27982;&#21439;&#36208;&#36208;<img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f604.png\" draggable=\"false\" alt=\"&#128516;\" title=\"&#24320;&#21475;&#30511;&#30524;&#31505;&#33080;\" aria-label=\"Emoji: &#24320;&#21475;&#30511;&#30524;&#31505;&#33080;\"/></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1208242115932643328",
+      "author_account": "9Eb0jSpEIttBPCY",
+      "author_name": "刘湘沅",
+      "author_url": "https://twitter.com/9Eb0jSpEIttBPCY",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1208243376341975041/FFdPvTgP_bigger.jpg",
+      "article_url": "https://twitter.com/9Eb0jSpEIttBPCY/status/1208760203606278149",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"zh\" data-aria-label-part=\"0\">BillGates&#25105;&#26159;&#20320;&#30340;&#31881;&#19997;</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1209664141465706496",
+      "author_account": "hXy1i4D7PZBMB8A",
+      "author_name": "郭光喜",
+      "author_url": "https://twitter.com/hXy1i4D7PZBMB8A",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1209671741133479940/qVixIcQn_bigger.jpg",
+      "article_url": "https://twitter.com/hXy1i4D7PZBMB8A/status/1209675980152983552",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"zh\" data-aria-label-part=\"0\">Happy  new year !!    &#23450;&#19968;&#20010;&#23567;&#30446;&#26631;&#65292;&#20808;&#20511;&#25105;&#19968;&#20010;&#20159;&#65281;<img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f602.png\" draggable=\"false\" alt=\"&#128514;\" title=\"&#20048;&#26497;&#32780;&#27875;&#33080;\" aria-label=\"Emoji: &#20048;&#26497;&#32780;&#27875;&#33080;\"/><img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f602.png\" draggable=\"false\" alt=\"&#128514;\" title=\"&#20048;&#26497;&#32780;&#27875;&#33080;\" aria-label=\"Emoji: &#20048;&#26497;&#32780;&#27875;&#33080;\"/><img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f602.png\" draggable=\"false\" alt=\"&#128514;\" title=\"&#20048;&#26497;&#32780;&#27875;&#33080;\" aria-label=\"Emoji: &#20048;&#26497;&#32780;&#27875;&#33080;\"/><img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f602.png\" draggable=\"false\" alt=\"&#128514;\" title=\"&#20048;&#26497;&#32780;&#27875;&#33080;\" aria-label=\"Emoji: &#20048;&#26497;&#32780;&#27875;&#33080;\"/></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "907393292094005248",
+      "author_account": "Strangelove797",
+      "author_name": "Strangelove",
+      "author_url": "https://twitter.com/Strangelove797",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1175942335231754241/wvzDBOqp_bigger.jpg",
+      "article_url": "https://twitter.com/Strangelove797/status/1213999355021053952",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">It also requires that we admit that Green Energy as it exists is not a cost effective solution. Raising peoples' energy rates for ineffective solutions is no solution at all.</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1161296916900020224",
+      "author_account": "leftoverpickles",
+      "author_name": "raymond",
+      "author_url": "https://twitter.com/leftoverpickles",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1161297098337210368/ZxIKR_37_bigger.jpg",
+      "article_url": "https://twitter.com/leftoverpickles/status/1214390087334518786",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> donate a fat stack to the Australian fire relief</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1212407265916936194",
+      "author_account": "sonimada",
+      "author_name": "Sonimada",
+      "author_url": "https://twitter.com/sonimada",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214440217345744896/zl62t_GU_bigger.jpg",
+      "article_url": "https://twitter.com/sonimada/status/1214437331991777280",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Hiiii  billgate how r u  my name is Adam from Ethiopia  my dream is invent software please help by financial</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1207694009260478465",
+      "author_account": "Christo61850629",
+      "author_name": "Christopher Erb",
+      "author_url": "https://twitter.com/Christo61850629",
+      "author_img_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png",
+      "article_url": "https://twitter.com/Christo61850629/status/1213843887971811328",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Hello Sir,  I could still use a Secret Santa?  Happy New Year!</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "882527030662660096",
+      "author_account": "cindy_cin6855",
+      "author_name": "Cindy",
+      "author_url": "https://twitter.com/cindy_cin6855",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1211204860453867520/eI01IUv9_bigger.jpg",
+      "article_url": "https://twitter.com/cindy_cin6855/status/1214417114498420736",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">For example, the current Australian forest fire?</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1213316165377773568",
+      "author_account": "Saurabh55747268",
+      "author_name": "Saurabh Chandra Namdev",
+      "author_url": "https://twitter.com/Saurabh55747268",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1213518663375937536/UAOE_xva_bigger.jpg",
+      "article_url": "https://twitter.com/Saurabh55747268/status/1214325376035328000",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Right decision making process of getting a lot of people</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1045959767880019969",
+      "author_account": "AshishK83030934",
+      "author_name": "Ashish Kumar",
+      "author_url": "https://twitter.com/AshishK83030934",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1046150673019088897/UB6IQYaK_bigger.jpg",
+      "article_url": "https://twitter.com/AshishK83030934/status/1214357480479707136",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> \nHappy New Year to you 2020</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "825415680640086017",
+      "author_account": "AffanViews",
+      "author_name": "Mohammad",
+      "author_url": "https://twitter.com/AffanViews",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1021237123590967296/XXLp0Ur4_bigger.jpg",
+      "article_url": "https://twitter.com/AffanViews/status/1213998668468105222",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Your work in this is much appreciated Bill!\n\nPlease keep at it.\nKeep on doing it!\n\nWe're with you in this.</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1214433751725268992",
+      "author_account": "Willian75256535",
+      "author_name": "Willian",
+      "author_url": "https://twitter.com/Willian75256535",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214433980751077376/bFuZQ1CM_bigger.jpg",
+      "article_url": "https://twitter.com/Willian75256535/status/1214435009051811842",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> Hi sir can you help me..??? You have a lot of money.... Pls share a little to me..I have a lot of problems...please help me sir....I really need your help....</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "4630365547",
+      "author_account": "cmraj123",
+      "author_name": "Mohanraj",
+      "author_url": "https://twitter.com/cmraj123",
+      "author_img_url": "https://pbs.twimg.com/profile_images/680059248324120576/rQF3C4Bs_bigger.jpg",
+      "article_url": "https://twitter.com/cmraj123/status/1214410627625537537",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> This is my account details C.Mohanraj, YES Bank Ltd. A/c No: 059491800034603 IFSC Code: YESB0000594.</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1214366835346493441",
+      "author_account": "MustaphaAkanji1",
+      "author_name": "Mustapha Akanji",
+      "author_url": "https://twitter.com/MustaphaAkanji1",
+      "author_img_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png",
+      "article_url": "https://twitter.com/MustaphaAkanji1/status/1214400982441959424",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Good day, firstly, I will like to say thank you for reading my letter and also apologise to you for asking for your money that you obviously worked hard for. My name is Olamilekan Mustapha Akanji and I need you to help me with money to enable me provide for myself and my family.</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1173154760620498944",
+      "author_account": "realblazz",
+      "author_name": "Błażej",
+      "author_url": "https://twitter.com/realblazz",
+      "author_img_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png",
+      "article_url": "https://twitter.com/realblazz/status/1214292232884371456",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> please, help <a href=\"/hashtag/Australia?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>Australia</b></a> <a href=\"/hashtag/australiafire?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>australiafire</b></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1207304583757869056",
+      "author_account": "NewsWhales",
+      "author_name": "Good News about Whales/Turtles/Elephants",
+      "author_url": "https://twitter.com/NewsWhales",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1207305482991480835/xD1w9Iad_bigger.jpg",
+      "article_url": "https://twitter.com/NewsWhales/status/1214279507940691974",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Very important!</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "960611126160560128",
+      "author_account": "Detatl5259",
+      "author_name": "tea Smith",
+      "author_url": "https://twitter.com/Detatl5259",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1213959093158699008/Ug2_cl_7_bigger.jpg",
+      "article_url": "https://twitter.com/Detatl5259/status/1214271937163223040",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a> thanks for participating in the ice bucket challenge. Anything that brings awareness to this monster is a win for the ALS community.  Please retweet this message to keep the attention going. We must unite and demand new treatments <a href=\"/hashtag/alsfucku?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>alsfucku</b></a> <a href=\"/SteveFDA\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"2904169317\"><s>@</s><b>stevefda</b></a> nurown now!</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1213895895286071296",
+      "author_account": "17Veerr",
+      "author_name": "Veerr_17",
+      "author_url": "https://twitter.com/17Veerr",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1213896281657139201/PodcaRVy_bigger.jpg",
+      "article_url": "https://twitter.com/17Veerr/status/1214266249280020481",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Here the world progression n in india still the dirty politics, fake issued r generating, politicians want to divert the public attention from the real issue like education, etc ... india will never progress like this <img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f615.png\" draggable=\"false\" alt=\"&#128533;\" title=\"&#22256;&#24785;&#33080;\" aria-label=\"Emoji: &#22256;&#24785;&#33080;\"/></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1196628274228547586",
+      "author_account": "MafiaBoy420",
+      "author_name": "Mandem",
+      "author_url": "https://twitter.com/MafiaBoy420",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214072037561397248/yeTDDR0W_bigger.jpg",
+      "article_url": "https://twitter.com/MafiaBoy420/status/1214145310311604224",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b>BillGates</b></a>  Why not aid us in the Australian fires? <a href=\"/hashtag/australiafire?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>australiafire</b></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1213775623350472704",
+      "author_account": "MAZHARA34307141",
+      "author_name": "MAZHAR ALI",
+      "author_url": "https://twitter.com/MAZHARA34307141",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1213804217661440000/wxopr7vA_bigger.jpg",
+      "article_url": "https://twitter.com/MAZHARA34307141/status/1214110649443377153",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">instead of smashing the world into ashes in the name of wars; try to pay it for what nature has given us <a href=\"/hashtag/protecttheglobe?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>protecttheglobe</b></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    }
+  ]
+}

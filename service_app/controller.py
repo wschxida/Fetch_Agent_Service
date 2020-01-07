@@ -7,6 +7,7 @@
 
 
 from service_app.model.twitter.twitter_agent import TwitterAgent
+from service_app.model.breach.breach_agent import BreachAgent
 
 
 class FetchAgentManager:
@@ -23,6 +24,8 @@ class FetchAgentManager:
 
         if self.request_params['agent_type'] == 'twitter':
             cur_fetch_agent = TwitterAgent(self.request_params)
+        if self.request_params['agent_type'] == 'breach':
+            cur_fetch_agent = BreachAgent(self.request_params)
 
         response = cur_fetch_agent.get_fetch_result()
 

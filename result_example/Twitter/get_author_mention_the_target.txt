@@ -1,0 +1,190 @@
+// 20200107150942
+// http://127.0.0.1:5000/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates
+
+{
+  "status": "1",
+  "agent_type": "twitter",
+  "fetch_type": "get_author_mention_the_target",
+  "data": [
+    {
+      "author_id": "1134319440",
+      "author_account": "JonathanDunnett",
+      "author_name": "Jonathan Dunnett",
+      "author_url": "https://twitter.com/JonathanDunnett",
+      "author_img_url": "https://pbs.twimg.com/profile_images/947676304282877952/Uj9DIhkn_bigger.jpg",
+      "article_url": "https://twitter.com/JonathanDunnett/status/1214275756089581575",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">This month's Strategy and CI is STUFFED with great content from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>, <a href=\"/mitsmr\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"15692087\"><s>@</s><b>mitsmr</b></a>, <a href=\"/mdufva\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"138673496\"><s>@</s><b>mdufva</b></a> and more! Plus, don't miss a great FREEBIE from <a href=\"/iftf\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"14620544\"><s>@</s><b>iftf</b></a>. \n\nGet on the list and don't miss it! &gt;&gt;&gt;&gt;&gt; <a href=\"https://t.co/OoZ0rIvZsg\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"http://zc.vg/DljM3\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"http://zc.vg/DljM3\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">http://</span><span class=\"js-display-url\">zc.vg/DljM3</span><span class=\"invisible\"/><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span></span></a>\n\n<a href=\"/ACOACanada\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"589134854\"><s>@</s><b>ACOACanada</b></a> <a href=\"/Venn_Innovation\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"164374044\"><s>@</s><b>Venn_Innovation</b></a> <a href=\"/Genesis_Centre\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"85606300\"><s>@</s><b>Genesis_Centre</b></a> <a href=\"/NSBI\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"36219545\"><s>@</s><b>NSBI</b></a><a href=\"https://t.co/broCFKgp7q\" class=\"twitter-timeline-link u-hidden\" data-pre-embedded=\"true\" dir=\"ltr\">pic.twitter.com/broCFKgp7q</a></p>\n</div>\n\n\n      \n\n      \n            "
+    },
+    {
+      "author_id": "229250936",
+      "author_account": "labsii",
+      "author_name": "Labsii",
+      "author_url": "https://twitter.com/labsii",
+      "author_img_url": "https://pbs.twimg.com/profile_images/735409910389821445/RTR1lt7y_bigger.jpg",
+      "article_url": "https://twitter.com/labsii/status/1214188460476653569",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">There are great articles from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> like this: <a href=\"https://t.co/xmx2HkEQrN\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/Books/Why-We-Sleep?WT.mc_id=20200102175411_EOYBooks2019_BG-LI&amp;WT.tsrc=BGLI&amp;linkId=79976341\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://www.gatesnotes.com/Books/Why-We-Sleep?WT.mc_id=20200102175411_EOYBooks2019_BG-LI&amp;WT.tsrc=BGLI&amp;linkId=79976341\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/Books/Why-We-S</span><span class=\"invisible\">leep?WT.mc_id=20200102175411_EOYBooks2019_BG-LI&amp;WT.tsrc=BGLI&amp;linkId=79976341</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a> . The problem is that the site doesn't respect even very basic HTML rules and can't be processed in many apps including Speech Central. Is it really possible that <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> can't put H1 tag on the title?</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n          "
+    },
+    {
+      "author_id": "34320951550393960",
+      "author_account": "Devine_StatusBillGates",
+      "author_name": "Dev",
+      "author_url": "https://twitter.com/Devine_StatusBillGates",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1212467037588590592/ZOt4nOBl_bigger.jpg",
+      "article_url": "https://twitter.com/Devine_Status/status/1213923938339831808",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"4\">We always think the world is worse now than ever before. Maybe it&#8217;s just an illusion from the media, check this out from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> <a href=\"https://t.co/GaGfR3egbe\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://twitter.com/billgates/status/1213843596811612161\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://twitter.com/billgates/status/1213843596811612161\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">twitter.com/billgates/stat</span><span class=\"invisible\">us/1213843596811612161</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n"
+    },
+    {
+      "author_id": "474983217",
+      "author_account": "AlannaPetroff",
+      "author_name": "Alanna Petroff",
+      "author_url": "https://twitter.com/AlannaPetroff",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1116049058328711169/BZJ6pFPT_bigger.png",
+      "article_url": "https://twitter.com/AlannaPetroff/status/1213801355359477765",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Some very relevant, timely and interesting thoughts on <a href=\"/hashtag/tax?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>tax</b></a> and <a href=\"/hashtag/inequality?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>inequality</b></a> from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>billgates</strong></b></a> \n<a href=\"https://t.co/Ry9soW28ku\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/About-Bill-Gat</span><span class=\"invisible\">es/Year-in-Review-2019</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n          "
+    },
+    {
+      "author_id": "343267635",
+      "author_account": "CGIAR",
+      "author_name": "CGIAR",
+      "author_url": "https://twitter.com/CGIAR",
+      "author_img_url": "https://pbs.twimg.com/profile_images/875694271004889088/M8bAqkEP_bigger.jpg",
+      "article_url": "https://twitter.com/CGIAR/status/1213724341223010304",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Across the world, there are over a billion subsistence farmers whose primary asset is what they grow. Hear from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> on CGIAR's work to help smallholder farmers increase productivity, improve <a href=\"/hashtag/foodsecurity?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>foodsecurity</b></a> &amp; innovate for a more prosperous tomorrow:<a href=\"https://t.co/H4aVIy53lW\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://on.cgiar.org/2Zhqrbn\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://on.cgiar.org/2Zhqrbn\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">on.cgiar.org/2Zhqrbn</span><span class=\"invisible\"/><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span></span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n          "
+    },
+    {
+      "author_id": "41649718",
+      "author_account": "adamslife365",
+      "author_name": "Adam White",
+      "author_url": "https://twitter.com/adamslife365",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1157490498166304768/SHlZi8rK_bigger.jpg",
+      "article_url": "https://twitter.com/adamslife365/status/1213490178423214080",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Powerful quote from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>. He was talking about the economy. \n\n\"A few people end up with a great deal&#8212;I&#8217;ve been disproportionately rewarded for the work I&#8217;ve done&#8212;while many others who work just as hard struggle to get by.\"\n\n<a href=\"/hashtag/motivation?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>motivation</b></a> <a href=\"/hashtag/realtalk?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>realtalk</b></a> <a href=\"/hashtag/2020NewYear?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>2020NewYear</b></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "6286691480008955",
+      "author_account": "manan_shroffabhishek_tri",
+      "author_name": "#Mi Fan Manan Shroff",
+      "author_url": "https://twitter.com/manan_shroffabhishek_tri",
+      "author_img_url": "https://pbs.twimg.com/profile_images/802564596947107840/0mjkt58G_bigger.jpg",
+      "article_url": "https://twitter.com/manan_shroff/status/1213370638452158470",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"4\">Holy Shit <img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f616.png\" draggable=\"false\" alt=\"&#128534;\" title=\"&#24778;&#35766;&#33080;\" aria-label=\"Emoji: &#24778;&#35766;&#33080;\"/>\nDidn't knew d magnitude of destruction was so huge <img class=\"Emoji Emoji--forText\" src=\"https://abs.twimg.com/emoji/v2/72x72/1f625.png\" draggable=\"false\" alt=\"&#128549;\" title=\"&#22833;&#26395;&#20294;&#25918;&#26494;&#33080;\" aria-label=\"Emoji: &#22833;&#26395;&#20294;&#25918;&#26494;&#33080;\"/>\nDon't know if help from individuals around the globe would be enough to compensate for the loss\nAny help from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> <a href=\"/elonmusk\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"44196397\"><s>@</s><b>elonmusk</b></a> <a href=\"/JeffBezos\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"15506669\"><s>@</s><b>JeffBezos</b></a> <a href=\"/TheTeamTrees\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"1188065799761739777\"><s>@</s><b>TheTeamTrees</b></a> <a href=\"/teamtreesofficl\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"1182493264164712449\"><s>@</s><b>teamtreesofficl</b></a> <a href=\"/MrBeastYT\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"2455740283\"><s>@</s><b>MrBeastYT</b></a> might be of some significance<a href=\"https://t.co/zdZXhTmUD7\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://twitter.com/abhishek_tri/status/1213018037076541440\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://twitter.com/abhishek_tri/status/1213018037076541440\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">twitter.com/abhishek_tri/s</span><span class=\"invisible\">tatus/1213018037076541440</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n"
+    },
+    {
+      "author_id": "867744392223887360",
+      "author_account": "BenSoskis",
+      "author_name": "Benjamin Soskis",
+      "author_url": "https://twitter.com/BenSoskis",
+      "author_img_url": "https://pbs.twimg.com/profile_images/868156902693376000/w7Uf59ne_bigger.jpg",
+      "article_url": "https://twitter.com/BenSoskis/status/1213205566950121472",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">I missed this annual letter from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>. He evades taking position on wealth tax, but I don't think it gets enough attn that nation's richest individual has moderately progressive views on taxation &amp; seems increasingly willing to promote them publicly. <a href=\"https://t.co/ewaeVdtlPq\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-TW_&amp;WT.tsrc=BGTW\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-TW_&amp;WT.tsrc=BGTW\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/About-Bill-Gat</span><span class=\"invisible\">es/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-TW_&amp;WT.tsrc=BGTW</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "243339088",
+      "author_account": "asjohnsonDC",
+      "author_name": "Andrew Johnson",
+      "author_url": "https://twitter.com/asjohnsonDC",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1042620954835267584/kc0cZt2c_bigger.jpg",
+      "article_url": "https://twitter.com/asjohnsonDC/status/1213203225245081603",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Great blog from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> on steps to make America's tax system more fair. Among them: bringing capital gains tax more in line w/ taxes on wages. \"I don't see any reason to favor wealth over work the way we do today.\" <a href=\"https://t.co/3GTWkk0088\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-LI_&amp;WT.tsrc=BGLI\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-LI_&amp;WT.tsrc=BGLI\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/About-Bill-Gat</span><span class=\"invisible\">es/Year-in-Review-2019?WT.mc_id=01_03_2020_10_YIR2019_BG-LI_&amp;WT.tsrc=BGLI</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "1662467550393960",
+      "author_account": "palomboBillGates",
+      "author_name": "Paolo Palombo",
+      "author_url": "https://twitter.com/palomboBillGates",
+      "author_img_url": "https://pbs.twimg.com/profile_images/876030652117905408/OTcqx4E7_bigger.jpg",
+      "article_url": "https://twitter.com/palombo/status/1213166922205945856",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"4\">If you read one thing today, read this note from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>. <a href=\"https://t.co/UKhe7CzQQ5\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://twitter.com/BillGates/status/1213158756915105792\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://twitter.com/BillGates/status/1213158756915105792\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">twitter.com/BillGates/stat</span><span class=\"invisible\">us/1213158756915105792</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n"
+    },
+    {
+      "author_id": "491326658950393960",
+      "author_account": "whoisbosskBillGates",
+      "author_name": "bossk",
+      "author_url": "https://twitter.com/whoisbosskBillGates",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1191553733685104640/uxo_rms3_bigger.jpg",
+      "article_url": "https://twitter.com/whoisbossk/status/1212979266461130754",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"4\">Great suggestion from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> I have the audio version (<a href=\"/hashtag/Audible?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>Audible</b></a>) and very much liked it and found it very informative.<a href=\"https://t.co/Wl5DHoaofR\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://twitter.com/BillGates/status/1212794686630436864\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://twitter.com/BillGates/status/1212794686630436864\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">twitter.com/BillGates/stat</span><span class=\"invisible\">us/1212794686630436864</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n"
+    },
+    {
+      "author_id": "2964496300",
+      "author_account": "XBIObserver",
+      "author_name": "XBI-observer",
+      "author_url": "https://twitter.com/XBIObserver",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1068259802231398402/nAKpuFB2_bigger.jpg",
+      "article_url": "https://twitter.com/XBIObserver/status/1212889987416412162",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Must read of the day.  Totally surprised with the commentary from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>billgates</strong></b></a>\n\n<a href=\"https://t.co/69LrCpwWFH\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/About-Bill-Gat</span><span class=\"invisible\">es/Year-in-Review-2019</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "937582100701687813",
+      "author_account": "AGKerali",
+      "author_name": "Anthony Kerali",
+      "author_url": "https://twitter.com/AGKerali",
+      "author_img_url": "https://pbs.twimg.com/profile_images/937584771470905344/huEDHn37_bigger.jpg",
+      "article_url": "https://twitter.com/AGKerali/status/1212874738172907521",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Here are highly insightful messages from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>. Actually blunt, genuine, genius. Happy New Year,  Decade, Bill. Thanks for saving the time for everyone on Earth. Best Wishes. <a href=\"https://t.co/BF3yqQrjPt\" class=\"twitter-timeline-link u-hidden\" data-pre-embedded=\"true\" dir=\"ltr\">pic.twitter.com/BF3yqQrjPt</a></p>\n</div>\n\n\n      \n\n      \n            "
+    },
+    {
+      "author_id": "96686781",
+      "author_account": "AlecTorelli",
+      "author_name": "Alec Torelli",
+      "author_url": "https://twitter.com/AlecTorelli",
+      "author_img_url": "https://pbs.twimg.com/profile_images/693882601505964037/G2b7z6Ct_bigger.jpg",
+      "article_url": "https://twitter.com/AlecTorelli/status/1212734729902010368",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">&#8216;Most people over estimate what they can do in a year and under estimate what they can do in ten.&#8217;\n\nGreat wisdom from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> as we enter a new decade.\n\nBe ambitious.\nThink long term. \nShow up daily.\nLet your actions compound over time and let&#8217;s do something extraordinary.</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "66672759",
+      "author_account": "Sa441m",
+      "author_name": "Sam Heyman",
+      "author_url": "https://twitter.com/Sa441m",
+      "author_img_url": "https://pbs.twimg.com/profile_images/563151475/sam_bigger.jpg",
+      "article_url": "https://twitter.com/Sa441m/status/1212694103730864128",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">At this time of resolutions and grand plans, a piece of advice that has (and continues!) to serve me well is from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>: \"people tend to overestimate what they can do in one year and underestimate what they can do in ten years.\"</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "11947145643253629143",
+      "author_account": "44shockHarryStebbings",
+      "author_name": "Shail Paliwal",
+      "author_url": "https://twitter.com/44shockHarryStebbings",
+      "author_img_url": "https://pbs.twimg.com/profile_images/549220976245084161/a4H7KK6Z_bigger.jpeg",
+      "article_url": "https://twitter.com/44shock/status/1212573206550331392",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"4\">Love the quote from .<a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>  - thanks for sharing, Harry.   All the best in 2020. <a href=\"https://t.co/4IxT23OZdA\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://twitter.com/HarryStebbings/status/1212530690878836737\" class=\"twitter-timeline-link u-hidden\" target=\"_blank\" title=\"https://twitter.com/HarryStebbings/status/1212530690878836737\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">twitter.com/HarryStebbings</span><span class=\"invisible\">/status/1212530690878836737</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n"
+    },
+    {
+      "author_id": "1100879049541308422",
+      "author_account": "clare_morgans",
+      "author_name": "Clare Morgans",
+      "author_url": "https://twitter.com/clare_morgans",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1197306913702043648/iom5nkL4_bigger.jpg",
+      "article_url": "https://twitter.com/clare_morgans/status/1212545297609633793",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\"><a href=\"/hashtag/tax?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>tax</b></a> | Not your standard year in review post from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a>, instead choosing to reflect on <a href=\"/hashtag/inequality?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>inequality</b></a> &amp; the need for fairer taxation. \"I believe we can make our system fairer without sacrificing the incentive to innovate.\" <a href=\"/hashtag/innovation?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>innovation</b></a> <a href=\"/hashtag/SDGs?src=hash\" data-query-source=\"hashtag_click\" class=\"twitter-hashtag pretty-link js-nav\" dir=\"ltr\"><s>#</s><b>SDGs</b></a> #2020 <a href=\"https://t.co/LimX6HrktO\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"http://bit.ly/2QQ0EAP\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"http://bit.ly/2QQ0EAP\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">http://</span><span class=\"js-display-url\">bit.ly/2QQ0EAP</span><span class=\"invisible\"/><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span></span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "125754479",
+      "author_account": "angelapitter",
+      "author_name": "Angela Pitter 🎤🎥 FB Live Host 🎙🎧 Podcast Guest",
+      "author_url": "https://twitter.com/angelapitter",
+      "author_img_url": "https://pbs.twimg.com/profile_images/864226121700622336/_klIcVjS_bigger.jpg",
+      "article_url": "https://twitter.com/angelapitter/status/1211982854751760386",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">If your New Year&#8217;s resolution is to be healthier in 2020, then check out \"Why We Sleep,\" by Matthew Walker ( <a href=\"/sleepdiplomat\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"4081039273\"><s>@</s><b>sleepdiplomat</b></a>).   And then check out the other 4 books recommended for winter reading from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> \n\nIt's all here - <a href=\"https://t.co/gvEdTNEG8Q\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://buff.ly/35b8Am2\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://buff.ly/35b8Am2\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://</span><span class=\"js-display-url\">buff.ly/35b8Am2</span><span class=\"invisible\"/><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span></span></a><a href=\"https://t.co/l7LleBaaxk\" class=\"twitter-timeline-link u-hidden\" data-pre-embedded=\"true\" dir=\"ltr\">pic.twitter.com/l7LleBaaxk</a></p>\n</div>\n\n\n      \n\n      \n            "
+    },
+    {
+      "author_id": "426028646",
+      "author_account": "JohnDelaney",
+      "author_name": "John Delaney",
+      "author_url": "https://twitter.com/JohnDelaney",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1017761512818012161/DXlTw-1E_bigger.jpg",
+      "article_url": "https://twitter.com/JohnDelaney/status/1211874907367165953",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">Good read from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>billgates</strong></b></a>. I've always advocated for making the capital gains tax rate the same as the ordinary income tax rate.  There is zero justification for people who invest for a living paying less in a tax rate than people who work for a living.  <a href=\"https://t.co/nxaN7Stfxw\" rel=\"nofollow noopener\" dir=\"ltr\" data-expanded-url=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\" class=\"twitter-timeline-link\" target=\"_blank\" title=\"https://www.gatesnotes.com/About-Bill-Gates/Year-in-Review-2019\"><span class=\"tco-ellipsis\"/><span class=\"invisible\">https://www.</span><span class=\"js-display-url\">gatesnotes.com/About-Bill-Gat</span><span class=\"invisible\">es/Year-in-Review-2019</span><span class=\"tco-ellipsis\"><span class=\"invisible\">&#160;</span>&#8230;</span></a></p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    },
+    {
+      "author_id": "71320424",
+      "author_account": "bobrobertsjr",
+      "author_name": "Bob Roberts Jr. ن",
+      "author_url": "https://twitter.com/bobrobertsjr",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1036774509938921477/a_aV_H-l_bigger.jpg",
+      "article_url": "https://twitter.com/bobrobertsjr/status/1211686889637453824",
+      "article_content": "<div class=\"js-tweet-text-container\">\n  <p class=\"TweetTextSize  js-tweet-text tweet-text\" lang=\"en\" data-aria-label-part=\"0\">People I would like donations from <a href=\"/BillGates\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50393960\"><s>@</s><b><strong>BillGates</strong></b></a> <a href=\"/richardbranson\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"8161232\"><s>@</s><b>richardbranson</b></a> <a href=\"/WarrenBuffett\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"1364930179\"><s>@</s><b>WarrenBuffett</b></a> <a href=\"/templeton_fdn\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"50414448\"><s>@</s><b>templeton_fdn</b></a> <a href=\"/ElHibriFdn\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"1920185670\"><s>@</s><b>ElHibriFdn</b></a> <a href=\"/FetzerInstitute\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"72752506\"><s>@</s><b>FetzerInstitute</b></a> <a href=\"/BenTheBusiness\" class=\"twitter-atreply pretty-link js-nav\" dir=\"ltr\" data-mentioned-user-id=\"118902399\"><s>@</s><b>BenTheBusiness</b></a> - each donation comes with a special crafted prayer!</p>\n</div>\n\n\n      \n\n      \n        \n\n\n      \n      \n\n      \n      "
+    }
+  ]
+}

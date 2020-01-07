@@ -1,0 +1,90 @@
+// 20200107150945
+// http://127.0.0.1:5000/service_app?agent_type=twitter&fetch_type=get_deleted_tweet&target_express=RCoteNPD
+
+{
+  "status": "1",
+  "agent_type": "twitter",
+  "fetch_type": "get_deleted_tweet",
+  "data": [
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/830229715512356864",
+      "article_content": "\n            \n          RT @ClasseDenise: Nous testerons la flottabilité des bateaux la semaine prochaine.#flottecoule https://t.co/FjtWW3oXvO\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/991511080928243713",
+      "article_content": "\n            \n          RT @ClasseDenise: Bonjour,\n\nNotre livre est enfin sorti ! Il s’appelle Les p’tits bonheurs. Vous pouvez acheter notre livre car nous allons…\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/587023517092196353",
+      "article_content": "\n            \n          RT @ClasseDenise: youtu.be/aDwByW-viCk @daniele_henkel  Une entreprise a vu le jour cette année à l'école du Parc-Orléans à Québec #Parco…\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/581532826341781504",
+      "article_content": "\n            \n          RT @ClasseDenise: Une belle activité récompense! Merci madame Isabelle! 😍 http://t.co/NDYTgbGHyY\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/1206410571870019586",
+      "article_content": "\n          Quelques souvenirs de mon passé d’acteur (et de metteur en scène).\n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/874401592514150400",
+      "article_content": "\n            \n          RT @NDPHoC_NPDCdC: .@ThomasMulcair Ecq @JustinTrudeau affirmera son soutien à loi de @RomeoSaganash qui enchâsserait intégralement… \n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/968311002843570176",
+      "article_content": "\n            \n          RT @NDPHoC_NPDCdC: .@GuyCaronNPD: La firme KPMG n’a pas été inquiétée par l’Agence du revenu du Canada parce que celle-ci faisait des évalu…\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/1178377425165701121",
+      "article_content": "\n            \n          RT @Ben_Parsons__: Bob Fife: \"(Scheer) was not an insurance broker. He was a clerk, a gopher in an insurance office. He sold license plates…\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/1100243146343092227",
+      "article_content": "\n            \n          RT @KevinNewmanCTV: RT @DLeonhardt: the post-1980 economy:\n- The pay of the top 1% of earners has risen much faster than economic growth.\n-…\n            \n        "
+    },
+    {
+      "author_account": "RCoteNPD",
+      "author_name": "Raymond Côté",
+      "author_url": "https://twitter.com/RCoteNPD",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1014093419180974081/3EkMnERc_bigger.jpg",
+      "article_url": "https://twitter.com/RCoteNPD/status/758841322996244481",
+      "article_content": "\n            \n          RT @JamesMoore_org: Every living president - 2 Republicans and 3 Democrats, spanning 32 years - views Trump as unfit for the office @DLeonh…\n            \n        "
+    }
+  ]
+}
