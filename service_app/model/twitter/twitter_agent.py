@@ -13,6 +13,7 @@ from service_app.model.twitter.extractor_get_common_following import extractor_g
 from service_app.model.twitter.extractor_get_friend import extractor_get_friend
 from service_app.model.twitter.extractor_get_author_mention_the_target import extractor_get_author_mention_the_target
 from service_app.model.twitter.extractor_get_author_reply_to_the_target import extractor_get_author_reply_to_the_target
+from service_app.model.twitter.extractor_get_author_retweet_the_target_tweet import extractor_get_author_retweet_the_target_tweet
 from service_app.model.twitter.extractor_get_deleted_tweet import extractor_get_deleted_tweet
 from service_app.model.twitter.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
 
@@ -29,6 +30,10 @@ class TwitterAgent(BaseFetchAgent):
 
         # 取出config，自己需要的参数
         self.proxies = None
+        self.user_data_dir_list = self.config.get("chromedriver", "user_data_dir")
+        # 转成list
+        if self.user_data_dir_list:
+            self.user_data_dir_list = self.user_data_dir_list.split("||")
         config_proxylist = self.config.get("proxy", "proxylist")
         # 转成list
         if config_proxylist:
@@ -55,6 +60,8 @@ class TwitterAgent(BaseFetchAgent):
             return extractor_get_author_mention_the_target(self.target_express, self.proxies)
         if self.fetch_type == 'get_author_reply_to_the_target':
             return extractor_get_author_reply_to_the_target(self.target_express, self.proxies)
+        if self.fetch_type == 'get_author_retweet_the_target_tweet':
+            return extractor_get_author_retweet_the_target_tweet(self.target_express, self.user_data_dir_list)
         if self.fetch_type == 'get_deleted_tweet':
             return extractor_get_deleted_tweet(self.target_express, self.proxies)
         if self.fetch_type == 'get_tweet_of_suspended_author':
