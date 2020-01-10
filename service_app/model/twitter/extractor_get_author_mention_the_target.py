@@ -32,6 +32,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None):
     try:
         response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
         response.encoding = "utf-8"
+        # 请求成功时就把status置为1,不管后面是否有数据
         if response.content:
             status = '1'
         root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
@@ -63,6 +64,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None):
         status = str(e)
         print(e)
 
+    # 输出结果为json
     result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_mention_the_target",
               "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)

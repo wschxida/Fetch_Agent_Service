@@ -31,7 +31,6 @@ class BaseFetchAgent:
         # 默认值
         self.agent_type = ''
         self.fetch_type = ''
-        # self.target_id = ''
         self.target_express = ''
         self.target_list = ''        # 逗号隔开
         self.page_count = 0

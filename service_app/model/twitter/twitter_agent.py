@@ -30,7 +30,7 @@ class TwitterAgent(BaseFetchAgent):
 
         # 取出config，自己需要的参数
         self.proxies = None
-        self.user_data_dir_list = self.config.get("chromedriver", "user_data_dir")
+        self.user_data_dir_list = self.config.get("chromedriver", "user_data_dir")    # chrome可以设置多个用户目录,各自互不干扰
         # 转成list
         if self.user_data_dir_list:
             self.user_data_dir_list = self.user_data_dir_list.split("||")

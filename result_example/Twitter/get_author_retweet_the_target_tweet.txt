@@ -1,0 +1,185 @@
+// 20200109173117
+// http://127.0.0.1:5000/service_app?agent_type=twitter&fetch_type=get_author_retweet_the_target_tweet&target_express=https://twitter.com/BBC/status/1214955182775246850
+
+{
+  "status": "1",
+  "agent_type": "twitter",
+  "fetch_type": "get_author_retweet_the_target_tweet",
+  "data": [
+    {
+      "author_id": "1092368779626070016",
+      "author_account": "XDTarek6",
+      "author_name": "XD Tarek",
+      "author_url": "https://twitter.com/XDTarek6",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1206200378045485056/Ka_CAa1v_bigger.jpg"
+    },
+    {
+      "author_id": "232500360",
+      "author_account": "lizzie_lines",
+      "author_name": "lizzie lines #IamEuropean",
+      "author_url": "https://twitter.com/lizzie_lines",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1688564266/3595266375_97c69a5fe1_bigger.jpg"
+    },
+    {
+      "author_id": "158171036",
+      "author_account": "GregStamper",
+      "author_name": "Gregory Stamper",
+      "author_url": "https://twitter.com/GregStamper",
+      "author_img_url": "https://pbs.twimg.com/profile_images/590164562726367232/yyOn7Oo-_bigger.jpg"
+    },
+    {
+      "author_id": "1032239965017501696",
+      "author_account": "putrisavu",
+      "author_name": "Putrisavu",
+      "author_url": "https://twitter.com/putrisavu",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1032240723758702594/ZyzJUiwE_bigger.jpg"
+    },
+    {
+      "author_id": "832952522952364032",
+      "author_account": "Berenice201709",
+      "author_name": "Berenice",
+      "author_url": "https://twitter.com/Berenice201709",
+      "author_img_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png"
+    },
+    {
+      "author_id": "1210539003222491136",
+      "author_account": "xiaoeirutpg",
+      "author_name": "xiaoeirutpg",
+      "author_url": "https://twitter.com/xiaoeirutpg",
+      "author_img_url": "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png"
+    },
+    {
+      "author_id": "868547891002060802",
+      "author_account": "Francis74230224",
+      "author_name": "Dokko de Libra",
+      "author_url": "https://twitter.com/Francis74230224",
+      "author_img_url": "https://pbs.twimg.com/profile_images/873939889594798080/Bpkh3nS4_bigger.jpg"
+    },
+    {
+      "author_id": "869499396416692226",
+      "author_account": "Lanzky69",
+      "author_name": "Lanzki Castillote",
+      "author_url": "https://twitter.com/Lanzky69",
+      "author_img_url": "https://pbs.twimg.com/profile_images/910883160472264704/Pk70Xhi4_bigger.jpg"
+    },
+    {
+      "author_id": "876133159104126976",
+      "author_account": "iqraakram334",
+      "author_name": "Iqra M.Akram",
+      "author_url": "https://twitter.com/iqraakram334",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1114648928966914049/hWXotH-l_bigger.jpg"
+    },
+    {
+      "author_id": "1345223876",
+      "author_account": "BuffaloInABox",
+      "author_name": "#BuffaloInABox.com",
+      "author_url": "https://twitter.com/BuffaloInABox",
+      "author_img_url": "https://pbs.twimg.com/profile_images/924072285547515910/sNUVQuxk_bigger.jpg"
+    },
+    {
+      "author_id": "46498081",
+      "author_account": "MelindaBarnett",
+      "author_name": "Melinda Barnett",
+      "author_url": "https://twitter.com/MelindaBarnett",
+      "author_img_url": "https://pbs.twimg.com/profile_images/850179948446982144/K1BxzjXV_bigger.jpg"
+    },
+    {
+      "author_id": "487718621",
+      "author_account": "KairaliKK",
+      "author_name": "Kairali K.K",
+      "author_url": "https://twitter.com/KairaliKK",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1121665945976463360/PHsReJPT_bigger.jpg"
+    },
+    {
+      "author_id": "2645357155",
+      "author_account": "77deedd",
+      "author_name": "tareko",
+      "author_url": "https://twitter.com/77deedd",
+      "author_img_url": "https://pbs.twimg.com/profile_images/490694148316360705/XqduGXoH_bigger.jpeg"
+    },
+    {
+      "author_id": "1186317905274777604",
+      "author_account": "takewhatyecan",
+      "author_name": "karmaisabitch",
+      "author_url": "https://twitter.com/takewhatyecan",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1195617148657381376/aqE9wcMb_bigger.jpg"
+    },
+    {
+      "author_id": "1214735411085553664",
+      "author_account": "DaliaDiary",
+      "author_name": "Dalia Diary",
+      "author_url": "https://twitter.com/DaliaDiary",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214735687485972482/OvZJ_39U_bigger.jpg"
+    },
+    {
+      "author_id": "1075375362077536256",
+      "author_account": "sotrusfrated",
+      "author_name": "myrmyr⁷",
+      "author_url": "https://twitter.com/sotrusfrated",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1206622061109620742/iQS1_AhV_bigger.jpg"
+    },
+    {
+      "author_id": "1103273326154268673",
+      "author_account": "LesleyW12060156",
+      "author_name": "Lesley from Canada.",
+      "author_url": "https://twitter.com/LesleyW12060156",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1212397622662696960/UZp5144m_bigger.jpg"
+    },
+    {
+      "author_id": "1214803385657876480",
+      "author_account": "florenekrs",
+      "author_name": "Florene",
+      "author_url": "https://twitter.com/florenekrs",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214815793881337859/pAF5zVDn_bigger.jpg"
+    },
+    {
+      "author_id": "3089818607",
+      "author_account": "tmcc265",
+      "author_name": "Teo Cartes Camacho",
+      "author_url": "https://twitter.com/tmcc265",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1117965825141395456/azA3jw87_bigger.jpg"
+    },
+    {
+      "author_id": "412529141",
+      "author_account": "KatyRH00",
+      "author_name": "Katy",
+      "author_url": "https://twitter.com/KatyRH00",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1205260394807398400/SxMaRNCe_bigger.jpg"
+    },
+    {
+      "author_id": "626449707",
+      "author_account": "sarahlrodger",
+      "author_name": "Sarah Rodger",
+      "author_url": "https://twitter.com/sarahlrodger",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1173323227327868930/S7WTsFNp_bigger.jpg"
+    },
+    {
+      "author_id": "1209137839918608385",
+      "author_account": "MohammadbinRob1",
+      "author_name": "Mohammad bin Robiul",
+      "author_url": "https://twitter.com/MohammadbinRob1",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1209152086329315331/EYEN5fqA_bigger.jpg"
+    },
+    {
+      "author_id": "288966846",
+      "author_account": "mostly_sleepy",
+      "author_name": "Kat",
+      "author_url": "https://twitter.com/mostly_sleepy",
+      "author_img_url": "https://pbs.twimg.com/profile_images/711940918170009600/MOZO6pBd_bigger.jpg"
+    },
+    {
+      "author_id": "1156014349380542470",
+      "author_account": "gabrielarodrigs",
+      "author_name": "Gabirela",
+      "author_url": "https://twitter.com/gabrielarodrigs",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1214718323314872323/8LJarEMg_bigger.jpg"
+    },
+    {
+      "author_id": "118299739",
+      "author_account": "AppelleDee",
+      "author_name": "appelle moi dee",
+      "author_url": "https://twitter.com/AppelleDee",
+      "author_img_url": "https://pbs.twimg.com/profile_images/1204558516196909056/OHRYLbjg_bigger.jpg"
+    }
+  ]
+}

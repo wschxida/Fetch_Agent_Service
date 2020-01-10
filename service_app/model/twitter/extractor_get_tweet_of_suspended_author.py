@@ -33,6 +33,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         print('--------------1---------------')
         response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
         response.encoding = "utf-8"
+        # 请求成功时就把status置为1,不管后面是否有数据
         if response.content:
             status = '1'
         root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))

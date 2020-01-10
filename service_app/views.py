@@ -3,7 +3,7 @@
 # @File  : views.py
 # @Author: Cedar
 # @Date  : 2019/12/11
-# @Desc  :
+# @Desc  : 视图,写界面函数
 
 
 from flask import render_template, request

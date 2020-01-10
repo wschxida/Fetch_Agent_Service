@@ -47,7 +47,6 @@ def scroll(total_scrolls=5, scroll_time=10):
             current_scrolls += 1
         except TimeoutException:
             break
-
     return
 
 
