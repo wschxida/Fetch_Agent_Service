@@ -58,7 +58,7 @@ def start_selenium(user_data_dir_list):
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-infobars")
     options.add_argument("--mute-audio")
-    # options.add_argument('--headless')  # 浏览器不提供可视化页面
+    options.add_argument('--headless')  # 浏览器不提供可视化页面
     # twitter下面这个会导致登录失败
     # options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度

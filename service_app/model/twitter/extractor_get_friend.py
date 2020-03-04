@@ -83,8 +83,8 @@ def extractor_get_friend(target_account, proxies=None):
 def main():
     target_account = 'KimberBollacker'
     proxies = {
-        'http': 'http://127.0.0.1:7777',
-        'https': 'http://127.0.0.1:7777'
+        'http': 'http://127.0.0.1:4411',
+        'https': 'http://127.0.0.1:4411'
     }
     result = extractor_get_friend(target_account, proxies)
     print(result)

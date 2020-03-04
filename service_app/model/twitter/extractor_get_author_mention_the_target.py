@@ -25,17 +25,26 @@ def extractor_get_author_mention_the_target(target_account, proxies=None):
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
 
-    url = 'https://twitter.com/search?q=(%40' + target_account + ')%20-filter%3Areplies%20-filter%3A(from%3A-' + target_account + ')%20&src=typed_query'
-    # url = 'https://twitter.com/search?q=(%40BillGates)%20-filter%3Areplies%20-filter%3A(from%3A-BillGates)%20&src=typed_query'
+    # 版面已修改，节点失效
+    # url = 'https://twitter.com/search?q=(%40' + target_account + ')%20-filter%3Areplies%20-filter%3A(from%3A-' + target_account + ')%20&src=typed_query'
+    # # url = 'https://twitter.com/search?q=(%40BillGates)%20-filter%3Areplies%20-filter%3A(from%3A-BillGates)%20&src=typed_query'
+
+    q = '(%40' + target_account + ')%20-filter%3Areplies%20-filter%3A(from%3A-' + target_account + ')%20'
+    url = 'https://twitter.com/i/search/timeline?f=tweets&q=' + q + '&src=typd&composed_count=0&include_available_features=1&include_entities=1&include_new_items_bar=true&interval=30000'
+    # url = 'https://twitter.com/i/search/timeline?f=tweets&q=(%40BillGates)%20-filter%3Areplies%20-filter%3A(from%3A-BillGates)%20&src=typd&composed_count=0&include_available_features=1&include_entities=1&include_new_items_bar=true&interval=30000'
+
     author_list = []
     status = '0'
     try:
         response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
         response.encoding = "utf-8"
+        response_json = json.loads(response.content)
+        items_html = response_json["items_html"]
+
         # 请求成功时就把status置为1,不管后面是否有数据
-        if response.content:
+        if items_html:
             status = '1'
-        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
+        root = etree.HTML(items_html, parser=etree.HTMLParser(encoding='utf-8'))
         items = root.xpath('//li[@data-item-type="tweet"]')
         for item in items:
             # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
@@ -76,8 +85,8 @@ def extractor_get_author_mention_the_target(target_account, proxies=None):
 def main():
     target_account = 'BillGates'
     proxies = {
-        'http': 'http://127.0.0.1:7777',
-        'https': 'http://127.0.0.1:7777'
+        'http': 'http://127.0.0.1:4411',
+        'https': 'http://127.0.0.1:4411'
     }
     result = extractor_get_author_mention_the_target(target_account, proxies)
     print(result)

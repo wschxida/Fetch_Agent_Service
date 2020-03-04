@@ -127,8 +127,8 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
 
 def main():
     proxies = {
-        'http': 'http://127.0.0.1:7777',
-        'https': 'http://127.0.0.1:7777'
+        'http': 'http://127.0.0.1:4411',
+        'https': 'http://127.0.0.1:4411'
     }
     target_account = 'M7MD_SHAMRANI'
     result = extractor_get_tweet_of_suspended_author(target_account, proxies)
