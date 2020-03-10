@@ -2,31 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>示例</title>
+    <title>接口列表示例</title>
+<!--    <script type="text/javascript">-->
+<!--        function init() {-->
+<!--            var a = document.getElementsByTagName('a');-->
+<!--            for (var j = 0; j < a.length; j++) {-->
+<!--                //console.log(a[j].innerText);-->
+<!--                a[j].innerText = a[j].href.split('public/')[1];-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
+    <style type="text/css">a:link {
+        text-decoration: none;
+        color: #cccccc;  /* 指正常的未被访问过的链接*/
+    }
+
+    a:visited {
+        text-decoration: none; /*指已经访问过的链接*/
+        color:#cccccc;
+    }
+
+    a:hover {
+        /* text-decoration: underline; */
+        font-size: 102%;
+        color: blue /*指鼠标在链接*/
+    }
+
+    a:active {
+        text-decoration: none; /* 指正在点的链接*/
+    }</style>
+
 </head>
 <body>
 
 <h1>Fetch_Agent_Service 示例：</h1>
 <hr>
     <h2>----------Twitter----------</h2>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah">get_common_follower</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah&page_count=1">get_common_follower</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,Oprah&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
     <br>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah">get_common_following</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah&page_count=1">get_common_following</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,Oprah&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
     <br>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker">get_friend</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker&page_count=1">get_friend</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker&page_count=1</p>
     <p>target_express输入必须是account</p>
     <br>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates">get_author_mention_the_target</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates&page_count=1">get_author_mention_the_target</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates&page_count=1</p>
     <p>target_express输入必须是account</p>
     <br>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_reply_to_the_target&target_express=BillGates">get_author_reply_to_the_target</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_author_reply_to_the_target&target_express=BillGates</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_reply_to_the_target&target_express=BillGates&page_count=1">get_author_reply_to_the_target</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_author_reply_to_the_target&target_express=BillGates&page_count=1</p>
     <p>target_express输入必须是account</p>
     <br>
     <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_retweet_the_target_tweet&target_express=https://twitter.com/BBC/status/1214955182775246850">get_author_retweet_the_target_tweet</a>
