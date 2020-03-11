@@ -7,10 +7,10 @@
 
 
 import requests
+from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
-import re
 
 
 def extractor_get_tweet_of_suspended_author(target_account, proxies):
@@ -31,7 +31,11 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
     status = '0'
     try:
         print('--------------1---------------')
-        response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
+        # requests 重试机制
+        s = requests.Session()
+        s.mount('http://', HTTPAdapter(max_retries=5))
+        s.mount('https://', HTTPAdapter(max_retries=5))
+        response = s.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
         response.encoding = "utf-8"
         # 请求成功时就把status置为1,不管后面是否有数据
         if response.content:
@@ -118,7 +122,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         print(e)
 
     result = {"status": status, "agent_type": "twitter", "fetch_type": "get_tweet_of_suspended_author",
-              "data": author_list}
+              "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)

@@ -7,13 +7,13 @@
 
 
 import requests
+from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
-import re
 
 
-def extractor_get_deleted_tweet(target_account, proxies=None):
+def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1):
     headers = {
         'Host': 'politwoops.com',
         'Connection': 'keep-alive',
@@ -29,41 +29,53 @@ def extractor_get_deleted_tweet(target_account, proxies=None):
     author_list = []
     status = '0'
     try:
-        response = requests.get(url, headers=headers, timeout=30, proxies=proxies)
-        response.encoding = "utf-8"
-        # 请求成功时就把status置为1,不管后面是否有数据
-        if response.content:
-            status = '1'
-        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
-        items = root.xpath('//div[contains(@class,"tweet-container")]')
-        for item in items:
-            # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
-            # author_id = "".join(item.xpath('.//div/@data-user-id'))
-            author_account = target_account
-            author_name = "".join(item.xpath('.//a[@class="user_name"]/text()'))
-            author_url = "https://twitter.com/" + author_account
-            author_img_url = "".join(item.xpath('.//img[@class="img-responsive"]/@src'))
-            article_id = "".join(item.xpath('.//div[@class="tweet row"]/@id')).replace('tweet-', '')
-            article_url = author_url + "/status/" + article_id
-            article_content = "".join(item.xpath('.//div[contains(@class,"tweet-content")]//text()'))
+        response_list = []
+        for i in range(int(page_count)):
+            _url = url + f'?page={i+1}'
+            # requests 重试机制
+            s = requests.Session()
+            s.mount('http://', HTTPAdapter(max_retries=5))
+            s.mount('https://', HTTPAdapter(max_retries=5))
+            response = s.get(_url, headers=headers, timeout=30, proxies=proxies)
+            response.encoding = "utf-8"
+            response_list.append(response.content)
 
-            author_item = {
-                # "author_id": author_id,
-                "author_account": author_account,
-                "author_name": author_name,
-                "author_url": author_url,
-                "author_img_url": author_img_url,
-                "article_url": article_url,
-                "article_content": article_content,
-            }
-            author_list.append(author_item)
+        for response_item in response_list:
+
+            # 只要有成功返回的item，就认为是请求成功
+            if len(response_item) > 0:
+                status = '1'
+
+            root = etree.HTML(response_item, parser=etree.HTMLParser(encoding='utf-8'))
+            items = root.xpath('//div[contains(@class,"tweet-container")]')
+            for item in items:
+                # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
+                # author_id = "".join(item.xpath('.//div/@data-user-id'))
+                author_account = target_account
+                author_name = "".join(item.xpath('.//a[@class="user_name"]/text()'))
+                author_url = "https://twitter.com/" + author_account
+                author_img_url = "".join(item.xpath('.//img[@class="img-responsive"]/@src'))
+                article_id = "".join(item.xpath('.//div[@class="tweet row"]/@id')).replace('tweet-', '')
+                article_url = author_url + "/status/" + article_id
+                article_content = "".join(item.xpath('.//div[contains(@class,"tweet-content")]//text()'))
+
+                author_item = {
+                    # "author_id": author_id,
+                    "author_account": author_account,
+                    "author_name": author_name,
+                    "author_url": author_url,
+                    "author_img_url": author_img_url,
+                    "article_url": article_url,
+                    "article_content": article_content,
+                }
+                author_list.append(author_item)
 
     except Exception as e:
         status = str(e)
         print(e)
 
     result = {"status": status, "agent_type": "twitter", "fetch_type": "get_deleted_tweet",
-              "data": author_list}
+              "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)

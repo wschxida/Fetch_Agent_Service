@@ -63,7 +63,7 @@ class TwitterAgent(BaseFetchAgent):
         if self.fetch_type == 'get_author_retweet_the_target_tweet':
             return extractor_get_author_retweet_the_target_tweet(self.target_express, self.user_data_dir_list)
         if self.fetch_type == 'get_deleted_tweet':
-            return extractor_get_deleted_tweet(self.target_express, self.proxies)
+            return extractor_get_deleted_tweet(self.target_express, self.proxies, self.page_count)
         if self.fetch_type == 'get_tweet_of_suspended_author':
             return extractor_get_tweet_of_suspended_author(self.target_express, self.proxies)
 

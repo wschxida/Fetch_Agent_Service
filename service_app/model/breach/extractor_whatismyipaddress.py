@@ -7,10 +7,10 @@
 
 
 import requests
+from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
-import re
 
 
 def extractor_whatismyipaddress(target_express, proxies=None):
@@ -38,7 +38,11 @@ def extractor_whatismyipaddress(target_express, proxies=None):
     data = []
     status = '0'
     try:
-        response = requests.post(url, timeout=30, data=post_data, headers=headers, proxies=proxies)
+        # requests 重试机制
+        s = requests.Session()
+        s.mount('http://', HTTPAdapter(max_retries=5))
+        s.mount('https://', HTTPAdapter(max_retries=5))
+        response = s.post(url, timeout=30, data=post_data, headers=headers, proxies=proxies)
         response.encoding = "utf-8"
         if response.content:
             status = '1'
@@ -66,7 +70,7 @@ def extractor_whatismyipaddress(target_express, proxies=None):
         print(e)
 
     result = {"status": status, "agent_type": "breach", "fetch_type": "",
-              "data": data}
+              "data_item_count": len(data), "data": data}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
