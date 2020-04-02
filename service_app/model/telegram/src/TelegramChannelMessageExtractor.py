@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @File  : extractor_get_common_follower.py
+# @Author: Cedar
+# @Date  : 2019/12/31
+# @Desc  :
+
+
 import socks
 import json
 import os
