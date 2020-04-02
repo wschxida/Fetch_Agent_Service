@@ -1,13 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @File  : extractor_get_common_follower.py
-# @Author: Cedar
-# @Date  : 2019/12/31
-# @Desc  :
-
 import json
 
-
+# 2019-12-16
+# created by YHM
+# save message
 class messageEnitity(json.JSONEncoder):
     def __init__(self):
         super().__init__()

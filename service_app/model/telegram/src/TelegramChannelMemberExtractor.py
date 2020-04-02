@@ -1,10 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @File  : extractor_get_common_follower.py
-# @Author: Cedar
-# @Date  : 2019/12/31
-# @Desc  :
 
+# telegram group member extrator
 
 import socks
 import json
@@ -26,8 +21,11 @@ class TGMemExtrator(object):
         self.group_username = ''
         self.member_path = config['group_member']
         self.group_avatar_path = config['group_avatar']
-        self.client = TelegramClient(self.session_name, self.api_id, self.api_hash,
-                                     proxy=(socks.HTTP, self.proxy_address, self.proxy_port))
+        if self.proxy_address:
+            self.client = TelegramClient(self.session_name, self.api_id, self.api_hash,
+                                         proxy=(socks.HTTP, self.proxy_address, self.proxy_port))
+        else:
+            self.client = TelegramClient(self.session_name, self.api_id, self.api_hash)
 
     # 设置需要采集的telegram group username
     def set_channel(self, username):
@@ -40,7 +38,10 @@ class TGMemExtrator(object):
         api_hash = config['TG_api_hash']
         proxy_address = config['proxy_address']
         proxy_port = config['proxy_port']
-        self.client = TelegramClient(session, api_id, api_hash, proxy=(socks.HTTP, proxy_address, proxy_port))
+        if proxy_address:
+            self.client = TelegramClient(session, api_id, api_hash, proxy=(socks.HTTP, proxy_address, proxy_port))
+        else:
+            self.client = TelegramClient(session, api_id, api_hash)
 
     # 指定user，下载头像
     async def download_profile_pic(self, username):
@@ -145,7 +146,7 @@ class TGMemExtrator(object):
                 try:
                     if user.photo is not None:
                         addr = await self.client.download_profile_photo(user, file=path)
-                        print(addr)
+                        # print(addr)
                 except ChannelInvalidError:
                     print("download error")
             # 获取群成员信息

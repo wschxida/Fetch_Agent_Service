@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @File  : extractor_get_common_follower.py
-# @Author: Cedar
-# @Date  : 2019/12/31
-# @Desc  :
-
-
 import socks
 import json
 import os
@@ -22,8 +14,11 @@ class TGMsgExtrator:
         self.proxy_port = config['proxy_port']
         self.message_path = config['group_message']
         self.channel_username = ''
-        self.client = TelegramClient(self.session_name, self.api_id, self.api_hash,
-                                     proxy=(socks.HTTP, self.proxy_address, self.proxy_port))
+        if self.proxy_address:
+            self.client = TelegramClient(self.session_name, self.api_id, self.api_hash,
+                                         proxy=(socks.HTTP, self.proxy_address, self.proxy_port))
+        else:
+            self.client = TelegramClient(self.session_name, self.api_id, self.api_hash)
 
     def set_channel(self, username):
         self.channel_username = username
@@ -34,7 +29,10 @@ class TGMsgExtrator:
         api_hash = config['TG_api_hash']
         proxy_address = config['proxy_address']
         proxy_port = config['proxy_port']
-        self.client = TelegramClient(session_name, api_id, api_hash, proxy=(socks.HTTP, proxy_address, proxy_port))
+        if proxy_address:
+            self.client = TelegramClient(session_name, api_id, api_hash, proxy=(socks.HTTP, proxy_address, proxy_port))
+        else:
+            self.client = TelegramClient(session_name, api_id, api_hash)
 
     async def get_message(self):
         msg_dict = []
@@ -68,10 +66,10 @@ class TGMsgExtrator:
         # print(msg_dict)
         os.makedirs(self.message_path, exist_ok=True)
         file = self.message_path + chat_item.username + ".json"
-        print(file)
+        # print(file)
         with open(file, "w") as f:
             json.dump(msg_dict, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)
-        print("加载入文件完成...")
+        # print("加载入文件完成...")
 
         return msg_dict
 
