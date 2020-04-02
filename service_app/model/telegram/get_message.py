@@ -1,58 +1,66 @@
-# 20191217
-# made by YHM
-# 获取telegram 群消息数据的程序入口
-# 使用格式：
-# 1.python.exe D:/code/telegram/get_message.py -u [username]
-# 2.python.exe D:/code/telegram/get_message.py -i [filename]
 
-
+import os
+import html
+import json
 from configparser import ConfigParser
-from model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
-import sys, getopt
+from service_app.model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
 
-def main(argv,tgMsgExtrator):
-    inputfile = ''
-    username = ''
+
+curpath = os.path.dirname(os.path.realpath(__file__))
+
+
+def extractor_get_message(username):
+    status = '0'
+    message_count = 0
+    data_result = ''
     try:
-        opts, args = getopt.getopt(argv,"hi:u:",["ifile=","uname="])
-    except getopt.GetoptError:
-        print('get_message.py -i <inputfile> -u <username>')
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt == '-h':
-            print('get_message.py -i <inputfile> -u <username>')
-            sys.exit()
-        elif opt in ("-i", "--ifile"):
-            inputfile = arg
-            break
-        elif opt in ("-u", "--uname"):
-            username = arg
-            break
-    if inputfile != '' :
-        f = open(inputfile, 'r')
-        result = list()
-        for line in f.readline():
-            result.append(line)
-            # username = 'JapaneseSpeaking'
-            tgMsgExtrator.set_channel(line)
-            tgMsgExtrator.dump_to_json()
-        print("get",line)
-        f.close()
-    elif username != '':
-        tgMsgExtrator.set_channel(username)
-        tgMsgExtrator.dump_to_json()
+        cfg = ConfigParser()
+        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
+        cfg.read(telegram_extractor_config_path, encoding='utf-8')
+        config = {
+            'msg_max_limit': int(cfg.get('message_lim', 'msg_max_limit')),
+            'TG_session_name': cfg.get('login_setting', 'TG_session_name'),
+            'TG_api_id': int(cfg.get('login_setting', 'TG_api_id')),
+            'TG_api_hash': cfg.get('login_setting', 'TG_api_hash'),
+            'proxy_address': cfg.get('login_setting', 'proxy_address'),
+            'proxy_port': int(cfg.get('login_setting', 'proxy_port')),
+            'group_message': cfg.get('download_addr', 'group_massage')
+        }
+
+        tg_msg_extrator = TGMsgExtrator(config)
+        tg_msg_extrator.set_channel(username)
+        tg_msg_extrator.dump_to_json()
+
+        # 读取结果，返回
+        file_name = username + ".json"
+        message_file_name = os.path.join(curpath, "message", file_name)
+        fl = open(message_file_name, 'r', encoding='utf-8')
+        file_read = fl.read()
+        if len(file_read) > 0:
+            status = '1'
+
+        file_read_json = json.loads(file_read)
+        data_result = file_read_json
+        message_count = len(data_result)
+
+    except Exception as e:
+        status = str(e)
+        print(e)
+
+    result = {"status": status, "agent_type": "telegram", "fetch_type": "get_message",
+              "data_item_count": message_count, "data": data_result}
+    json_result = json.dumps(result, ensure_ascii=False)
+    # 再进行html编码，这样最终flask输出才是合法的json
+    html_result = html.escape(json_result)
+
+    return html_result
 
 
-cfg = ConfigParser()
-cfg.read('./config/telegram_extractor.ini', encoding='utf-8')
-config = {
-    'msg_max_limit': int(cfg.get('message_lim', 'msg_max_limit')),
-    'TG_session_name': cfg.get('login_setting', 'TG_session_name'),
-    'TG_api_id': int(cfg.get('login_setting', 'TG_api_id')),
-    'TG_api_hash': cfg.get('login_setting', 'TG_api_hash'),
-    'proxy_address': cfg.get('login_setting', 'proxy_address'),
-    'proxy_port': int(cfg.get('login_setting', 'proxy_port')),
-    'group_message': cfg.get('download_addr', 'group_massage')
-}
-tgMsgExtrator = TGMsgExtrator(config)
-main(sys.argv[1:],tgMsgExtrator)
+def main():
+    username = 'drafts4'
+    result = extractor_get_message(username)
+    print(result)
+
+
+if __name__ == '__main__':
+    main()

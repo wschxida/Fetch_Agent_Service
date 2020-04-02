@@ -20,7 +20,7 @@ class TGMsgExtrator:
     def set_channel(self, username):
         self.channel_username = username
 
-    def TG_login(self, config):
+    def tg_login(self, config):
         session_name = config['TG_session_name']
         api_id = config['TG_api_id']
         api_hash = config['TG_api_hash']
@@ -67,6 +67,6 @@ class TGMsgExtrator:
 
         return msg_dict
 
-    def dumpTojson(self):
+    def dump_to_json(self):
         with self.client:
             self.client.loop.run_until_complete(self.get_message())

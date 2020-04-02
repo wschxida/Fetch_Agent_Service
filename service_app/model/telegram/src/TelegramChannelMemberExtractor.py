@@ -8,7 +8,7 @@ from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import ChannelInvalidError
 from telethon.tl.types import Channel
 from telethon.tl.types import ChannelParticipantsAdmins
-from model.telegram.src.Enitity import memberEntity, groupEntity
+from service_app.model.telegram.src.Enitity import memberEntity, groupEntity
 
 
 class TGMemExtrator(object):
@@ -145,16 +145,6 @@ class TGMemExtrator(object):
                     print("download error")
             # 获取群成员信息
             mem = self.user_to_member_entity(user, addr, admin_ids)
-            # if count >= 100:
-            #     count = 1
-            #     reslut["data"]=group.__dict__
-            #     # 将最后结果写到指定文件下
-            #     with open(memFilePath, "a") as f:
-            #         json.dump(reslut, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)
-            #     f.close()
-            #     group.add_Member(mem.__dict__,True)
-            #     continue
-            # count += 1
             group.add_Member(mem.__dict__)
 
         result["data"] = group.__dict__

@@ -1,12 +1,13 @@
-pid=`ps -ef|grep "python3 runserver.py runserver --host 0.0.0.0 --port 5100"| grep -v "grep"|awk '{print $2}'`
+pid=`ps -ef|grep "gunicorn -w 4 -b 0.0.0.0:5100 run:app"| grep -v "grep"|awk '{print $2}'`
 if [ "$pid" != "" ]
 then
         echo "runserver.py already run, stop it first"
         kill -9 ${pid}
 fi
 echo "starting now.."
-nohup python3 runserver.py runserver --host 0.0.0.0 --port 5100 > myout.out 2>&1 &
-pid=`ps -ef|grep "python3 runserver.py runserver --host 0.0.0.0 --port 5100"| grep -v "grep"|awk '{print $2}'`
-echo ${pid} > pid.out
+nohup gunicorn -w 4 -b 0.0.0.0:5100 run:app > ./log/myout.log 2>&1 &
+pid=`ps -ef|grep "gunicorn -w 4 -b 0.0.0.0:5100 run:app"| grep -v "grep"|awk '{print $2}'`
+echo ${pid} >> ./log/pid.log
+date >> ./log/pid.log
 echo "runserver.py started at pid: "${pid}
 
