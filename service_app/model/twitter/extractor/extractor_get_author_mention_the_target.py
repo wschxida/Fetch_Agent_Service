@@ -11,9 +11,15 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
+from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
 def extractor_get_author_mention_the_target(target_account, proxies=None, page_count=1):
+
+    target_profile = []
+    target_account_profile = extractor_get_author_profile(target_account, proxies)
+    target_profile.append(target_account_profile)
+
     headers = {
         'Host': 'twitter.com',
         'Connection': 'keep-alive',
@@ -93,7 +99,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
         print(e)
 
     # 输出结果为json
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_mention_the_target",
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_mention_the_target", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json

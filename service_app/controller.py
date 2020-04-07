@@ -11,7 +11,6 @@ from service_app.model.telegram.telegram_agent import TelegramAgent
 from service_app.model.breach.breach_agent import BreachAgent
 
 
-
 class FetchAgentManager:
     """
     Agent服务管理器，根据web请求的类型，来分发模块处理

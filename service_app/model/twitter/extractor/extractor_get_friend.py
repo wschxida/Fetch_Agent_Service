@@ -16,9 +16,15 @@ from lxml import etree
 import html
 import json
 import re
+from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
 def extractor_get_friend(target_account, proxies=None, page_count=1):
+
+    target_profile = []
+    target_account_profile = extractor_get_author_profile(target_account, proxies)
+    target_profile.append(target_account_profile)
+
     headers = {
         'Host': 'tweepdiff.com',
         'Connection': 'keep-alive',
@@ -82,7 +88,7 @@ def extractor_get_friend(target_account, proxies=None, page_count=1):
         status = str(e)
         print(e)
 
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_friend",
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_friend", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
