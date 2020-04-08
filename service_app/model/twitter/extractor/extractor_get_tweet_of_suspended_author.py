@@ -13,6 +13,57 @@ import html
 import json
 
 
+def fetch_author_profile(root):
+    """
+    获取target profile字段信息
+    :param root: 输入为etree.HTML()对象
+    :return: profile dict
+    """
+    author_profile_dict = {
+        "author_id": "",
+        "author_account": "",
+        "author_name": "",
+        "author_url": "",
+        "author_img_url": "",
+        "banner_img_url": "",
+        "author_message_count": "",
+        "author_following_count": "",
+        "author_follower_count": "",
+        # "author_list_count": "",
+        "author_location": "",
+        # "author_profile_location": "",
+        "author_description": "",
+        # "author_language": "",
+        # "author_time_zone": "",
+        # "author_is_protected": "",
+        # "author_is_verified": "",
+        # "author_is_geo_enabled": "",
+        "author_account_created_time": "",
+        "author_homepage_url": "",
+    }
+
+    try:
+        # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
+        author_profile_dict["author_id"] = "".join(root.xpath('.//div[@class="ProfileNav"]/@data-user-id'))
+        author_profile_dict["author_account"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//span[@class="username u-dir"]/b/text()'))
+        author_profile_dict["author_name"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//a[@class="ProfileHeaderCard-nameLink u-textInheritColor js-nav"]/text()'))
+        author_profile_dict["author_url"] = "https://twitter.com/" + author_profile_dict["author_account"]
+        author_profile_dict["author_img_url"] = "".join(root.xpath('.//img[@class="ProfileAvatar-image "]/@src'))
+        author_profile_dict["banner_img_url"] = "".join(root.xpath('.//div[@class="ProfileCanopy-headerBg"]/img/@src'))
+        author_profile_dict["author_message_count"] = "".join(root.xpath('.//li[@class="ProfileNav-item ProfileNav-item--tweets is-active"]//span[@class="ProfileNav-value"]/@data-count'))
+        author_profile_dict["author_following_count"] = "".join(root.xpath('.//li[@class="ProfileNav-item ProfileNav-item--following"]//span[@class="ProfileNav-value"]/@data-count'))
+        author_profile_dict["author_follower_count"] = "".join(root.xpath('.//li[@class="ProfileNav-item ProfileNav-item--followers"]//span[@class="ProfileNav-value"]/@data-count'))
+        author_profile_dict["author_location"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard-location "]//a[@data-place-id]/text()'))
+        author_profile_dict["author_description"] = "".join(root.xpath('.//p[@class="ProfileHeaderCard-bio u-dir"]/text()'))
+        author_profile_dict["author_account_created_time"] = "".join(root.xpath('.//span[@class="ProfileHeaderCard-joinDateText js-tooltip u-dir"]/@title'))
+        author_profile_dict["author_homepage_url"] = "".join(root.xpath('.//span[@class="ProfileHeaderCard-urlText u-dir"]//a[@class="u-textUserColor"]/@title'))
+
+    except Exception as e:
+        print(e)
+
+    return author_profile_dict
+
+
 def extractor_get_tweet_of_suspended_author(target_account, proxies):
     headers = {
         'Host': 'web.archive.org',
@@ -28,6 +79,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
     url = 'https://web.archive.org/web/20/https://twitter.com/' + target_account
     # url = 'https://web.archive.org/web/20191206212201/https://twitter.com/M7MD_SHAMRANI'
     author_list = []
+    target_profile = []
     status = '0'
     try:
         print('--------------1---------------')
@@ -51,13 +103,18 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
             search_response = requests.get(search_url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
             search_response_json = search_response.json()
             last_ts = search_response_json["last_ts"]
-            url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + 'M7MD_SHAMRANI'
+            url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + target_account
             # 请求最终数据
             print('--------------2---------------')
             response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
             response.encoding = "utf-8"
             root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
             items = root.xpath('//li[@data-item-type="tweet"]')
+
+        # 获取target profile
+        target_profile = []
+        target_account_profile = fetch_author_profile(root)
+        target_profile.append(target_account_profile)
 
         # 解析数据到具体字段
         for item in items:
@@ -121,7 +178,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
         status = str(e)
         print(e)
 
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_tweet_of_suspended_author",
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_tweet_of_suspended_author", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
