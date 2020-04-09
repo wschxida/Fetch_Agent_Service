@@ -35,6 +35,7 @@ class BaseFetchAgent:
         self.target_list = ''        # 逗号隔开
         self.page_count = 0
         self.page_url = ''
+        self.html_code = '0'
         # 传入request_params
         # 传入的参数必须是self.__dict__规定的keys
         for param in request_params:

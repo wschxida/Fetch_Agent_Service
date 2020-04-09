@@ -23,6 +23,6 @@ class TelegramAgent(BaseFetchAgent):
 
     def get_fetch_result(self):
         if self.fetch_type == 'get_member':
-            return extractor_get_member(self.target_express)
+            return extractor_get_member(self.target_express, self.html_code)
         if self.fetch_type == 'get_message':
-            return extractor_get_message(self.target_express)
+            return extractor_get_message(self.target_express, self.html_code)

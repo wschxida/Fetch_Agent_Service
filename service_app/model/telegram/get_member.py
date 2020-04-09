@@ -11,7 +11,7 @@ from service_app.model.telegram.src.TelegramChannelMemberExtractor import TGMemE
 curpath = os.path.dirname(os.path.realpath(__file__))
 
 
-def extractor_get_member(username):
+def extractor_get_member(username, html_code='0'):
     status = '0'
     member_count = 0
     data_result = ''
@@ -56,8 +56,11 @@ def extractor_get_member(username):
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
-
-    return html_result
+    # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
+    if html_code == '1':
+        return html_result
+    else:
+        return json_result
 
 
 def main():

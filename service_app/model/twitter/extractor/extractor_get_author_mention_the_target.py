@@ -14,7 +14,7 @@ import json
 from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
-def extractor_get_author_mention_the_target(target_account, proxies=None, page_count=1):
+def extractor_get_author_mention_the_target(target_account, proxies=None, page_count=1, html_code='0'):
 
     target_profile = []
     target_account_profile = extractor_get_author_profile(target_account, proxies)
@@ -104,7 +104,11 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
-    return html_result
+    # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
+    if html_code == '1':
+        return html_result
+    else:
+        return json_result
 
 
 def main():

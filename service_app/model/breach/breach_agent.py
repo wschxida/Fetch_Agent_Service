@@ -39,7 +39,7 @@ class BreachAgent(BaseFetchAgent):
         print('==========Breach===========')
 
     def get_fetch_result(self):
-        result_whatismyipaddress = extractor_whatismyipaddress(self.target_express, self.proxies)
+        result_whatismyipaddress = extractor_whatismyipaddress(self.target_express, self.proxies, self.html_code)
         if result_whatismyipaddress is not None:
             return result_whatismyipaddress
         else:

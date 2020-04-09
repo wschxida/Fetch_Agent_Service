@@ -138,7 +138,7 @@ def login(email, password):
         pass
 
 
-def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_dir_list):
+def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_dir_list, html_code='0'):
 
     url = target_tweet_url + '/retweets'
     # url = 'https://twitter.com/BBC/status/1214955182775246850/retweets'
@@ -183,7 +183,11 @@ def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_di
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
     driver.close()
-    return html_result
+    # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
+    if html_code == '1':
+        return html_result
+    else:
+        return json_result
 
 
 def main():

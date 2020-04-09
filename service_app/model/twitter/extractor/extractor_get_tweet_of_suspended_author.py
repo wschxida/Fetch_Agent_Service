@@ -64,7 +64,7 @@ def fetch_author_profile(root):
     return author_profile_dict
 
 
-def extractor_get_tweet_of_suspended_author(target_account, proxies):
+def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='0'):
     headers = {
         'Host': 'web.archive.org',
         'Connection': 'keep-alive',
@@ -183,7 +183,11 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies):
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
-    return html_result
+    # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
+    if html_code == '1':
+        return html_result
+    else:
+        return json_result
 
 
 def main():

@@ -15,7 +15,7 @@ import re
 from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
-def extractor_get_common_following(target_list, proxies=None, page_count=1):
+def extractor_get_common_following(target_list, proxies=None, page_count=1, html_code='0'):
 
     target_account_list = target_list.split(",")
     target_profile = []
@@ -42,7 +42,7 @@ def extractor_get_common_following(target_list, proxies=None, page_count=1):
     if int(page_count) > 0:
         n = 20 * int(page_count)
     url = 'https://tweepdiff.com/' + url_account + f'?n={n}'
-    # url = 'https://tweepdiff.com/BillGates/Oprah/?n=100'
+    # url = 'https://tweepdiff.com/BillGates/BillClinton/?n=100'
     author_list = []
     status = '0'
     try:
@@ -94,11 +94,15 @@ def extractor_get_common_following(target_list, proxies=None, page_count=1):
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
-    return html_result
+    # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
+    if html_code == '1':
+        return html_result
+    else:
+        return json_result
 
 
 def main():
-    target_list = 'BillGates,Oprah'
+    target_list = 'BillGates,BillClinton'
     proxies = {
         'http': 'http://127.0.0.1:4411',
         'https': 'http://127.0.0.1:4411'
