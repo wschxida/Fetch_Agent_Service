@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : extractor_get_common_following.py
+# @File  : extractor_get_mutual_follower.py
 # @Author: Cedar
 # @Date  : 2019/12/31
 # @Desc  :
@@ -15,7 +15,7 @@ import re
 from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
-def extractor_get_common_following(target_list, proxies=None, page_count=1, html_code='0'):
+def extractor_get_mutual_follower(target_list, proxies=None, page_count=1, html_code='0'):
 
     target_account_list = target_list.split(",")
     target_profile = []
@@ -35,14 +35,14 @@ def extractor_get_common_following(target_list, proxies=None, page_count=1, html
     target_account_list = target_list.split(",")
     url_account = ''
     for account in target_account_list:
-        url_account = url_account + account + '/'
+        url_account = url_account + account + '.followers/'
 
     # 设置获取条数
     n = 20
     if int(page_count) > 0:
         n = 20 * int(page_count)
     url = 'https://tweepdiff.com/' + url_account + f'?n={n}'
-    # url = 'https://tweepdiff.com/BillGates/BillClinton/?n=100'
+    # url = 'https://tweepdiff.com/BillGates.followers/BillClinton.followers/?n=100'
     author_list = []
     status = '0'
     try:
@@ -62,7 +62,7 @@ def extractor_get_common_following(target_list, proxies=None, page_count=1, html
             # author_id页面上没有
             # author_id = ""
             author_account = "".join(item.xpath('.//a[@class="person_link"]/text()'))
-            author_account = "".join(re.findall("[(](.*?)[)]", author_account))     # 取括号里面的字符
+            author_account = "".join(re.findall("[(](.*?)[)]", author_account))  # 取括号里面的字符
             author_name = "".join(item.xpath('.//a[@class="person_link"]/text()'))
             author_name = "".join(re.findall("[\n](.*)[(]", author_name))  # 取\n和(之间的字符
             author_url = "".join(item.xpath('.//h2/a/@href'))
@@ -89,7 +89,7 @@ def extractor_get_common_following(target_list, proxies=None, page_count=1, html
         status = str(e)
         print(e)
 
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_common_following", "target_profile": target_profile,
+    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_mutual_follower", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
@@ -107,7 +107,7 @@ def main():
         'http': 'http://127.0.0.1:4411',
         'https': 'http://127.0.0.1:4411'
     }
-    result = extractor_get_common_following(target_list, proxies)
+    result = extractor_get_mutual_follower(target_list, proxies)
     print(result)
 
 

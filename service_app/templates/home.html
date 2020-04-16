@@ -39,12 +39,12 @@
 <h1>Fetch_Agent_Service demo：</h1>
 <hr>
     <h2>----------Twitter----------</h2>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,BillClinton&page_count=1">get_common_follower</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_follower&target_list=BillGates,BillClinton&page_count=1</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=BillGates,BillClinton&page_count=1">get_mutual_follower</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=BillGates,BillClinton&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
     <br>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,BillClinton&page_count=1">get_common_following</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_common_following&target_list=BillGates,BillClinton&page_count=1</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_mutual_following&target_list=BillGates,BillClinton&page_count=1">get_mutual_following</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_mutual_following&target_list=BillGates,BillClinton&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
     <br>
     <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_friend&target_express=KimberBollacker&page_count=1">get_friend</a>

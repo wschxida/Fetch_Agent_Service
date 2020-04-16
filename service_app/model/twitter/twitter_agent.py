@@ -8,8 +8,8 @@
 
 import random
 from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.twitter.extractor.extractor_get_common_follower import extractor_get_common_follower
-from service_app.model.twitter.extractor.extractor_get_common_following import extractor_get_common_following
+from service_app.model.twitter.extractor.extractor_get_mutual_follower import extractor_get_mutual_follower
+from service_app.model.twitter.extractor.extractor_get_mutual_following import extractor_get_mutual_following
 from service_app.model.twitter.extractor.extractor_get_friend import extractor_get_friend
 from service_app.model.twitter.extractor.extractor_get_author_mention_the_target import extractor_get_author_mention_the_target
 from service_app.model.twitter.extractor.extractor_get_author_reply_to_the_target import extractor_get_author_reply_to_the_target
@@ -50,10 +50,10 @@ class TwitterAgent(BaseFetchAgent):
         print('==========TW===========')
 
     def get_fetch_result(self):
-        if self.fetch_type == 'get_common_follower':
-            return extractor_get_common_follower(self.target_list, self.proxies, self.page_count, self.html_code)
-        if self.fetch_type == 'get_common_following':
-            return extractor_get_common_following(self.target_list, self.proxies, self.page_count, self.html_code)
+        if self.fetch_type == 'get_mutual_follower':
+            return extractor_get_mutual_follower(self.target_list, self.proxies, self.page_count, self.html_code)
+        if self.fetch_type == 'get_mutual_following':
+            return extractor_get_mutual_following(self.target_list, self.proxies, self.page_count, self.html_code)
         if self.fetch_type == 'get_friend':
             return extractor_get_friend(self.target_express, self.proxies, self.page_count, self.html_code)
         if self.fetch_type == 'get_author_mention_the_target':
