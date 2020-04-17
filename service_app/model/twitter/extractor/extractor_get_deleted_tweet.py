@@ -11,6 +11,9 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
+import parsedatetime
+import datetime
+import time
 from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
 
 
@@ -63,7 +66,15 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
                 author_img_url = "".join(item.xpath('.//img[@class="img-responsive"]/@src'))
                 article_id = "".join(item.xpath('.//div[@class="tweet row"]/@id')).replace('tweet-', '')
                 article_url = author_url + "/status/" + article_id
+                _article_pubtime = "".join(item.xpath('.//div[contains(@class,"byline")]/a[@data-content]/@data-content'))
                 article_content = "".join(item.xpath('.//div[contains(@class,"tweet-content")]//text()'))
+
+                # 时间转换为时间戳
+                p = parsedatetime.Calendar()
+                time_struct, parse_status = p.parse(_article_pubtime)
+                datetime_result = datetime.datetime(*time_struct[:6])
+                t = datetime_result.timetuple()
+                article_pubtime = int(time.mktime(t))
 
                 author_item = {
                     # "author_id": author_id,
@@ -72,6 +83,7 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
                     "author_url": author_url,
                     "author_img_url": author_img_url,
                     "article_url": article_url,
+                    "article_pubtime": article_pubtime,
                     "article_content": article_content,
                 }
                 author_list.append(author_item)

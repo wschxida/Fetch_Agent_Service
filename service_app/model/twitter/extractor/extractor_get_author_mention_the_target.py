@@ -79,6 +79,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
                 author_url = "https://twitter.com/" + author_account
                 author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
                 article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
+                article_pubtime = "".join(item.xpath('.//span[@class="_timestamp js-short-timestamp js-relative-timestamp"]/@data-time'))
                 article_content = item.find('.//div[@class="js-tweet-text-container"]')
                 article_content = etree.tostring(article_content)  # 转为bytes
                 article_content = str(article_content, encoding="utf-8")   # 转为字符串
@@ -90,6 +91,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
                     "author_url": author_url,
                     "author_img_url": author_img_url,
                     "article_url": article_url,
+                    "article_pubtime": article_pubtime,
                     "article_content": article_content,
                 }
                 author_list.append(author_item)
