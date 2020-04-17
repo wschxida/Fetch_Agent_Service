@@ -166,7 +166,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
                 "author_message_count": author_message_count,
                 "author_like_count": author_like_count,
                 "article_url": article_url,
-                "article_pubtime ": article_pubtime,
+                "article_pubtime": article_pubtime,
                 "article_reply_count": article_reply_count,
                 "article_retweet_count": article_retweet_count,
                 "article_favorite_count": article_favorite_count,
