@@ -132,7 +132,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
             author_like_count = "".join(item.xpath('//a[@data-nav="favorites"]/span[@data-count]/@data-count'))
             # article
             article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
-            created_time = "".join(item.xpath('.//span[@data-time]/@data-time'))
+            article_pubtime = "".join(item.xpath('.//span[@data-time]/@data-time'))
             article_reply_count = "".join(item.xpath('.//button[contains(@class,"js-actionReply")][1]'
                                                      '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
             article_retweet_count = "".join(item.xpath('.//button[contains(@class,"js-actionRetweet")][1]'
@@ -166,7 +166,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
                 "author_message_count": author_message_count,
                 "author_like_count": author_like_count,
                 "article_url": article_url,
-                "created_time": created_time,
+                "article_pubtime ": article_pubtime,
                 "article_reply_count": article_reply_count,
                 "article_retweet_count": article_retweet_count,
                 "article_favorite_count": article_favorite_count,
