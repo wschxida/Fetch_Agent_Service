@@ -21,7 +21,8 @@ def extractor_get_mutual_following(target_list, proxies=None, page_count=1, html
     target_profile = []
     for target_account in target_account_list:
         target_account_profile = extractor_get_author_profile(target_account, proxies)
-        target_profile.append(target_account_profile)
+        if target_account_profile:
+            target_profile.append(target_account_profile)
 
     headers = {
         'Host': 'tweepdiff.com',

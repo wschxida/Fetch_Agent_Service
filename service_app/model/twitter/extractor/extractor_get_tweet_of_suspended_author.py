@@ -47,7 +47,8 @@ def fetch_author_profile(root):
         author_profile_dict["author_id"] = "".join(root.xpath('.//div[@class="ProfileNav"]/@data-user-id'))
         author_profile_dict["author_account"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//span[@class="username u-dir"]/b/text()'))
         author_profile_dict["author_name"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//a[@class="ProfileHeaderCard-nameLink u-textInheritColor js-nav"]/text()'))
-        author_profile_dict["author_url"] = "https://twitter.com/" + author_profile_dict["author_account"]
+        if len(author_profile_dict["author_account"]) > 0:
+            author_profile_dict["author_url"] = "https://twitter.com/" + author_profile_dict["author_account"]
         author_profile_dict["author_img_url"] = "".join(root.xpath('.//img[@class="ProfileAvatar-image "]/@src'))
         author_profile_dict["banner_img_url"] = "".join(root.xpath('.//div[@class="ProfileCanopy-headerBg"]/img/@src'))
         author_profile_dict["author_message_count"] = "".join(root.xpath('.//li[@class="ProfileNav-item ProfileNav-item--tweets is-active"]//span[@class="ProfileNav-value"]/@data-count'))
@@ -61,7 +62,10 @@ def fetch_author_profile(root):
     except Exception as e:
         print(e)
 
-    return author_profile_dict
+    if len(author_profile_dict["author_account"]) > 0:
+        return author_profile_dict
+    else:
+        return None
 
 
 def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='0'):
@@ -114,7 +118,8 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
         # 获取target profile
         target_profile = []
         target_account_profile = fetch_author_profile(root)
-        target_profile.append(target_account_profile)
+        if target_account_profile:
+            target_profile.append(target_account_profile)
 
         # 解析数据到具体字段
         for item in items:

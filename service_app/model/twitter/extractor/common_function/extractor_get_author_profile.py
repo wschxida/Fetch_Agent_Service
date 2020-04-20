@@ -49,7 +49,8 @@ def extractor_get_author_profile(target_account, proxies=None):
         author_profile_dict["author_id"] = "".join(root.xpath('.//div[@class="ProfileNav"]/@data-user-id'))
         author_profile_dict["author_account"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//span[@class="username u-dir"]/b/text()'))
         author_profile_dict["author_name"] = "".join(root.xpath('.//div[@class="ProfileHeaderCard"]//a[@class="ProfileHeaderCard-nameLink u-textInheritColor js-nav"]/text()'))
-        author_profile_dict["author_url"] = "https://twitter.com/" + author_profile_dict["author_account"]
+        if len(author_profile_dict["author_account"]) > 0:
+            author_profile_dict["author_url"] = "https://twitter.com/" + author_profile_dict["author_account"]
         author_profile_dict["author_img_url"] = "".join(root.xpath('.//img[@class="ProfileAvatar-image "]/@src'))
         author_profile_dict["banner_img_url"] = "".join(root.xpath('.//div[@class="ProfileCanopy-headerBg"]/img/@src'))
         author_profile_dict["author_message_count"] = "".join(root.xpath('.//li[@class="ProfileNav-item ProfileNav-item--tweets is-active"]//span[@class="ProfileNav-value"]/@data-count'))
@@ -63,7 +64,10 @@ def extractor_get_author_profile(target_account, proxies=None):
     except Exception as e:
         print(e)
 
-    return author_profile_dict
+    if len(author_profile_dict["author_account"]) > 0:
+        return author_profile_dict
+    else:
+        return None
 
 
 def main():
