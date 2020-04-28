@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : twitter.py
+# @File  : twitter_agent.py
 # @Author: Cedar
 # @Date  : 2019/12/31
 # @Desc  :
@@ -23,6 +23,7 @@ import codecs
 
 # print中文时会报错
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+
 
 class TwitterAgent(BaseFetchAgent):
     """

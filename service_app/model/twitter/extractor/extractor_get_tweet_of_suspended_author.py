@@ -86,7 +86,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
     target_profile = []
     status = '0'
     try:
-        print('--------------1---------------')
+        # print('--------------1---------------')
         # requests 重试机制
         s = requests.Session()
         s.mount('http://', HTTPAdapter(max_retries=5))
@@ -109,7 +109,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
             last_ts = search_response_json["last_ts"]
             url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + target_account
             # 请求最终数据
-            print('--------------2---------------')
+            # print('--------------2---------------')
             response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
             response.encoding = "utf-8"
             root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
