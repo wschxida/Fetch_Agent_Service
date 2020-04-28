@@ -16,7 +16,13 @@ from service_app.model.twitter.extractor.extractor_get_author_reply_to_the_targe
 from service_app.model.twitter.extractor.extractor_get_author_retweet_the_target_tweet import extractor_get_author_retweet_the_target_tweet
 from service_app.model.twitter.extractor.extractor_get_deleted_tweet import extractor_get_deleted_tweet
 from service_app.model.twitter.extractor.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
+from service_app.model.twitter.extractor.extractor_get_tweet_of_advanced_search import extractor_get_tweet_of_advanced_search
+import sys
+import codecs
 
+
+# print中文时会报错
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 class TwitterAgent(BaseFetchAgent):
     """
@@ -66,4 +72,6 @@ class TwitterAgent(BaseFetchAgent):
             return extractor_get_deleted_tweet(self.target_express, self.proxies, self.page_count, self.html_code)
         if self.fetch_type == 'get_tweet_of_suspended_author':
             return extractor_get_tweet_of_suspended_author(self.target_express, self.proxies, self.html_code)
+        if self.fetch_type == 'get_tweet_of_advanced_search':
+            return extractor_get_tweet_of_advanced_search(self.query_dict, self.proxies, self.page_count, self.html_code)
 

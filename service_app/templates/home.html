@@ -71,6 +71,10 @@
     <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_tweet_of_suspended_author&target_express=M7MD_SHAMRANI</p>
     <p>target_express输入必须是account</p>
     <br>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_tweet_of_advanced_search&query_dict=%7B%22words%22%3A%22%E4%B8%AD%E5%9B%BD%22%2C%22from_account%22%3A%22VOAChinese%22%2C%22min_replies%22%3A%2215%22%2C%22min_faves%22%3A%2215%22%2C%22min_retweets%22%3A%2215%22%2C%22lang%22%3A%22zh-cn%22%2C%22until%22%3A%222020-01-30%22%2C%22since%22%3A%222018-12-22%22%7D&page_count=1">get_tweet_of_advanced_search</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_tweet_of_advanced_search&query_dict=%7B%22words%22%3A%22%E4%B8%AD%E5%9B%BD%22%2C%22from_account%22%3A%22VOAChinese%22%2C%22min_replies%22%3A%2215%22%2C%22min_faves%22%3A%2215%22%2C%22min_retweets%22%3A%2215%22%2C%22lang%22%3A%22zh-cn%22%2C%22until%22%3A%222020-01-30%22%2C%22since%22%3A%222018-12-22%22%7D&page_count=1</p>
+    <p>query_dict={"words":"中国","from_account":"VOAChinese","min_replies":"15","min_faves":"15","min_retweets":"15","lang":"zh-cn","until":"2020-01-30","since":"2018-12-22"}</p>
+    <br>
 <hr>
     <h2>----------telegram----------</h2>
     <a target="_blank" href="/service_app?agent_type=telegram&fetch_type=get_member&target_express=drafts4">get_member</a>

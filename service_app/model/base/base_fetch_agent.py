@@ -33,6 +33,7 @@ class BaseFetchAgent:
         self.fetch_type = ''
         self.target_express = ''
         self.target_list = ''        # 逗号隔开
+        self.query_dict = '{}'        # 用于Twitter高级搜索
         self.page_count = 0
         self.page_url = ''
         self.html_code = '0'
@@ -41,6 +42,13 @@ class BaseFetchAgent:
         for param in request_params:
             if param in self.__dict__.keys():
                 self.__dict__[param] = request_params[param]
+        if self.page_count:
+            try:
+                if int(self.page_count) > 100:
+                    self.page_count = 100
+            except Exception as e:
+                self.page_count = 0
+                print(e)
 
     def get_fetch_result(self):
         return None
