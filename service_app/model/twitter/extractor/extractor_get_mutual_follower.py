@@ -12,7 +12,7 @@ from lxml import etree
 import html
 import json
 import re
-from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 
 
 def extractor_get_mutual_follower(target_list, proxies=None, page_count=1, html_code='0'):
@@ -20,7 +20,7 @@ def extractor_get_mutual_follower(target_list, proxies=None, page_count=1, html_
     target_account_list = target_list.split(",")
     target_profile = []
     for target_account in target_account_list:
-        target_account_profile = extractor_get_author_profile(target_account, proxies)
+        target_account_profile = get_author_profile(target_account, proxies)
         if target_account_profile:
             target_profile.append(target_account_profile)
 

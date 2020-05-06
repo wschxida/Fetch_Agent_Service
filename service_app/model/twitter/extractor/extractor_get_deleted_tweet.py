@@ -14,13 +14,14 @@ import json
 import parsedatetime
 import datetime
 import time
-from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
+from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
 
 
 def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html_code='0'):
 
     target_profile = []
-    target_account_profile = extractor_get_author_profile(target_account, proxies)
+    target_account_profile = get_author_profile(target_account, proxies)
     if target_account_profile:
         target_profile.append(target_account_profile)
 
@@ -69,6 +70,7 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
                 article_url = author_url + "/status/" + article_id
                 _article_pubtime = "".join(item.xpath('.//div[contains(@class,"byline")]/a[@data-content]/@data-content'))
                 article_content = "".join(item.xpath('.//div[contains(@class,"tweet-content")]//text()'))
+                article_content = clean_html_attr(article_content)  # html清洗
 
                 # 时间转换为时间戳
                 p = parsedatetime.Calendar()

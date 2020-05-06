@@ -11,13 +11,14 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
-from service_app.model.twitter.extractor.common_function.extractor_get_author_profile import extractor_get_author_profile
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
+from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
 
 
 def extractor_get_author_reply_to_the_target(target_account, proxies=None, page_count=1, html_code='0'):
 
     target_profile = []
-    target_account_profile = extractor_get_author_profile(target_account, proxies)
+    target_account_profile = get_author_profile(target_account, proxies)
     if target_account_profile:
         target_profile.append(target_account_profile)
 
@@ -84,6 +85,7 @@ def extractor_get_author_reply_to_the_target(target_account, proxies=None, page_
                 article_content = item.find('.//div[@class="js-tweet-text-container"]')
                 article_content = etree.tostring(article_content)  # 转为bytes
                 article_content = str(article_content, encoding="utf-8")  # 转为字符串
+                article_content = clean_html_attr(article_content)    # html清洗
 
                 author_item = {
                     "author_id": author_id,

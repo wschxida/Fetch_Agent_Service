@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : extractor_get_author_profile.py
+# @File  : get_author_profile.py
 # @Author: Cedar
 # @Date  : 2020/4/7
 # @Desc  :
@@ -11,7 +11,7 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 
 
-def extractor_get_author_profile(target_account, proxies=None):
+def get_author_profile(target_account, proxies=None):
     author_profile_dict = {
         "author_id": "",
         "author_account": "",
@@ -76,7 +76,7 @@ def main():
         'http': 'http://127.0.0.1:4411',
         'https': 'http://127.0.0.1:4411'
     }
-    result = extractor_get_author_profile(target_account, proxies)
+    result = get_author_profile(target_account, proxies)
     print(result)
 
 

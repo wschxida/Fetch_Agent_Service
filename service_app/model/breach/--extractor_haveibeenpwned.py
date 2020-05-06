@@ -36,7 +36,6 @@ def extractor_haveibeenpwned(target_express, proxies=None):
         session.headers = headers
         req = session.get(base_url)
         req.encoding = "utf-8"
-        req.headers
         # session.headers.update({'Cookie': req.cookies})
         response = session.get(url, timeout=30)
         response.encoding = "utf-8"
@@ -76,8 +75,8 @@ def extractor_haveibeenpwned(target_express, proxies=None):
 def main():
     target_express = 'fawzyffawzyf@gmail.com'
     proxies = {
-        'http': 'http://127.0.0.1:7777',
-        'https': 'http://127.0.0.1:7777'
+        'http': 'http://127.0.0.1:4411',
+        'https': 'http://127.0.0.1:4411'
     }
     result = extractor_haveibeenpwned(target_express, proxies)
     print(result)

@@ -13,7 +13,7 @@ from service_app.controller import FetchAgentManager
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    my_host = '127.0.0.1:5000'
+    my_host = '127.0.0.1:5100'
     return render_template('home.html', my_host=my_host)
 
 

@@ -11,6 +11,7 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
+from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
 
 
 def fetch_author_profile(root):
@@ -158,6 +159,7 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
                 article_content_quote = etree.tostring(article_content_quote)  # 转为bytes
                 article_content_quote = str(article_content_quote, encoding="utf-8")  # 转为字符串
                 article_content = article_content + article_content_quote
+            article_content = clean_html_attr(article_content)  # html清洗
 
             author_item = {
                 "author_id": author_id,
