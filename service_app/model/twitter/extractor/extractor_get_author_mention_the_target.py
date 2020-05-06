@@ -35,7 +35,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
 
     q = '(%40' + target_account + ')%20-filter%3Areplies%20-filter%3A(from%3A-' + target_account + ')%20'
     url = 'https://twitter.com/i/search/timeline?f=tweets&vertical=default&q=' + q + '&src=typd&include_available_features=1&include_entities=1&reset_error_state=false&max_position='
-
+    # print(url)
     author_list = []
     status = '0'
     try:
@@ -81,7 +81,8 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
                 author_url = "https://twitter.com/" + author_account
                 author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
                 article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
-                article_pubtime = "".join(item.xpath('.//span[@class="_timestamp js-short-timestamp js-relative-timestamp"]/@data-time'))
+                article_pubtime = "".join(
+                    item.xpath('.//span[contains(@class,"_timestamp js-short-timestamp")]/@data-time'))
                 article_content = item.find('.//div[@class="js-tweet-text-container"]')
                 article_content = etree.tostring(article_content)  # 转为bytes
                 article_content = str(article_content, encoding="utf-8")   # 转为字符串
@@ -118,7 +119,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
 
 def main():
     target_account = 'BillGates'
-    target_account = 'dfgfdhydhd'
+    # target_account = 'dfgfdhydhd'
     proxies = {
         'http': 'http://127.0.0.1:4411',
         'https': 'http://127.0.0.1:4411'
