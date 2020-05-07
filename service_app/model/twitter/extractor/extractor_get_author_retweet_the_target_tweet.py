@@ -23,7 +23,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 driver = None
 old_height = 0
 curpath = os.path.dirname(os.path.realpath(__file__))
-driver_path = os.path.join(curpath, "..")
+driver_path = os.path.join(curpath, "..", "..")
 
 
 def check_height():
@@ -58,7 +58,7 @@ def start_selenium(user_data_dir_list):
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-infobars")
     options.add_argument("--mute-audio")
-    options.add_argument('--headless')  # 浏览器不提供可视化页面
+    # options.add_argument('--headless')  # 浏览器不提供可视化页面
     # twitter下面这个会导致登录失败
     # options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
@@ -102,10 +102,10 @@ def start_selenium(user_data_dir_list):
     driver.maximize_window()
 
     # 先走twitter首页，再滑动一下，模拟人工操作
-    driver.get("https://www.twitter.com/")
-    time.sleep(5)
-    scroll(1)
-    time.sleep(2)
+    # driver.get("https://www.twitter.com/")
+    # time.sleep(5)
+    # scroll(1)
+    # time.sleep(2)
 
     # # 如果发现没登录，就退出
     # try:
@@ -125,6 +125,7 @@ def login(email, password):
     """ Logging into our own profile """
 
     driver.get("https://twitter.com/login")
+    time.sleep(10)
     driver.maximize_window()
 
     # filling the form
@@ -133,7 +134,7 @@ def login(email, password):
 
     # clicking on login button
     try:
-        driver.find_element_by_class('submit EdgeButton EdgeButton--primary EdgeButtom--medium').click()
+        driver.find_element_by_xpath('//div[@data-testid="LoginForm_Login_Button"]').click()
     except Exception as e:
         pass
 
@@ -148,30 +149,33 @@ def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_di
 
     try:
         start_selenium(user_data_dir_list)
-        driver.get(target_tweet_url)
-        time.sleep(3)
+        # driver.get(target_tweet_url)
+        # time.sleep(1)
         driver.get(url)
-        time.sleep(5)
+        time.sleep(10)
         # scroll(5)
-        items = driver.find_elements_by_xpath('//div[@aria-label="Timeline: Retweeted by"]/div/div/div')
+        items = driver.find_elements_by_xpath('//div[@aria-label="Timeline: Retweeted by"]/div/div')
         status = '1'
         for item in items:
-            author_id = item.find_elements_by_xpath('.//div[contains(@data-testid,"-follow")]')[0].get_attribute('data-testid')
-            author_id = author_id.replace('-follow', '')
-            author_account = item.find_elements_by_xpath('.//span[contains(text(),"@")]')[0].text
-            author_account = author_account[1:]  # 去掉开头的@符号
-            author_name = item.find_elements_by_xpath('.//span')[0].text
-            author_url = 'https://twitter.com/' + author_account
-            author_img_url = item.find_elements_by_xpath('.//img')[0].get_attribute('src')
+            try:
+                author_item = {
+                    "author_id": '',
+                    "author_account": '',
+                    "author_name": '',
+                    "author_url": '',
+                    "author_img_url": '',
+                }
+                author_id = item.find_elements_by_xpath('.//div[contains(@data-testid,"-follow")]')[0].get_attribute('data-testid')
+                author_item["author_id"] = author_id.replace('-follow', '')
+                author_account = item.find_elements_by_xpath('.//span[contains(text(),"@")]')[0].text
+                author_item["author_account"] = author_account[1:]  # 去掉开头的@符号
+                author_item["author_name"] = item.find_elements_by_xpath('.//span')[0].text
+                author_item["author_url"] = 'https://twitter.com/' + author_account
+                author_item["author_img_url"] = item.find_elements_by_xpath('.//img')[0].get_attribute('src')
+                author_list.append(author_item)
 
-            author_item = {
-                "author_id": author_id,
-                "author_account": author_account,
-                "author_name": author_name,
-                "author_url": author_url,
-                "author_img_url": author_img_url,
-            }
-            author_list.append(author_item)
+            except Exception as e:
+                print(e)
 
     except Exception as e:
         status = str(e)
