@@ -58,7 +58,7 @@ def start_selenium(user_data_dir_list):
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-infobars")
     options.add_argument("--mute-audio")
-    # options.add_argument('--headless')  # 浏览器不提供可视化页面
+    options.add_argument('--headless')  # 浏览器不提供可视化页面
     # twitter下面这个会导致登录失败
     # options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
@@ -72,16 +72,15 @@ def start_selenium(user_data_dir_list):
     options.add_argument('--hide-scrollbars')  # 隐藏滚动条, 应对一些特殊页面
     options.add_argument('--no-sandbox')  # 以最高权限运行,解决DevToolsActivePort文件不存在的报错
     options.add_experimental_option('excludeSwitches', ['enable-automation'])  # 隐藏window.navigator.webdriver
-    # 随机取一个chromedriver目录，每个目录的Chromedriver是互相隔开的，登录不同的账号，每次启动随机分配
-    index = random.randint(0, len(user_data_dir_list) - 1)
+    # 取一个chrome user-data-dir目录，每个目录的Chromedriver是互相隔开的，登录不同的账号
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # user_data_dir_arg = r"user-data-dir=" + user_data_dir[index]
-    user_data_dir_arg = r"user-data-dir=" + user_data_dir_list[0]
+    user_data_dir = user_data_dir_list[0]
+    options.add_argument(r"user-data-dir=" + user_data_dir)
+    print(user_data_dir)
+
+    # 打开chrome人工登录账号
+    # google-chrome --user-data-dir="/home/kismanager/KIS/selenium/Twitter"
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    options.add_argument(user_data_dir_arg)
-    print(user_data_dir_arg)
-    # print(index)
-    # return user_data_dir_arg
 
     try:
         platform_ = platform.system().lower()
@@ -182,7 +181,7 @@ def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_di
         print(e)
 
     result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_retweet_the_target_tweet",
-              "data": author_list}
+              "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
@@ -196,7 +195,8 @@ def extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_di
 
 def main():
     target_tweet_url = 'https://twitter.com/BBC/status/1214955182775246850'
-    user_data_dir_list = ['E:\\selenium\\AutomationProfile1']
+    # user_data_dir_list = ['E:\\selenium\\AutomationProfile1']
+    user_data_dir_list = ['/home/kismanager/KIS/selenium/Twitter']
     result = extractor_get_author_retweet_the_target_tweet(target_tweet_url, user_data_dir_list)
     print(result)
 
