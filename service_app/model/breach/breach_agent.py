@@ -8,7 +8,7 @@
 
 import random
 from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.breach.extractor_whatismyipaddress import extractor_whatismyipaddress
+from service_app.model.breach.extractor_haveibeenpwned import extractor_haveibeenpwned
 
 
 class BreachAgent(BaseFetchAgent):
@@ -39,8 +39,8 @@ class BreachAgent(BaseFetchAgent):
         print('==========Breach===========')
 
     def get_fetch_result(self):
-        result_whatismyipaddress = extractor_whatismyipaddress(self.target_express, self.proxies, self.html_code)
-        if result_whatismyipaddress is not None:
-            return result_whatismyipaddress
+        result_haveibeenpwned = extractor_haveibeenpwned(self.target_express, self.proxies, self.html_code)
+        if result_haveibeenpwned is not None:
+            return result_haveibeenpwned
         else:
             return None

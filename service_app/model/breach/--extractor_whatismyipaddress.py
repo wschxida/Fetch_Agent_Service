@@ -97,7 +97,8 @@ def extractor_whatismyipaddress(target_express, proxies=None, html_code='0'):
 
 
 def main():
-    target_express = 'fawzyffawzyf@gmail.com'
+    # target_express = 'fawzyffawzyf@gmail.com'
+    target_express = 'foo@bar.com'
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
