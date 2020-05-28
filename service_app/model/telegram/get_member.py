@@ -4,6 +4,9 @@
 import os
 import html
 import json
+import parsedatetime
+import datetime
+import time
 from configparser import ConfigParser
 from service_app.model.telegram.src.TelegramChannelMemberExtractor import TGMemExtrator
 
@@ -43,8 +46,13 @@ def extractor_get_member(username, html_code='0'):
             status = '1'
 
         file_read_json = json.loads(file_read)
-        member_count = file_read_json['data']['group_member_count']
         data_result = file_read_json['data']
+        try:
+            member_count = file_read_json['data']['group_member_count']
+
+        except Exception as e:
+            member_count = 1
+
         print(member_count)
 
     except Exception as e:
@@ -54,6 +62,10 @@ def extractor_get_member(username, html_code='0'):
     result = {"status": status, "agent_type": "telegram", "fetch_type": "get_member",
               "data_item_count": member_count, "data": data_result}
     json_result = json.dumps(result, ensure_ascii=False)
+    # 为了在线显示图片
+    json_result = json_result.replace('/home/kismanager/KIS/Fetch_Agent_Service/service_app',
+                                      '/img')
+
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
     # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据

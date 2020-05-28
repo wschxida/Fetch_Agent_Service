@@ -8,7 +8,7 @@ from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import ChannelInvalidError
 from telethon.tl.types import Channel
 from telethon.tl.types import ChannelParticipantsAdmins
-from service_app.model.telegram.src.Enitity import memberEntity, groupEntity
+from service_app.model.telegram.src.Enitity import memberEntity, groupEntity, channelEntity
 
 
 class TGMemExtrator(object):
@@ -67,7 +67,7 @@ class TGMemExtrator(object):
         member.initWithUser(user)
 
         for i in range(admins.__len__()):
-            if admins[i] == id:
+            if admins[i] == user.id:
                 member.set_adminInfo(True)
 
         member.set_ProfilePic(pic_addr)
@@ -110,14 +110,25 @@ class TGMemExtrator(object):
             print("ValueError:No group has\"", self.group_username, "\"as username")
             return
         # 判断实体为channel返回空数据，实体为user返回空数据，实体为group继续执行下面代码
+        reslut = {"data": ""}
+        memFilePath = self.member_path + chat_item.username + ".json"
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
+                channel = channelEntity.channelEnitity()
+                channel.initWithChannel(chat_item)
+                channel.set_Member_Account(chat_item.participants_count)
+                reslut["data"] = channel.__dict__
+                # 将最后结果写到指定文件下
+                with open(memFilePath, "w") as f:
+                    json.dump(reslut, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)
+                f.close()
                 print("ValueError:its a channel ,cant get chaneel members without admin privileges")
                 return
         else:
             print("ValueError:its a User ,cant get a User's member")
             return
         # 获取group的全部成员
+
         participants = await self.client.get_participants(chat_item, aggressive=True)
         # 获取group的管理员
         admins = self.client.iter_participants(chat_item, filter=ChannelParticipantsAdmins)

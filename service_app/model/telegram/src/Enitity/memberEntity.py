@@ -56,5 +56,5 @@ class memberEnitity(object):
 
     def set_ProfilePic(self, picurl):
         self.member_avatar_url = picurl
-        if picurl is not None :
+        if picurl is not None:
             self.member_avatar_define = self.member_account+".jpg"

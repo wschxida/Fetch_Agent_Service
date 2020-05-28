@@ -1,7 +1,19 @@
 import socks
 import json
 import os
+import parsedatetime
+import datetime
+import time
 from telethon import TelegramClient
+
+
+def get_timestamp(time_str):
+    p = parsedatetime.Calendar()
+    time_struct, parse_status = p.parse(time_str)
+    datetime_result = datetime.datetime(*time_struct[:6])
+    t = datetime_result.timetuple()
+    result = time.mktime(t)
+    return result
 
 
 class TGMsgExtrator:
@@ -34,6 +46,21 @@ class TGMsgExtrator:
         else:
             self.client = TelegramClient(session_name, api_id, api_hash)
 
+    async def download_MsgPic(self,username,msg_id):
+        path = ''
+        try:
+            chat_item = await self.client.get_entity(username)
+        except ValueError:
+            print("ValueError:No channel has\"", username, "\"as username")
+            return path
+        message = await self.client.get_messages(chat_item, ids=msg_id)
+        # print(message)
+        if message.media:
+            path = await message.download_media(".\media")
+        else:
+            print("Message for ",msg_id," has no media to download")
+        return path
+
     async def get_message(self):
         msg_dict = []
         try:
@@ -44,7 +71,12 @@ class TGMsgExtrator:
         messages = self.client.iter_messages(chat_item, limit=self.msg_lim)
         async for message in messages:
             # print(message)
-            # print(message.date, utils.get_display_name(message.sender), message.message)
+
+            has_media = False
+            if message.media:
+                has_media = True
+                # path = await message.download_media(".\media")
+                # print(path)
             msg = {
                 "article_detail": {
                     "article_url": "https://t.me/" + self.channel_username,
@@ -53,8 +85,10 @@ class TGMsgExtrator:
                     "author_name": chat_item.title,
                     "author_account": chat_item.username,
                     "article_pubtime_str": str(message.date),
-                    "article_pubtime": message.date.isoformat(timespec='microseconds'),
+                    "article_pubtime": message.date,
                     "article_title": message.message,
+                    "article_HasMedia": has_media,
+                    "message_id":message.id
                 },
                 "article_application": {
                     "application_name": "Telegram",
@@ -76,3 +110,7 @@ class TGMsgExtrator:
     def dump_to_json(self):
         with self.client:
             self.client.loop.run_until_complete(self.get_message())
+
+    def download_message_media(self,username,id):
+        with self.client:
+            self.client.loop.run_until_complete(self.download_MsgPic(username=username,msg_id=id))

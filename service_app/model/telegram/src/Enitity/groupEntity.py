@@ -2,6 +2,21 @@
 # 2019-12-16
 # created by YHM
 # save group message
+
+import parsedatetime
+import datetime
+import time
+
+
+def get_timestamp(time_str):
+    p = parsedatetime.Calendar()
+    time_struct, parse_status = p.parse(time_str)
+    datetime_result = datetime.datetime(*time_struct[:6])
+    t = datetime_result.timetuple()
+    result = time.mktime(t)
+    return result
+
+
 class groupEnitity(object):
     def __init__(self):
         super().__init__()
@@ -32,7 +47,7 @@ class groupEnitity(object):
         if group.title is not None:
             self.group_name = group.title
         self.group_type = "telegram"
-        self.group_create_time = group.date.isoformat(timespec='microseconds')
+        self.group_create_time = group.date
 
     def set_Avatar(self, path, filename):
         self.group_avatar_store_directory_root = path
