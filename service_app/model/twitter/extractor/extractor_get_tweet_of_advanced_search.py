@@ -43,10 +43,11 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
         'since': '',
     }
 
-    for i in query.keys():
+    for i in query_dict.keys():
         query[i] = query_dict[i]
 
     q = ''
+    # print(query)
     if query['words']:
         q = q + query['words']
     if query['from_account']:
@@ -64,6 +65,7 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
     if query['since']:
         q = q + ' since:' + query['since']
 
+    # print(q)
     q = quote(q)
     url = 'https://twitter.com/i/search/timeline?f=tweets&vertical=default&q=' + q + '&src=typd&include_available_features=1&include_entities=1&reset_error_state=false&max_position='
     # print(url)
@@ -76,6 +78,7 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
 
     author_list = []
     status = '0'
+    error = None
     try:
         prefix = url
         _url = prefix
@@ -119,6 +122,7 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
                 author_name = "".join(item.xpath('.//div/@data-name'))
                 author_url = "https://twitter.com/" + author_account
                 author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
+                article_id = "".join(item.xpath('./@data-item-id'))
                 article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
                 article_pubtime = "".join(
                     item.xpath('.//span[contains(@class,"_timestamp js-short-timestamp")]/@data-time'))
@@ -126,6 +130,12 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
                 article_content = etree.tostring(article_content)  # 转为bytes
                 article_content = str(article_content, encoding="utf-8")  # 转为字符串
                 article_content = clean_html_attr(article_content)  # html清洗
+                reply_count = "".join(
+                    item.xpath('.//span[contains(@class,"ProfileTweet-action--reply")]/span/@data-tweet-stat-count'))
+                retweet_count = "".join(
+                    item.xpath('.//span[contains(@class,"ProfileTweet-action--retweet")]/span/@data-tweet-stat-count'))
+                favorite_count = "".join(
+                    item.xpath('.//span[contains(@class,"ProfileTweet-action--favorite")]/span/@data-tweet-stat-count'))
 
                 author_item = {
                     "author_id": author_id,
@@ -133,18 +143,23 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
                     "author_name": author_name,
                     "author_url": author_url,
                     "author_img_url": author_img_url,
+                    "article_id": article_id,
                     "article_url": article_url,
                     "article_pubtime": article_pubtime,
                     "article_content": article_content,
+                    "reply_count": reply_count,
+                    "retweet_count": retweet_count,
+                    "favorite_count": favorite_count,
                 }
                 author_list.append(author_item)
 
     except Exception as e:
-        status = str(e)
+        status = '0'
+        error = str(e)
         print(e)
 
     # 输出结果为json
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_tweet_of_advanced_search", "target_profile": target_profile,
+    result = {"status": status, "error": error, "agent_type": "twitter", "fetch_type": "get_tweet_of_advanced_search", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
@@ -157,19 +172,19 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
 
 
 def main():
-    query_dict = {
+    query_dict = '''{
       "words": "中国",
-      "from_account": "VOAChinese",
+      "from_accounts": "VOAChinese",
       "min_replies": "15",
       "min_faves": "15",
       "min_retweets": "15",
       "lang": "zh-cn",
       "until": "2020-01-30",
       "since": "2018-12-22"
-    }
+    }'''
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
     result = extractor_get_tweet_of_advanced_search(query_dict, proxies)
     print(result)
