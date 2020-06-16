@@ -28,57 +28,63 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
-    query_dict = json.loads(query_dict)
-    # return query_dict
-
-    # 规定输入参数
-    query = {
-        'words': '',
-        'from_account': '',
-        'min_replies': '',
-        'min_faves': '',
-        'min_retweets': '',
-        'lang': '',
-        'until': '',
-        'since': '',
-    }
-
-    for i in query_dict.keys():
-        query[i] = query_dict[i]
-
-    q = ''
-    # print(query)
-    if query['words']:
-        q = q + query['words']
-    if query['from_account']:
-        q = q + ' (from:' + query['from_account'] + ')'
-    if query['min_replies']:
-        q = q + ' min_replies:' + query['min_replies']
-    if query['min_faves']:
-        q = q + ' min_faves:' + query['min_faves']
-    if query['min_retweets']:
-        q = q + ' min_retweets:' + query['min_retweets']
-    if query['lang']:
-        q = q + ' lang:' + query['lang']
-    if query['until']:
-        q = q + ' until:' + query['until']
-    if query['since']:
-        q = q + ' since:' + query['since']
-
-    # print(q)
-    q = quote(q)
-    url = 'https://twitter.com/i/search/timeline?f=tweets&vertical=default&q=' + q + '&src=typd&include_available_features=1&include_entities=1&reset_error_state=false&max_position='
-    # print(url)
-
-    target_profile = []
-    if query['from_account']:
-        target_account_profile = get_author_profile(query['from_account'], proxies)
-        if target_account_profile:
-            target_profile.append(target_account_profile)
-
     author_list = []
+    target_profile = []
     status = '0'
     error = None
+
+    try:
+        query_dict = json.loads(query_dict)
+        # return query_dict
+
+        # 规定输入参数
+        query = {
+            'words': '',
+            'from_account': '',
+            'min_replies': '',
+            'min_faves': '',
+            'min_retweets': '',
+            'lang': '',
+            'until': '',
+            'since': '',
+        }
+
+        for i in query_dict.keys():
+            query[i] = query_dict[i]
+
+        q = ''
+        # print(query)
+        if query['words']:
+            q = q + query['words']
+        if query['from_account']:
+            q = q + ' (from:' + query['from_account'] + ')'
+        if query['min_replies']:
+            q = q + ' min_replies:' + query['min_replies']
+        if query['min_faves']:
+            q = q + ' min_faves:' + query['min_faves']
+        if query['min_retweets']:
+            q = q + ' min_retweets:' + query['min_retweets']
+        if query['lang']:
+            q = q + ' lang:' + query['lang']
+        if query['until']:
+            q = q + ' until:' + query['until']
+        if query['since']:
+            q = q + ' since:' + query['since']
+
+        # print(q)
+        q = quote(q)
+        url = 'https://twitter.com/i/search/timeline?f=tweets&vertical=default&q=' + q + '&src=typd&include_available_features=1&include_entities=1&reset_error_state=false&max_position='
+        # print(url)
+
+        if query['from_account']:
+            target_account_profile = get_author_profile(query['from_account'], proxies)
+            if target_account_profile:
+                target_profile.append(target_account_profile)
+    except Exception as e:
+        status = '0'
+        error = str(e)
+        print(e)
+
     try:
         prefix = url
         _url = prefix
