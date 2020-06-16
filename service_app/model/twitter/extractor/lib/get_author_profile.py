@@ -43,6 +43,7 @@ def get_author_profile(target_account, proxies=None):
         s.mount('https://', HTTPAdapter(max_retries=5))
         response = s.get(url, timeout=30, proxies=proxies)
         response.encoding = "utf-8"
+        print(response.text)
         root = etree.HTML(response.text, parser=etree.HTMLParser(encoding='utf-8'))
 
         # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
@@ -73,8 +74,8 @@ def get_author_profile(target_account, proxies=None):
 def main():
     target_account = 'BillGates'
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
     result = get_author_profile(target_account, proxies)
     print(result)

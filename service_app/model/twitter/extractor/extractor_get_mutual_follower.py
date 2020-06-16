@@ -46,6 +46,7 @@ def extractor_get_mutual_follower(target_list, proxies=None, page_count=1, html_
     # url = 'https://tweepdiff.com/BillGates.followers/BillClinton.followers/?n=100'
     author_list = []
     status = '0'
+    error = None
     try:
         # requests 重试机制
         s = requests.Session()
@@ -87,10 +88,11 @@ def extractor_get_mutual_follower(target_list, proxies=None, page_count=1, html_
             author_list.append(author_item)
 
     except Exception as e:
-        status = str(e)
+        status = '0'
+        error = str(e)
         print(e)
 
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_mutual_follower", "target_profile": target_profile,
+    result = {"status": status, "error": error, "agent_type": "twitter", "fetch_type": "get_mutual_follower", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json

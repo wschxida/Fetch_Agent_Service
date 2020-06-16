@@ -38,6 +38,7 @@ def extractor_get_author_reply_to_the_target(target_account, proxies=None, page_
 
     author_list = []
     status = '0'
+    error = None
     try:
         prefix = url
         _url = prefix
@@ -101,11 +102,12 @@ def extractor_get_author_reply_to_the_target(target_account, proxies=None, page_
                 author_list.append(author_item)
 
     except Exception as e:
-        status = str(e)
+        status = '0'
+        error = str(e)
         print(e)
 
     # 输出结果为json
-    result = {"status": status, "agent_type": "twitter", "fetch_type": "get_author_reply_to_the_target", "target_profile": target_profile,
+    result = {"status": status, "error": error, "agent_type": "twitter", "fetch_type": "get_author_reply_to_the_target", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
