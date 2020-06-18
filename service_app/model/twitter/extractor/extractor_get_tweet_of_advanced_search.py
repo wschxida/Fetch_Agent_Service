@@ -116,9 +116,13 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
         for response_item in response_list:
             response_json = json.loads(response_item)
             items_html = response_json["items_html"]
+            new_latent_count = response_json["new_latent_count"]
             # 请求成功时就把status置为1,不管后面是否有数据
             if items_html:
                 status = '1'
+            if new_latent_count < 1:
+                error = 'Search No Result!'
+                continue
             root = etree.HTML(items_html, parser=etree.HTMLParser(encoding='utf-8'))
             items = root.xpath('//li[@data-item-type="tweet"]')
             for item in items:
