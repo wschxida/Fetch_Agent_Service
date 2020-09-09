@@ -17,6 +17,7 @@ from service_app.model.twitter.extractor.extractor_get_author_retweet_the_target
 from service_app.model.twitter.extractor.extractor_get_deleted_tweet import extractor_get_deleted_tweet
 from service_app.model.twitter.extractor.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
 from service_app.model.twitter.extractor.extractor_get_tweet_of_advanced_search import extractor_get_tweet_of_advanced_search
+from service_app.model.twitter.extractor.extractor_get_tweet_of_url import extractor_get_tweet_of_url
 import sys
 import codecs
 
@@ -75,4 +76,6 @@ class TwitterAgent(BaseFetchAgent):
             return extractor_get_tweet_of_suspended_author(self.target_express, self.proxies, self.html_code)
         if self.fetch_type == 'get_tweet_of_advanced_search':
             return extractor_get_tweet_of_advanced_search(self.query_dict, self.proxies, self.page_count, self.html_code)
+        if self.fetch_type == 'get_tweet_of_url':
+            return extractor_get_tweet_of_url(query=self.query_dict, html_code=self.html_code)
 

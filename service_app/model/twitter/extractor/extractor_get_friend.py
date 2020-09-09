@@ -104,7 +104,7 @@ def extractor_get_friend(target_account, proxies=None, page_count=1, html_code='
 
 
 def main():
-    target_account = 'KimberBollacker'
+    target_account = 'carolineparra4'
     proxies = {
         'http': 'http://127.0.0.1:4411',
         'https': 'http://127.0.0.1:4411'
