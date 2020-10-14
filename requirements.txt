@@ -1,8 +1,8 @@
-selenium==3.141.0
-Flask_Script==2.0.6
-parsedatetime==2.5
-Telethon==1.11.3
-requests==2.20.0
-lxml==4.3.3
 Flask==1.1.1
+lxml==4.5.2
+Telethon==1.11.3
+requests==2.24.0
+Flask_Script==2.0.6
+selenium==3.141.0
+parsedatetime==2.6
 PySocks==1.7.1

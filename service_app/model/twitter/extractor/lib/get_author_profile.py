@@ -66,7 +66,7 @@ def get_author_profile(target_account, proxies=None):
 
         # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
         root_text = "".join(root.xpath('.//table[@class="profile_info"]//p/text()')) + '$'
-        print(root_text)
+        # print(root_text)
         author_profile_dict["author_id"] = get_str_btw(root_text, 'Twitter User ID:', 'Full Name:')
         author_profile_dict["author_account"] = get_str_btw(root_text, 'Screen Name:', 'Total Followers:')
         author_profile_dict["author_name"] = get_str_btw(root_text, 'Full Name:', 'Screen Name:')

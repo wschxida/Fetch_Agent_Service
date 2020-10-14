@@ -15,7 +15,7 @@ def extractor_get_message(username, html_code='0'):
     data_result = ''
     try:
         cfg = ConfigParser()
-        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
+        telegram_extractor_config_path = os.path.join(curpath, "./config/-telegram_extractor.ini")
         cfg.read(telegram_extractor_config_path, encoding='utf-8')
         config = {
             'msg_max_limit': int(cfg.get('message_lim', 'msg_max_limit')),
@@ -24,7 +24,7 @@ def extractor_get_message(username, html_code='0'):
             'TG_api_hash': cfg.get('login_setting', 'TG_api_hash'),
             'proxy_address': cfg.get('login_setting', 'proxy_address'),
             'proxy_port': int(cfg.get('login_setting', 'proxy_port')),
-            'group_message': cfg.get('download_addr', 'group_massage')
+            'group_message': os.path.join(curpath, cfg.get('download_addr', 'group_massage'))
         }
 
         tg_msg_extrator = TGMsgExtrator(config)

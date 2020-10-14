@@ -20,7 +20,7 @@ def extractor_get_member(username, html_code='0'):
     data_result = ''
     try:
         cfg = ConfigParser()
-        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
+        telegram_extractor_config_path = os.path.join(curpath, "./config/-telegram_extractor.ini")
         cfg.read(telegram_extractor_config_path, encoding='utf-8')
         config = {
             'TG_session_name': cfg.get('login_setting', 'TG_session_name'),
@@ -28,10 +28,10 @@ def extractor_get_member(username, html_code='0'):
             'TG_api_hash': cfg.get('login_setting', 'TG_api_hash'),
             'proxy_address': cfg.get('login_setting', 'proxy_address'),
             'proxy_port': int(cfg.get('login_setting', 'proxy_port')),
-            'group_member': cfg.get('download_addr', 'group_member'),
-            'group_avatar': cfg.get('download_addr', 'group_avatar')
+            'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
+            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar'))
         }
-
+        # print(config)
         tg_mem_extrator = TGMemExtrator(config)
         flag = False
         tg_mem_extrator.set_channel(username)
@@ -78,6 +78,7 @@ def extractor_get_member(username, html_code='0'):
 def main():
     username = 'drafts4'
     result = extractor_get_member(username)
+    # print(curpath)
     print(result)
 
 
