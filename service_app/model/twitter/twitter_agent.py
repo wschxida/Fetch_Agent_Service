@@ -60,11 +60,11 @@ class TwitterAgent(BaseFetchAgent):
 
     def get_fetch_result(self):
         if self.fetch_type == 'get_mutual_follower':
-            return extractor_get_mutual_follower(self.target_list, self.proxies, self.page_count, self.html_code)
+            return extractor_get_mutual_follower(self.target_list, self.user_data_dir_list, self.proxies, self.html_code)
         if self.fetch_type == 'get_mutual_following':
-            return extractor_get_mutual_following(self.target_list, self.proxies, self.page_count, self.html_code)
+            return extractor_get_mutual_following(self.target_list, self.user_data_dir_list, self.proxies, self.html_code)
         if self.fetch_type == 'get_friend':
-            return extractor_get_friend(self.target_express, self.proxies, self.page_count, self.html_code)
+            return extractor_get_friend(self.target_express, self.user_data_dir_list, self.proxies, self.html_code)
         if self.fetch_type == 'get_author_mention_the_target':
             return extractor_get_author_mention_the_target(self.target_express, self.proxies, self.page_count, self.html_code)
         if self.fetch_type == 'get_author_reply_to_the_target':

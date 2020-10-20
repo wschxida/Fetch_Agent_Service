@@ -1,3 +1,4 @@
+youtube_dl
 Flask==1.1.1
 lxml==4.5.2
 Telethon==1.11.3

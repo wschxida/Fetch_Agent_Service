@@ -39,20 +39,20 @@
 <h1>Fetch_Agent_Service demo：</h1>
 <hr>
     <h2>----------Twitter----------</h2>
-    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=BillGates,BillClinton&page_count=1">get_mutual_follower</a>
-    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=BillGates,BillClinton&page_count=1</p>
+    <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=anthonychao,David_P_Mullins&page_count=1">get_mutual_follower</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_mutual_follower&target_list=anthonychao,David_P_Mullins&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
-    <p>数据来源： https://tweepdiff.com/</p>
+    <p>数据来源： http://www.twiangulate.com/search</p>
     <br>
     <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_mutual_following&target_list=BillGates,BillClinton&page_count=1">get_mutual_following</a>
     <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_mutual_following&target_list=BillGates,BillClinton&page_count=1</p>
     <p>target_list输入必须是account，以逗号隔开</p>
-    <p>数据来源： https://tweepdiff.com/</p>
+    <p>数据来源： http://www.twiangulate.com/search</p>
     <br>
     <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_friend&target_express=carolineparra4&page_count=1">get_friend</a>
     <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_friend&target_express=carolineparra4&page_count=1</p>
     <p>target_express输入必须是account</p>
-    <p>数据来源： https://tweepdiff.com/</p>
+    <p>数据来源： http://www.twiangulate.com/search</p>
     <br>
     <a target="_blank" href="/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates&page_count=1">get_author_mention_the_target</a>
     <p>http://{% print(my_host) %}/service_app?agent_type=twitter&fetch_type=get_author_mention_the_target&target_express=BillGates&page_count=1</p>
@@ -110,6 +110,13 @@
     <p>http://{% print(my_host) %}/service_app?agent_type=breach&target_express=fawzyffawzyf%40gmail.com</p>
     <p>target_express 可为email、account等</p>
     <p>数据来源： https://haveibeenpwned.com/</p>
+    <br>
+<hr>
+    <h2>----------youtube_dl----------</h2>
+    <a target="_blank" href="/service_app?agent_type=youtube_dl&target_express=https%3A%2F%2Ftwitter.com%2Fi%2Fvideos%2Ftweet%2F1317908612962988033">get_youtube-dl_result</a>
+    <p>http://{% print(my_host) %}/service_app?agent_type=youtube_dl&target_express=https%3A%2F%2Ftwitter.com%2Fi%2Fvideos%2Ftweet%2F1317908612962988033</p>
+    <p>target_express 可为视频url</p>
+    <p>数据来源： https://github.com/ytdl-org/youtube-dl</p>
     <br>
 
 </body>

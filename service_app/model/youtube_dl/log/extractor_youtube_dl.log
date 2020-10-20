@@ -1,0 +1,20 @@
+2020-10-20 16:43:26 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:44:24 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:46:40 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:46:56 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:47:34 - extractor_youtube_dl.py[line:63] - INFO: name 'self' is not defined
+2020-10-20 16:47:49 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:48:10 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 16:51:37 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:01:31 - extractor_youtube_dl.py[line:63] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:04:52 - extractor_youtube_dl.py[line:64] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:06:28 - extractor_youtube_dl.py[line:64] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:09:02 - extractor_youtube_dl.py[line:64] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:10:37 - extractor_youtube_dl.py[line:64] - INFO: utf_8_encode() argument 1 must be str, not bytes
+2020-10-20 17:11:35 - extractor_youtube_dl.py[line:65] - INFO: name 'y_dl_result' is not defined
+2020-10-20 17:11:52 - extractor_youtube_dl.py[line:65] - INFO: 'int' object is not subscriptable
+2020-10-20 17:12:55 - extractor_youtube_dl.py[line:63] - INFO: 'int' object is not subscriptable
+2020-10-20 17:14:30 - extractor_youtube_dl.py[line:63] - INFO: 'list' object has no attribute 'get'
+2020-10-20 17:15:50 - extractor_youtube_dl.py[line:63] - INFO: 'NoneType' object is not subscriptable
+2020-10-20 17:17:39 - extractor_youtube_dl.py[line:64] - INFO: 'NoneType' object is not subscriptable
+2020-10-20 17:19:04 - extractor_youtube_dl.py[line:64] - INFO: string indices must be integers
