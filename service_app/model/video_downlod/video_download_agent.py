@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : youtube_dl_agent.py
+# @File  : video_download_agent.py
 # @Author: Cedar
 # @Date  : 2019/12/31
 # @Desc  :
 
 
 import random
-from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.youtube_dl.extractor_youtube_dl import extractor_youtube_dl
+from model.base.base_fetch_agent import BaseFetchAgent
+from model.video_downlod.extractor_youtube_dl import extractor_youtube_dl_def
 
 
-class YoutubeDlAgent(BaseFetchAgent):
+class VideoDownloadAgent(BaseFetchAgent):
     """
     youtube_dl类
     调用get_fetch_result可根据fetch_type返回相应结果
@@ -34,18 +34,20 @@ class YoutubeDlAgent(BaseFetchAgent):
                 'https': "http://" + config_proxylist[index]
             }
 
-        print('----------youtube_dl-----------')
+        print('----------video_downlod-----------')
         print(self.__dict__)
-        print('==========youtube_dl===========')
+        print('==========video_downlod===========')
 
     def get_fetch_result(self):
-
-        result = extractor_youtube_dl(self.target_express, self.proxies, self.html_code)
+        result = extractor_youtube_dl_def(self.target_express, self.proxies, self.html_code)
         return result
 
 
 if __name__ == '__main__':
-    target_express = 'https://twitter.com/i/videos/tweet/1317908612962988033'
-    ydl = YoutubeDlAgent(target_express)
-    aa = ydl.get_fetch_result()
-    print(aa)
+    params = {
+        'target_express': 'https://www.youtube.com/watch?v=qnaZm8JL5rE',
+    }
+    vv = VideoDownloadAgent(params)
+    result = vv.get_fetch_result()
+    print(result)
+

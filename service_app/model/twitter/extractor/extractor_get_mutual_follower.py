@@ -8,8 +8,8 @@
 
 import html
 import json
-from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
-from service_app.model.twitter.extractor.lib.get_common_friend_by_twiangulate import get_common_friend_by_twiangulate
+from model.twitter.extractor.lib.get_author_profile import get_author_profile
+from model.twitter.extractor.lib.get_common_friend_by_twiangulate import get_common_friend_by_twiangulate
 
 
 def extractor_get_mutual_follower(target_list, user_data_dir_list, proxies=None, html_code='0'):

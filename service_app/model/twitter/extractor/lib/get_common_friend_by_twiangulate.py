@@ -5,20 +5,11 @@
 # @Date  : 2020/10/14
 # @Desc  :
 
-import requests
-from requests.adapters import HTTPAdapter
+
 from lxml import etree
-import html
-import json
-import re
-from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
-import html
-import json
-import re
 import os
 import time
 import platform
-import random
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options

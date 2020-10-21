@@ -7,24 +7,26 @@
 
 
 import random
-from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.twitter.extractor.extractor_get_mutual_follower import extractor_get_mutual_follower
-from service_app.model.twitter.extractor.extractor_get_mutual_following import extractor_get_mutual_following
-from service_app.model.twitter.extractor.extractor_get_friend import extractor_get_friend
-from service_app.model.twitter.extractor.extractor_get_author_mention_the_target import extractor_get_author_mention_the_target
-from service_app.model.twitter.extractor.extractor_get_author_reply_to_the_target import extractor_get_author_reply_to_the_target
-from service_app.model.twitter.extractor.extractor_get_author_retweet_the_target_tweet import extractor_get_author_retweet_the_target_tweet
-from service_app.model.twitter.extractor.extractor_get_deleted_tweet import extractor_get_deleted_tweet
-from service_app.model.twitter.extractor.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
-from service_app.model.twitter.extractor.extractor_get_tweet_of_advanced_search import extractor_get_tweet_of_advanced_search
-from service_app.model.twitter.extractor.extractor_get_tweet_of_url import extractor_get_tweet_of_url
-from service_app.model.twitter.extractor.extractor_get_profile import extractor_get_profile
+from model.base.base_fetch_agent import BaseFetchAgent
+from model.twitter.extractor.extractor_get_mutual_follower import extractor_get_mutual_follower
+from model.twitter.extractor.extractor_get_mutual_following import extractor_get_mutual_following
+from model.twitter.extractor.extractor_get_friend import extractor_get_friend
+from model.twitter.extractor.extractor_get_author_mention_the_target import extractor_get_author_mention_the_target
+from model.twitter.extractor.extractor_get_author_reply_to_the_target import extractor_get_author_reply_to_the_target
+from model.twitter.extractor.extractor_get_author_retweet_the_target_tweet import extractor_get_author_retweet_the_target_tweet
+from model.twitter.extractor.extractor_get_deleted_tweet import extractor_get_deleted_tweet
+from model.twitter.extractor.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
+from model.twitter.extractor.extractor_get_tweet_of_advanced_search import extractor_get_tweet_of_advanced_search
+from model.twitter.extractor.extractor_get_tweet_of_url import extractor_get_tweet_of_url
+from model.twitter.extractor.extractor_get_profile import extractor_get_profile
 import sys
-import codecs
+import io
+# import codecs
 
 
 # print中文时会报错
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+# sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8') #改变标准输出的默认编码
 
 
 class TwitterAgent(BaseFetchAgent):

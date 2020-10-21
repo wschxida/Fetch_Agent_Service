@@ -5,8 +5,8 @@
 # @Date  : 2019/12/11
 # @Desc  :
 
+from service_app.views import app
 
-from service_app import app
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port='5101', debug=True, threaded=True)

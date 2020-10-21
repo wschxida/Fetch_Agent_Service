@@ -11,7 +11,7 @@ import json
 import youtube_dl
 
 
-def extractor_youtube_dl(target_express, proxies=None, html_code='0'):
+def extractor_youtube_dl_def(target_express, proxies=None, html_code='0'):
     data = ''
     status = '1'
     error = None
@@ -27,13 +27,13 @@ def extractor_youtube_dl(target_express, proxies=None, html_code='0'):
             'skip_download': True,
         }
 
-        # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        # with video_downlod.YoutubeDL(ydl_opts) as ydl:
         #     y_dl_result = ydl.extract_info(video_url)
         #     print(y_dl_result)
         #     data = y_dl_result['url']
         #     print(data)
         ydl = youtube_dl.YoutubeDL(ydl_opts)
-        y_dl_result = ydl.extract_info(target_express)
+        y_dl_result = ydl.extract_info(target_express, download=False)
         print(y_dl_result)
         data = y_dl_result['url']
         print(data)
@@ -61,7 +61,7 @@ def main():
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
     }
-    result = extractor_youtube_dl(target_express, proxies)
+    result = extractor_youtube_dl_def(target_express, proxies)
     print(result)
 
 

@@ -7,8 +7,8 @@
 
 
 import random
-from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.breach.extractor_haveibeenpwned import extractor_haveibeenpwned
+from model.base.base_fetch_agent import BaseFetchAgent
+from model.breach.extractor_haveibeenpwned import extractor_haveibeenpwned
 
 
 class BreachAgent(BaseFetchAgent):

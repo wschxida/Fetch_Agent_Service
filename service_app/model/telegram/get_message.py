@@ -3,7 +3,7 @@ import os
 import html
 import json
 from configparser import ConfigParser
-from service_app.model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
+from model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))

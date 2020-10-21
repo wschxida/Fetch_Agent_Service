@@ -5,19 +5,11 @@
 # @Date  : 2020/10/14
 # @Desc  :
 
-import requests
+
 from requests.adapters import HTTPAdapter
-from lxml import etree
 import json
-from functools import wraps
 from lxml import etree
-from locale import getdefaultlocale
-from urllib.parse import quote
-import sys
-import os
-import random
 import requests
-import time
 import datetime
 
 

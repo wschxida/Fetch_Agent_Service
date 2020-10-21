@@ -6,7 +6,7 @@
 # @Desc  :
 
 
-from service_app import app
+from service_app.views import app
 from flask_script import Manager, Shell
 
 

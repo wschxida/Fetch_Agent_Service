@@ -23,18 +23,8 @@ def extractor_get_tweet_of_url(query='{}', proxies=None, html_code='0'):
         proxy_ip = 'lum-customer-hl_7cc83d7d-zone-twitter:lk092yxnhj4j@zproxy.lum-superproxy.io:22225'
         if not proxies:
             proxies = {'http': f'http://{proxy_ip}', 'https': f'http://{proxy_ip}'}
-        # headers = {
-        #     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-        #     "accept-encoding": "gzip, deflate",
-        #     "accept-language": "zh-CN,zh;q=0.9",
-        #     "cache-control": "max-age=0",
-        #     "referer": "https://twitter.com/search",
-        #     "upgrade-insecure-requests": "1",
-        #     "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36",
-        #     "cookie": "rweb_optin=side_no_out"
-        # }
-        # requests 重试机制
 
+        # requests 重试机制
         s = requests.Session()
         s.mount('http://', HTTPAdapter(max_retries=5))
         s.mount('https://', HTTPAdapter(max_retries=5))

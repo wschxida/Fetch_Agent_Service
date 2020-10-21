@@ -14,8 +14,8 @@ import json
 import parsedatetime
 import datetime
 import time
-from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
-from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
+from model.twitter.extractor.lib.get_author_profile import get_author_profile
+from model.twitter.extractor.lib.clean_html_attr import clean_html_attr
 
 
 def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html_code='0'):

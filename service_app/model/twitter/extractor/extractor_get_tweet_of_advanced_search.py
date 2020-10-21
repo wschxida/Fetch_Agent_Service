@@ -8,8 +8,8 @@
 import html
 import json
 from urllib.parse import quote
-from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
-from service_app.model.twitter.extractor.lib.get_mobile_twitter_result import get_tweet
+from model.twitter.extractor.lib.get_author_profile import get_author_profile
+from model.twitter.extractor.lib.get_mobile_twitter_result import get_tweet
 
 
 def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_count=1, html_code='0'):

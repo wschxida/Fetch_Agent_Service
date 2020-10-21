@@ -6,9 +6,9 @@
 # @Desc  :
 
 
-from service_app.model.base.base_fetch_agent import BaseFetchAgent
-from service_app.model.telegram.get_member import extractor_get_member
-from service_app.model.telegram.get_message import extractor_get_message
+from model.base.base_fetch_agent import BaseFetchAgent
+from model.telegram.get_member import extractor_get_member
+from model.telegram.get_message import extractor_get_message
 
 
 class TelegramAgent(BaseFetchAgent):

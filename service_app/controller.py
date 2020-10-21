@@ -6,10 +6,10 @@
 # @Desc  : Agent管理器，根据agent_type,分发任务给到不同Agent对象去执行
 
 
-from service_app.model.twitter.twitter_agent import TwitterAgent
-from service_app.model.telegram.telegram_agent import TelegramAgent
-from service_app.model.breach.breach_agent import BreachAgent
-from service_app.model.youtube_dl.youtube_dl_agent import YoutubeDlAgent
+from model.twitter.twitter_agent import TwitterAgent
+from model.telegram.telegram_agent import TelegramAgent
+from model.breach.breach_agent import BreachAgent
+from model.video_downlod.video_download_agent import VideoDownloadAgent
 
 
 class FetchAgentManager:
@@ -30,11 +30,19 @@ class FetchAgentManager:
             cur_fetch_agent = TelegramAgent(self.request_params)
         if self.request_params['agent_type'] == 'breach':
             cur_fetch_agent = BreachAgent(self.request_params)
-        if self.request_params['agent_type'] == 'youtube_dl':
-            cur_fetch_agent = YoutubeDlAgent(self.request_params)
+        if self.request_params['agent_type'] == 'video_downlod':
+            cur_fetch_agent = VideoDownloadAgent(self.request_params)
 
         response = cur_fetch_agent.get_fetch_result()
 
         return response
 
 
+if __name__ == '__main__':
+    params = {
+        'agent_type': 'video_downlod',
+        'target_express': 'https://www.youtube.com/watch?v=qnaZm8JL5rE',
+    }
+    vv = FetchAgentManager(params)
+    result = vv.get_fetch_result_by_agent()
+    print(result)

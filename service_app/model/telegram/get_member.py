@@ -4,11 +4,8 @@
 import os
 import html
 import json
-import parsedatetime
-import datetime
-import time
 from configparser import ConfigParser
-from service_app.model.telegram.src.TelegramChannelMemberExtractor import TGMemExtrator
+from model.telegram.src.TelegramChannelMemberExtractor import TGMemExtrator
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))

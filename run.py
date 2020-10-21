@@ -5,5 +5,5 @@
 # @Date  : 2019/12/11
 # @Desc  :
 
-from service_app import app
+from service_app.views import app
 

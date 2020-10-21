@@ -8,12 +8,9 @@
 
 import html
 import json
-import re
-
 import os
 import time
 import platform
-import random
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.options import Options
@@ -58,7 +55,6 @@ def start_selenium(user_data_dir_list):
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-infobars")
     options.add_argument("--mute-audio")
-    options.add_argument('--headless')  # 浏览器不提供可视化页面
     # twitter下面这个会导致登录失败
     # options.add_argument('--disable-gpu')  # 谷歌文档提到需要加上这个属性来规避bug
     options.add_argument('blink-settings=imagesEnabled=false')  # 不加载图片, 提升速度
@@ -85,20 +81,20 @@ def start_selenium(user_data_dir_list):
     try:
         platform_ = platform.system().lower()
         if platform_ in ['linux', 'darwin']:
+            options.add_argument('--headless')  # 浏览器不提供可视化页面
             chromedriver_path = os.path.join(driver_path, "chromedriver")
             driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
         else:
+            user_data_dir = 'E:\\selenium\\AutomationProfile1'
+            options.add_argument(r"user-data-dir=" + user_data_dir)
             chromedriver_path = os.path.join(driver_path, "chromedriver.exe")
             driver = webdriver.Chrome(executable_path=chromedriver_path, options=options)
-    except:
-        print("Kindly replace the Chrome Web Driver with the latest one from"
-              "http://chromedriver.chromium.org/downloads"
-              "\nYour OS: {}".format(platform_)
-              )
+    except Exception as e:
+        print(e)
 
     driver.set_page_load_timeout(60)   # 设置页面加载超时
     driver.set_script_timeout(60)   # 设置页面异步js执行超时
-    driver.maximize_window()
+    # driver.maximize_window()
 
     # 先走twitter首页，再滑动一下，模拟人工操作
     # driver.get("https://www.twitter.com/")
