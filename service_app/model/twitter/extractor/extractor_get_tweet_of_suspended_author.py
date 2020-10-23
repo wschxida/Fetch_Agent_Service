@@ -11,7 +11,7 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
-from model.twitter.extractor.lib.clean_html_attr import clean_html_attr
+from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
 
 
 def fetch_author_profile(root):

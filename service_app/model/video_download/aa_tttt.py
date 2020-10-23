@@ -5,7 +5,7 @@
 # @Date  : 2020/10/20
 # @Desc  :
 
-from model.video_downlod.extractor_youtube_dl import extractor_youtube_dl_def
+from service_app.model.video_download.extractor_youtube_dl import extractor_youtube_dl_def
 
 target_express = 'https://www.youtube.com/watch?v=qnaZm8JL5rE'
 proxies = {

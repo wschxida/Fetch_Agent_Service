@@ -10,11 +10,16 @@ from flask import render_template, request, send_file
 from service_app.controller import FetchAgentManager
 import os
 from flask import Flask
+import sys
 
 
 # 创建项目对象
 app = Flask(__name__)
 curpath = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(curpath)
+model_path = os.path.join(curpath, "model")
+sys.path.append(model_path)
+print(sys.path)
 
 
 @app.route('/', methods=['GET', 'POST'])

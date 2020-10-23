@@ -3,7 +3,7 @@ import os
 import html
 import json
 from configparser import ConfigParser
-from model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
+from service_app.model.telegram.src.TelegramChannelMessageExtractor import TGMsgExtrator
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))
@@ -15,7 +15,7 @@ def extractor_get_message(username, html_code='0'):
     data_result = ''
     try:
         cfg = ConfigParser()
-        telegram_extractor_config_path = os.path.join(curpath, "./config/-telegram_extractor.ini")
+        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
         cfg.read(telegram_extractor_config_path, encoding='utf-8')
         config = {
             'msg_max_limit': int(cfg.get('message_lim', 'msg_max_limit')),

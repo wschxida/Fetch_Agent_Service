@@ -7,8 +7,8 @@
 
 
 import random
-from model.base.base_fetch_agent import BaseFetchAgent
-from model.video_downlod.extractor_youtube_dl import extractor_youtube_dl_def
+from service_app.model.base.base_fetch_agent import BaseFetchAgent
+from service_app.model.video_download.extractor_youtube_dl import extractor_youtube_dl_def
 
 
 class VideoDownloadAgent(BaseFetchAgent):
@@ -23,7 +23,7 @@ class VideoDownloadAgent(BaseFetchAgent):
 
         # 取出config，自己需要的参数
         self.proxies = None
-        config_proxylist = self.config.get("proxy", "proxylist")
+        config_proxylist = self.config.get("video_download", "youtube_dl_proxy")
         # 转成list
         if config_proxylist:
             config_proxylist = config_proxylist.split("||")
@@ -34,9 +34,9 @@ class VideoDownloadAgent(BaseFetchAgent):
                 'https': "http://" + config_proxylist[index]
             }
 
-        print('----------video_downlod-----------')
+        print('----------video_download-----------')
         print(self.__dict__)
-        print('==========video_downlod===========')
+        print('==========video_download===========')
 
     def get_fetch_result(self):
         result = extractor_youtube_dl_def(self.target_express, self.proxies, self.html_code)

@@ -12,7 +12,7 @@ from lxml import etree
 import html
 import json
 import re
-from model.twitter.extractor.lib.get_author_profile import get_author_profile
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 
 
 def extractor_get_mutual_following(target_list, proxies=None, page_count=1, html_code='0'):

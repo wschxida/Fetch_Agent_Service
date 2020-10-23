@@ -8,7 +8,7 @@ from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import ChannelInvalidError
 from telethon.tl.types import Channel
 from telethon.tl.types import ChannelParticipantsAdmins
-from model.telegram.src.Enitity import memberEntity, groupEntity, channelEntity
+from service_app.model.telegram.src.Enitity import memberEntity, groupEntity, channelEntity
 
 
 class TGMemExtrator(object):

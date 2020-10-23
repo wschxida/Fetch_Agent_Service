@@ -8,7 +8,7 @@
 
 import html
 import json
-from model.twitter.extractor.lib.get_author_profile import get_author_profile
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 
 
 def extractor_get_profile(target_account, proxies=None, html_code='0'):
