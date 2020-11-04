@@ -73,7 +73,9 @@ def extractor_get_member(username, html_code='0'):
 
 
 def main():
-    username = 'drafts4'
+    username = 'drafts4'    # group
+    username = 'tieliu'  # channel
+    # username = '1306732370'
     result = extractor_get_member(username)
     # print(curpath)
     print(result)

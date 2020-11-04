@@ -51,7 +51,7 @@ def extractor_youtube_dl_def(target_express, proxies=None, html_code='0'):
 
 def main():
     target_express = 'https://www.youtube.com/watch?v=qnaZm8JL5rE'
-    target_express = 'https://twitter.com/i/videos/tweet/1317908612962988033'
+    # target_express = 'https://twitter.com/i/videos/tweet/1317908612962988033'
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'

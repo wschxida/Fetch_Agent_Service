@@ -60,7 +60,10 @@ def extractor_get_message(username, html_code='0'):
 
 
 def main():
-    username = 'drafts4'
+    # username = 'drafts4'    # group
+    # username = 'tieliu'   # channel
+    # username = 'misakatech' # channel
+    username = 'publictestgroup'  # group
     result = extractor_get_message(username)
     print(result)
 

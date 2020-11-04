@@ -72,6 +72,15 @@ class TGMsgExtrator:
         async for message in messages:
             # print(message)
 
+            post_author = message.post_author
+            author_account = chat_item.username
+            author_name = chat_item.title
+            # 群组的消息，没有post_author
+            if not post_author:
+                user = await self.client.get_entity(message.from_id)
+                author_account = user.username
+                author_name = str(user.first_name) + ' ' + str(user.last_name)
+
             has_media = False
             if message.media:
                 has_media = True
@@ -79,20 +88,21 @@ class TGMsgExtrator:
                 # print(path)
             msg = {
                 "article_detail": {
-                    "article_url": "https://t.me/" + self.channel_username,
+                    "article_url": "https://t.me/" + self.channel_username + '/' + str(message.id),
                     "domain_code": "telegram.org",
                     "media_type_code": "c",
-                    "author_name": chat_item.title,
-                    "author_account": chat_item.username,
+                    "author_name": author_name,
+                    "author_account": author_account,
                     "article_pubtime_str": str(message.date),
                     "article_pubtime": message.date,
                     "article_title": message.message,
                     "article_HasMedia": has_media,
-                    "message_id":message.id
+                    "message_id": message.id,
                 },
                 "article_application": {
                     "application_name": "Telegram",
-                    "chat_group_name": chat_item.title
+                    "chat_group_name": chat_item.title,
+                    "chat_group_account": chat_item.username,
                 }
             }
             msg_dict.append(msg)
