@@ -7,3 +7,11 @@ Flask_Script==2.0.6
 selenium==3.141.0
 parsedatetime==2.6
 PySocks==1.7.1
+beautifulsoup4>=4.8.0
+bs4>=0.0.1
+certifi>=2019.6.16
+colorama>=0.4.1
+requests-futures>=1.0.0
+soupsieve>=1.9.2
+stem>=1.8.0
+torrequest>=0.1.0

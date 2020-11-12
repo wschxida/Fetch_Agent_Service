@@ -10,6 +10,7 @@ from service_app.model.twitter.twitter_agent import TwitterAgent
 from service_app.model.telegram.telegram_agent import TelegramAgent
 from service_app.model.breach.breach_agent import BreachAgent
 from service_app.model.video_download.video_download_agent import VideoDownloadAgent
+from service_app.model.match_account.match_account_agent import MatchAccountAgent
 
 
 class FetchAgentManager:
@@ -32,6 +33,8 @@ class FetchAgentManager:
             cur_fetch_agent = BreachAgent(self.request_params)
         if self.request_params['agent_type'] == 'video_download':
             cur_fetch_agent = VideoDownloadAgent(self.request_params)
+        if self.request_params['agent_type'] == 'match_account':
+            cur_fetch_agent = MatchAccountAgent(self.request_params)
 
         response = cur_fetch_agent.get_fetch_result()
 
