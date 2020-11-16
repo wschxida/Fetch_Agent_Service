@@ -11,7 +11,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from service_app.model.telegram.src.Enitity import memberEntity, groupEntity, channelEntity
 
 
-class TGMemExtrator(object):
+class TGMemExtractor(object):
     def __init__(self, config):
         self.session_name = config['TG_session_name']
         self.api_id = config['TG_api_id']

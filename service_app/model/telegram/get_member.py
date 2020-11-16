@@ -4,8 +4,9 @@
 import os
 import html
 import json
+import random
 from configparser import ConfigParser
-from service_app.model.telegram.src.TelegramChannelMemberExtractor import TGMemExtrator
+from service_app.model.telegram.src.TelegramChannelMemberExtractor import TGMemExtractor
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))
@@ -19,17 +20,25 @@ def extractor_get_member(username, html_code='0'):
         cfg = ConfigParser()
         telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
         cfg.read(telegram_extractor_config_path, encoding='utf-8')
+        tg_session = cfg.get('login_setting', 'tg_session')
+        tg_session_list = tg_session.split('||')
+        # 随机选取一个session
+        tg_session_choice = random.choice(tg_session_list).split(',')
+        tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
+        TG_api_id = int(tg_session_choice[1])
+        TG_api_hash = tg_session_choice[2]
+        print(tg_session_name)
         config = {
-            'TG_session_name': cfg.get('login_setting', 'TG_session_name'),
-            'TG_api_id': int(cfg.get('login_setting', 'TG_api_id')),
-            'TG_api_hash': cfg.get('login_setting', 'TG_api_hash'),
-            'proxy_address': cfg.get('login_setting', 'proxy_address'),
-            'proxy_port': int(cfg.get('login_setting', 'proxy_port')),
+            'TG_session_name': tg_session_name,
+            'TG_api_id': TG_api_id,
+            'TG_api_hash': TG_api_hash,
+            'proxy_address': cfg.get('proxy', 'proxy_address'),
+            'proxy_port': int(cfg.get('proxy', 'proxy_port') or 0),
             'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
             'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar'))
         }
         # print(config)
-        tg_mem_extrator = TGMemExtrator(config)
+        tg_mem_extrator = TGMemExtractor(config)
         flag = False
         tg_mem_extrator.set_channel(username)
         tg_mem_extrator.dump_to_json(flag)
@@ -74,10 +83,9 @@ def extractor_get_member(username, html_code='0'):
 
 def main():
     username = 'drafts4'    # group
-    username = 'tieliu'  # channel
+    # username = 'tieliu'  # channel
     # username = '1306732370'
     result = extractor_get_member(username)
-    # print(curpath)
     print(result)
 
 

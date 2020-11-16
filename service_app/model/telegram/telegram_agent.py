@@ -20,9 +20,22 @@ class TelegramAgent(BaseFetchAgent):
     def __init__(self, params):
         # 初始化积累参数
         BaseFetchAgent.__init__(self, params)
+        print('----------TG-----------')
+        print(self.__dict__)
+        print('==========TG===========')
 
     def get_fetch_result(self):
         if self.fetch_type == 'get_member':
             return extractor_get_member(self.target_express, self.html_code)
         if self.fetch_type == 'get_message':
             return extractor_get_message(self.target_express, self.html_code)
+
+
+if __name__ == '__main__':
+    tg_params = {
+        'agent_type': 'telegram',
+        'fetch_type': 'get_message',
+        'target_express': 'drafts4',
+    }
+    tg = TelegramAgent(tg_params)
+    print(tg.get_fetch_result())

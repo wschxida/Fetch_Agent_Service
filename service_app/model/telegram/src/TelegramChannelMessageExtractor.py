@@ -16,7 +16,7 @@ def get_timestamp(time_str):
     return result
 
 
-class TGMsgExtrator:
+class TGMsgExtractor:
     def __init__(self, config):
         self.msg_lim = config['msg_max_limit']
         self.session_name = config['TG_session_name']
@@ -46,7 +46,7 @@ class TGMsgExtrator:
         else:
             self.client = TelegramClient(session_name, api_id, api_hash)
 
-    async def download_MsgPic(self,username,msg_id):
+    async def download_MsgPic(self, username, msg_id):
         path = ''
         try:
             chat_item = await self.client.get_entity(username)
@@ -58,7 +58,7 @@ class TGMsgExtrator:
         if message.media:
             path = await message.download_media(".\media")
         else:
-            print("Message for ",msg_id," has no media to download")
+            print("Message for ", msg_id, " has no media to download")
         return path
 
     async def get_message(self):
@@ -76,10 +76,11 @@ class TGMsgExtrator:
             author_account = chat_item.username
             author_name = chat_item.title
             # 群组的消息，没有post_author
-            if not post_author:
-                user = await self.client.get_entity(message.from_id)
-                author_account = user.username
-                author_name = str(user.first_name) + ' ' + str(user.last_name)
+            # !!!!!!!!!!!!!!!!!会浪费请求，暂时不开启!!!!!!!!!!!!!!!!!!!!
+            # if not post_author:
+            #     user = await self.client.get_entity(message.from_id)
+            #     author_account = user.username
+            #     author_name = str(user.first_name) + ' ' + str(user.last_name)
 
             has_media = False
             if message.media:
