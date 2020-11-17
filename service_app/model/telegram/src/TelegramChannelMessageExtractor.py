@@ -110,7 +110,7 @@ class TGMsgExtractor:
         print("get channel Message successfully")
         # print(msg_dict)
         os.makedirs(self.message_path, exist_ok=True)
-        file = self.message_path + chat_item.username + ".json"
+        file = self.message_path + self.channel_username + ".json"
         # print(file)
         with open(file, "w") as f:
             json.dump(msg_dict, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)

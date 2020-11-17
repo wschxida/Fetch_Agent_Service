@@ -73,7 +73,7 @@ def main():
     # username = 'drafts4'    # group
     # username = 'tieliu'   # channel
     # username = 'misakatech' # channel
-    username = 'publictestgroup'  # group
+    username = 'PublicTestGroup'  # group
     result = extractor_get_message(username)
     print(result)
 

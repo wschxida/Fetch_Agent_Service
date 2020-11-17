@@ -111,7 +111,7 @@ class TGMemExtractor(object):
             return
         # 判断实体为channel返回空数据，实体为user返回空数据，实体为group继续执行下面代码
         reslut = {"data": ""}
-        memFilePath = self.member_path + chat_item.username + ".json"
+        memFilePath = self.member_path + self.group_username + ".json"
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
                 channel = channelEntity.channelEnitity()
