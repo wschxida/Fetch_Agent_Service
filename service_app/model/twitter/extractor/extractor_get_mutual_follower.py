@@ -29,6 +29,7 @@ def extractor_get_mutual_follower(target_list, user_data_dir_list, proxies=None,
         url = 'http://www.twiangulate.com/search/' + url_account + '/common_followers/table/my_friends-1/'
         # url = 'http://www.twiangulate.com/search/anthonychao-David_P_Mullins/common_followers/table/my_friends-1/'
         user_data_dir = user_data_dir_list[0]
+        print(user_data_dir)
         # 假如返回的值不是list，会报错，说明内容不对，进入except提示
         author_list = [] + get_common_friend_by_twiangulate(url, user_data_dir)
         status = '1'
@@ -51,7 +52,7 @@ def extractor_get_mutual_follower(target_list, user_data_dir_list, proxies=None,
 
 
 def main():
-    target_list = 'anthonychao,David_P_Mullins'
+    target_list = 'bbeekk321,JimCarBotech'
     user_data_dir_list = ['E:\\selenium\\AutomationProfile1']
     proxies = {
         'http': 'http://127.0.0.1:7777',

@@ -90,8 +90,9 @@ def start_selenium(user_data_dir):
     except Exception as e:
         print(e)
 
-    driver.set_page_load_timeout(60)   # 设置页面加载超时
-    driver.set_script_timeout(60)   # 设置页面异步js执行超时
+    driver.implicitly_wait(60)  # 隐性等待，最长等30秒
+    driver.set_page_load_timeout(120)   # 设置页面加载超时
+    driver.set_script_timeout(120)   # 设置页面异步js执行超时
     # driver.maximize_window()
 
 
@@ -101,7 +102,7 @@ def get_common_friend_by_twiangulate(url, user_data_dir):
     try:
         start_selenium(user_data_dir)
         driver.get(url)
-        time.sleep(10)
+        time.sleep(2)
         page_source = driver.page_source
         driver.close()
         # 使用etree来xpath切割，减少报错信息
@@ -143,8 +144,9 @@ def get_common_friend_by_twiangulate(url, user_data_dir):
 
 
 def main():
-    url = 'http://www.twiangulate.com/search/anthonychao-David_P_Mullins/common_friends/table/my_friends-1/'
-    user_data_dir = 'E:\\selenium\\AutomationProfile1'
+    url = 'http://www.twiangulate.com/search/BillGates-Oprah/common_friends/table/my_friends-1/'
+    # user_data_dir = 'E:\\selenium\\AutomationProfile1'
+    user_data_dir = '/home/kismanager/KIS/selenium/Twitter'
     result = get_common_friend_by_twiangulate(url, user_data_dir)
     print(result)
 
