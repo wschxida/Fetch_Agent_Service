@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TerminalProjectOptionsProvider">
+    <envs>
+      <env key="Path" value="C:\Users\DELL\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\DELL\AppData\Local\Programs\Python\Python37\;C:\Users\DELL\AppData\Local\Microsoft\WindowsApps;C:\Users\DELL\go\bin;C:\Users\DELL\AppData\Local\Programs\Fiddler;C:\Users\DELL\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\PyCharm Community Edition 2019.2.4\bin;C:\Users\DELL\AppData\Local\Programs\Microsoft VS Code\bin;D:\Program Files\Fiddler;" />
+    </envs>
+  </component>
+</project>
