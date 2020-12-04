@@ -17,74 +17,23 @@ import html
 import json
 import re
 from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
+from service_app.model.twitter.extractor.lib.get_common_friend_by_tweepdiff import get_common_friend_by_tweepdiff
 
 
-def extractor_get_friend(target_account, proxies=None, page_count=1, html_code='0'):
+def extractor_get_friend(target_account, user_data_dir_list, proxies=None, html_code='0'):
 
     target_profile = []
     target_account_profile = get_author_profile(target_account, proxies)
     if target_account_profile:
         target_profile.append(target_account_profile)
 
-    headers = {
-        'Host': 'tweepdiff.com',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3314.0 Safari/537.36 SE 2.X MetaSr 1.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'zh-CN,zh;q=0.9',
-    }
-
-    # 设置获取条数
-    n = 20
-    if int(page_count) > 0:
-        n = 20 * int(page_count)
-
-    url = 'https://tweepdiff.com/' + target_account + '/' + target_account + f'.followers?n={n}'
+    url = 'https://tweepdiff.com/' + target_account + '/' + target_account + f'.followers?n=1000'
     # url = 'https://tweepdiff.com/KimberBollacker/KimberBollacker.followers?n=1000'
     author_list = []
-    status = '0'
     error = None
     try:
-        # requests 重试机制
-        s = requests.Session()
-        s.mount('http://', HTTPAdapter(max_retries=5))
-        s.mount('https://', HTTPAdapter(max_retries=5))
-        response = s.get(url, headers=headers, timeout=30, proxies=proxies)
-        response.encoding = "utf-8"
-        # 请求成功时就把status置为1,不管后面是否有数据
-        if response.content:
-            status = '1'
-        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
-        items = root.xpath('//div[@class="person"]')
-        for item in items:
-            # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
-            # author_id页面上没有
-            # author_id = ""
-            author_account = "".join(item.xpath('.//a[@class="person_link"]/text()'))
-            author_account = "".join(re.findall("[(](.*?)[)]", author_account))  # 取括号里面的字符
-            author_name = "".join(item.xpath('.//a[@class="person_link"]/text()'))
-            author_name = "".join(re.findall("[\n](.*)[(]", author_name))  # 取\n和(之间的字符
-            author_url = "".join(item.xpath('.//h2/a/@href'))
-            author_img_url = "".join(item.xpath('.//h2//img/@src'))
-            author_description = "".join(item.xpath('.//div[@class="bio"]/span[2]/text()'))
-            author_follower_count = "".join(item.xpath('.//div[@class="followers"]/div[@class="count"]/text()'))
-            author_following_count = "".join(item.xpath('.//div[@class="friends"]/div[@class="count"]/text()'))
-            author_message_count = "".join(item.xpath('.//div[@class="updates"]/div[@class="count"]/text()'))
-
-            author_item = {
-                # "author_id": author_id,
-                "author_account": author_account,
-                "author_name": author_name,
-                "author_url": author_url,
-                "author_img_url": author_img_url,
-                "author_description": author_description,
-                "author_follower_count": author_follower_count,
-                "author_following_count": author_following_count,
-                "author_message_count": author_message_count,
-            }
-            author_list.append(author_item)
+        author_list = [] + get_common_friend_by_tweepdiff(url, proxies)
+        status = '1'
 
     except Exception as e:
         status = '0'
@@ -105,11 +54,12 @@ def extractor_get_friend(target_account, proxies=None, page_count=1, html_code='
 
 def main():
     target_account = 'carolineparra4'
+    user_data_dir_list = ['E:\\selenium\\AutomationProfile1']
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
-    result = extractor_get_friend(target_account, proxies)
+    result = extractor_get_friend(target_account, user_data_dir_list, proxies)
     print(result)
 
 

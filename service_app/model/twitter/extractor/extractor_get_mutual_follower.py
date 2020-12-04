@@ -10,6 +10,7 @@ import html
 import json
 from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 from service_app.model.twitter.extractor.lib.get_common_friend_by_twiangulate import get_common_friend_by_twiangulate
+from service_app.model.twitter.extractor.lib.get_common_friend_by_tweepdiff import get_common_friend_by_tweepdiff
 
 
 def extractor_get_mutual_follower(target_list, user_data_dir_list, proxies=None, html_code='0'):
@@ -25,13 +26,24 @@ def extractor_get_mutual_follower(target_list, user_data_dir_list, proxies=None,
                 target_profile.append(target_account_profile)
 
         # 构造url
-        url_account = '-'.join(target_account_list)
-        url = 'http://www.twiangulate.com/search/' + url_account + '/common_followers/table/my_friends-1/'
-        # url = 'http://www.twiangulate.com/search/anthonychao-David_P_Mullins/common_followers/table/my_friends-1/'
-        user_data_dir = user_data_dir_list[0]
-        print(user_data_dir)
-        # 假如返回的值不是list，会报错，说明内容不对，进入except提示
-        author_list = [] + get_common_friend_by_twiangulate(url, user_data_dir)
+        # 先查tweepdiff
+        url_account = ''
+        for account in target_account_list:
+            url_account = url_account + account + '.followers/'
+        # 设置获取条数
+        url = 'https://tweepdiff.com/' + url_account + '?n=1000'
+        author_list = [] + get_common_friend_by_tweepdiff(url, proxies)
+
+        # 不成功，才去twiangulate，需要selenium
+        if len(author_list) < 1:
+            url_account = '-'.join(target_account_list)
+            url = 'http://www.twiangulate.com/search/' + url_account + '/common_followers/table/my_friends-1/'
+            # url = 'http://www.twiangulate.com/search/anthonychao-David_P_Mullins/common_followers/table/my_friends-1/'
+            user_data_dir = user_data_dir_list[0]
+            print(user_data_dir)
+            # 假如返回的值不是list，会报错，说明内容不对，进入except提示
+            author_list = [] + get_common_friend_by_twiangulate(url, user_data_dir)
+
         status = '1'
 
     except Exception as e:
