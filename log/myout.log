@@ -1,7 +1,0 @@
-[2020-04-02 15:11:42 +0800] [9065] [INFO] Starting gunicorn 20.0.4
-[2020-04-02 15:11:42 +0800] [9065] [INFO] Listening at: http://0.0.0.0:5100 (9065)
-[2020-04-02 15:11:42 +0800] [9065] [INFO] Using worker: sync
-[2020-04-02 15:11:42 +0800] [9074] [INFO] Booting worker with pid: 9074
-[2020-04-02 15:11:42 +0800] [9076] [INFO] Booting worker with pid: 9076
-[2020-04-02 15:11:42 +0800] [9077] [INFO] Booting worker with pid: 9077
-[2020-04-02 15:11:42 +0800] [9078] [INFO] Booting worker with pid: 9078
