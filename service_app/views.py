@@ -19,7 +19,7 @@ curpath = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(curpath)
 model_path = os.path.join(curpath, "model")
 sys.path.append(model_path)
-print(sys.path)
+# print(sys.path)
 
 
 @app.route('/', methods=['GET', 'POST'])

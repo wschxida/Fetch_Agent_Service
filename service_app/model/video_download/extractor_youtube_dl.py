@@ -29,9 +29,9 @@ def extractor_youtube_dl_def(target_express, proxies=None, html_code='0'):
 
         ydl = youtube_dl.YoutubeDL(ydl_opts)
         y_dl_result = ydl.extract_info(target_express, download=False)
-        print(y_dl_result)
+        # print(y_dl_result)
         data = y_dl_result['url']
-        print(data)
+        # print(data)
 
     except Exception as e:
         status = '0'
