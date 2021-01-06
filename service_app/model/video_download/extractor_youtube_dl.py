@@ -20,9 +20,11 @@ def extractor_youtube_dl_def(target_express, proxies=None, html_code='0'):
         ydl_opts = {
             'format': 'mp4',
             'retries': 10,
-            'autonumber-start': 2,
-            'ignore-errors': '',
+            'ignore_errors': '',
             'skip_download': True,
+            'max_downloads': 1,
+            'playlist_items': '1',   # 只取第一个视频，防止列表页全部下载
+            'no_playlist': True,
         }
         if proxies:
             ydl_opts['proxy'] = proxies['http']
@@ -50,8 +52,9 @@ def extractor_youtube_dl_def(target_express, proxies=None, html_code='0'):
 
 
 def main():
-    target_express = 'https://www.youtube.com/watch?v=qnaZm8JL5rE'
-    # target_express = 'https://twitter.com/i/videos/tweet/1317908612962988033'
+    # target_express = 'https://www.youtube.com/watch?v=qnaZm8JL5rE'
+    target_express = 'https://twitter.com/i/videos/tweet/1317908612962988033'
+    # target_express = 'https://www.youtube.com/user/fitnahshow'
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
