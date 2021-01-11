@@ -66,8 +66,8 @@ class TGMsgExtractor:
         try:
             chat_item = await self.client.get_entity(self.channel_username)
         except ValueError:
-            print("ValueError:No channel has\"", self.channel_username, "\"as username")
-            return msg_dict
+            print("ValueError:No channel has '", self.channel_username, "' as username")
+            return "ValueError:No channel has '" + self.channel_username + "' as username"
         messages = self.client.iter_messages(chat_item, limit=self.msg_lim)
         async for message in messages:
             # print(message)
@@ -120,7 +120,8 @@ class TGMsgExtractor:
 
     def dump_to_json(self):
         with self.client:
-            self.client.loop.run_until_complete(self.get_message())
+            result = self.client.loop.run_until_complete(self.get_message())
+            return result
 
     def download_message_media(self,username,id):
         with self.client:

@@ -39,19 +39,23 @@ def extractor_get_message(username, html_code='0'):
 
         tg_msg_extrator = TGMsgExtractor(config)
         tg_msg_extrator.set_channel(username)
-        tg_msg_extrator.dump_to_json()
-
-        # 读取结果，返回
-        file_name = username + ".json"
-        message_file_name = os.path.join(curpath, "message", file_name)
-        fl = open(message_file_name, 'r', encoding='utf-8')
-        file_read = fl.read()
-        if len(file_read) > 0:
+        msg_return = tg_msg_extrator.dump_to_json()
+        # print('msg_dict: ', msg_return)
+        if 'ValueError' in msg_return:
             status = '1'
-
-        file_read_json = json.loads(file_read)
-        data_result = file_read_json
-        message_count = len(data_result)
+            message_count = 1
+            data_result = msg_return
+        else:
+            # 读取结果，返回
+            file_name = username + ".json"
+            message_file_name = os.path.join(curpath, "message", file_name)
+            fl = open(message_file_name, 'r', encoding='utf-8')
+            file_read = fl.read()
+            if len(file_read) > 0:
+                status = '1'
+            file_read_json = json.loads(file_read)
+            data_result = file_read_json
+            message_count = len(data_result)
 
     except Exception as e:
         status = str(e)
@@ -73,7 +77,8 @@ def main():
     # username = 'drafts4'    # group
     # username = 'tieliu'   # channel
     # username = 'misakatech' # channel
-    username = 'PublicTestGroup'  # group
+    # username = 'PublicTestGroup'  # group
+    username = 'mogahed_1070'  # 错误的
     result = extractor_get_message(username)
     print(result)
 
