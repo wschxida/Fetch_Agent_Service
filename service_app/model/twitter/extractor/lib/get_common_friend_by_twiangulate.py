@@ -104,7 +104,7 @@ def get_common_friend_by_twiangulate(url, user_data_dir):
         driver.get(url)
         time.sleep(2)
         page_source = driver.page_source
-        driver.close()
+        driver.quit()
         # 使用etree来xpath切割，减少报错信息
         root = etree.HTML(page_source, parser=etree.HTMLParser(encoding='utf-8'))
         items = root.xpath('//table[@id="result_list"]//tr')
@@ -136,7 +136,7 @@ def get_common_friend_by_twiangulate(url, user_data_dir):
                 author_list.append(author_item)
 
     except Exception as e:
-        driver.close()
+        driver.quit()
         print(e)
         return str(e)
 
