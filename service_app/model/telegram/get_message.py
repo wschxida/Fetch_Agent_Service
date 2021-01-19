@@ -47,7 +47,7 @@ def extractor_get_message(username, html_code='0'):
             data_result = msg_return
         else:
             # 读取结果，返回
-            file_name = username + ".json"
+            file_name = username.lower() + ".json"
             message_file_name = os.path.join(curpath, "message", file_name)
             fl = open(message_file_name, 'r', encoding='utf-8')
             file_read = fl.read()
@@ -74,11 +74,13 @@ def extractor_get_message(username, html_code='0'):
 
 
 def main():
-    # username = 'drafts4'    # group
+    username = 'drafts4'    # group
     # username = 'tieliu'   # channel
     # username = 'misakatech' # channel
     # username = 'PublicTestGroup'  # group
-    username = 'mogahed_1070'  # 错误的
+    # username = 'mogahed_1070'  # 错误的
+    # username = 'aboutipad'  # group
+
     result = extractor_get_message(username)
     print(result)
 

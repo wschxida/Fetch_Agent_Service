@@ -44,7 +44,7 @@ def extractor_get_member(username, html_code='0'):
         tg_mem_extrator.dump_to_json(flag)
 
         # 读取结果，返回
-        file_name = username + ".json"
+        file_name = username.lower() + ".json"
         member_file_name = os.path.join(curpath, "author", file_name)
         fl = open(member_file_name, 'r', encoding='utf-8')
         file_read = fl.read()
@@ -82,7 +82,8 @@ def extractor_get_member(username, html_code='0'):
 
 
 def main():
-    username = 'drafts4'    # group
+    # username = 'drafts4'    # group
+    username = 'aboutipad'  # group
     # username = 'tieliu'  # channel
     # username = '1306732370'
     result = extractor_get_member(username)

@@ -94,6 +94,7 @@ class TGMsgExtractor:
                     "media_type_code": "c",
                     "author_name": author_name,
                     "author_account": author_account,
+                    "author_id": chat_item.id,
                     "article_pubtime_str": str(message.date),
                     "article_pubtime": message.date,
                     "article_title": message.message,
@@ -104,13 +105,14 @@ class TGMsgExtractor:
                     "application_name": "Telegram",
                     "chat_group_name": chat_item.title,
                     "chat_group_account": chat_item.username,
+                    "is_group": chat_item.megagroup,
                 }
             }
             msg_dict.append(msg)
         print("get channel Message successfully")
         # print(msg_dict)
         os.makedirs(self.message_path, exist_ok=True)
-        file = self.message_path + self.channel_username + ".json"
+        file = self.message_path + self.channel_username.lower() + ".json"
         # print(file)
         with open(file, "w") as f:
             json.dump(msg_dict, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)

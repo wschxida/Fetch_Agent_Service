@@ -3,7 +3,50 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
+        },
+        "article_detail":{
+            "article_HasMedia":false,
+            "article_pubtime":"2021-01-17 19:10:45+00:00",
+            "article_pubtime_str":"2021-01-17 19:10:45+00:00",
+            "article_title":null,
+            "article_url":"https://t.me/drafts4/1873",
+            "author_account":"drafts4",
+            "author_id":1081871987,
+            "author_name":"drafts",
+            "domain_code":"telegram.org",
+            "media_type_code":"c",
+            "message_id":1873
+        }
+    },
+    {
+        "article_application":{
+            "application_name":"Telegram",
+            "chat_group_account":"drafts4",
+            "chat_group_name":"drafts",
+            "is_group":true
+        },
+        "article_detail":{
+            "article_HasMedia":false,
+            "article_pubtime":"2021-01-17 09:08:32+00:00",
+            "article_pubtime_str":"2021-01-17 09:08:32+00:00",
+            "article_title":null,
+            "article_url":"https://t.me/drafts4/1872",
+            "author_account":"drafts4",
+            "author_id":1081871987,
+            "author_name":"drafts",
+            "domain_code":"telegram.org",
+            "media_type_code":"c",
+            "message_id":1872
+        }
+    },
+    {
+        "article_application":{
+            "application_name":"Telegram",
+            "chat_group_account":"drafts4",
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -12,6 +55,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1870",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -22,7 +66,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -31,6 +76,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1869",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -41,7 +87,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -50,6 +97,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1866",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -60,7 +108,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -69,6 +118,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1865",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -79,7 +129,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -88,6 +139,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1864",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -98,7 +150,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -107,6 +160,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1862",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -117,7 +171,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -126,6 +181,7 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1861",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
@@ -136,7 +192,8 @@
         "article_application":{
             "application_name":"Telegram",
             "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
+            "chat_group_name":"drafts",
+            "is_group":true
         },
         "article_detail":{
             "article_HasMedia":false,
@@ -145,48 +202,11 @@
             "article_title":null,
             "article_url":"https://t.me/drafts4/1860",
             "author_account":"drafts4",
+            "author_id":1081871987,
             "author_name":"drafts",
             "domain_code":"telegram.org",
             "media_type_code":"c",
             "message_id":1860
-        }
-    },
-    {
-        "article_application":{
-            "application_name":"Telegram",
-            "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
-        },
-        "article_detail":{
-            "article_HasMedia":true,
-            "article_pubtime":"2020-10-04 12:00:01+00:00",
-            "article_pubtime_str":"2020-10-04 12:00:01+00:00",
-            "article_title":"",
-            "article_url":"https://t.me/drafts4/1858",
-            "author_account":"drafts4",
-            "author_name":"drafts",
-            "domain_code":"telegram.org",
-            "media_type_code":"c",
-            "message_id":1858
-        }
-    },
-    {
-        "article_application":{
-            "application_name":"Telegram",
-            "chat_group_account":"drafts4",
-            "chat_group_name":"drafts"
-        },
-        "article_detail":{
-            "article_HasMedia":false,
-            "article_pubtime":"2020-10-03 04:02:41+00:00",
-            "article_pubtime_str":"2020-10-03 04:02:41+00:00",
-            "article_title":null,
-            "article_url":"https://t.me/drafts4/1857",
-            "author_account":"drafts4",
-            "author_name":"drafts",
-            "domain_code":"telegram.org",
-            "media_type_code":"c",
-            "message_id":1857
         }
     }
 ]

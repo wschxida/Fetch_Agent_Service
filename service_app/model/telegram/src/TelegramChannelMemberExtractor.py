@@ -111,7 +111,7 @@ class TGMemExtractor(object):
             return
         # 判断实体为channel返回空数据，实体为user返回空数据，实体为group继续执行下面代码
         reslut = {"data": ""}
-        memFilePath = self.member_path + self.group_username + ".json"
+        memFilePath = self.member_path + self.group_username.lower() + ".json"
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
                 channel = channelEntity.channelEnitity()
@@ -148,7 +148,7 @@ class TGMemExtractor(object):
         if group_avatar:
             group.set_Avatar(self.group_avatar_path, group_avatar)
 
-        mem_file_path = self.member_path + chat_item.username + ".json"
+        mem_file_path = self.member_path + chat_item.username.lower() + ".json"
         result = {"data": ""}
         for user in participants:
             # 下载图片
