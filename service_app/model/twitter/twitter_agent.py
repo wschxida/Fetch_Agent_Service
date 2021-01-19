@@ -26,7 +26,8 @@ import io
 
 # print中文时会报错
 # sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8') #改变标准输出的默认编码
+# 改变标准输出的默认编码
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 class TwitterAgent(BaseFetchAgent):

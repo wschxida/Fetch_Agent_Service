@@ -44,6 +44,7 @@ class BaseFetchAgent:
                 self.__dict__[param] = request_params[param]
         if self.page_count:
             try:
+                self.page_count = int(self.page_count)
                 if int(self.page_count) > 100:
                     self.page_count = 100
             except Exception as e:

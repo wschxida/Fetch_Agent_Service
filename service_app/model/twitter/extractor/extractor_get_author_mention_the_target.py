@@ -8,6 +8,9 @@
 
 import html
 import json
+import sys
+import io
+sys.path.append('../../../../')
 from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 from service_app.model.twitter.extractor.lib.get_twitter_result import get_tweet
 
@@ -52,7 +55,8 @@ def main():
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
     }
-    result = extractor_get_author_mention_the_target(target_account, proxies, 2)
+    # result = extractor_get_author_mention_the_target(target_account, proxies, 2)
+    result = extractor_get_author_mention_the_target(target_account, None, 2)
     print(result)
 
 

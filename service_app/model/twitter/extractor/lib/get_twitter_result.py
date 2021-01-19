@@ -126,7 +126,7 @@ def get_tweet(url, page_count, proxies=None):
                 next_cursor = page_content[0]
                 tweets_list = page_content[1]
                 results = results + tweets_list
-                print(results)
+                # print(results)
                 if len(results) == 0:
                     if i == 0:
                         print("no post for this account")

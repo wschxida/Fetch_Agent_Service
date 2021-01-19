@@ -9,6 +9,8 @@
 import requests
 import json
 from requests.adapters import HTTPAdapter
+import datetime
+import time
 
 
 def get_str_btw(s, front, back):
@@ -153,7 +155,9 @@ def get_author_profile(target_account, proxies=None):
         author_profile_dict["author_description"] = legacy.get("description", '')
         author_profile_dict["author_is_protected"] = legacy.get("protected", '')
         author_profile_dict["author_is_verified"] = legacy.get("verified", '')
-        author_profile_dict["author_account_created_time"] = legacy.get("created_at", '')
+        created_at = time.strptime(legacy.get("created_at", ''), "%a %b %d %H:%M:%S %z %Y")
+        author_profile_dict["author_account_created_time"] = time.strftime("%Y-%m-%d %H:%M:%S", created_at)
+
 
     except Exception as e:
         print(e)
