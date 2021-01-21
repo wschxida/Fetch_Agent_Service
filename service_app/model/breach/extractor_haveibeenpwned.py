@@ -14,7 +14,8 @@ import json
 
 def extractor_haveibeenpwned(target_express, proxies=None, html_code='0'):
 
-    API_KEY = '90ff5f0a72ef4e76a7d66f9fe94e8840'
+    # API_KEY = '90ff5f0a72ef4e76a7d66f9fe94e8840'
+    API_KEY = '098761ff150640dbbdbbc6bdc466e634'
     headers = {'hibp-api-key': API_KEY}
     url = f'https://haveibeenpwned.com/api/v3/breachedaccount/{target_express}?truncateResponse=false'
     data = []

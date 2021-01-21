@@ -95,8 +95,8 @@ def get_author_profile(target_account, proxies=None):
 def main():
     target_account = 'BillGates'
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
     result = get_author_profile(target_account, proxies)
     print(result)

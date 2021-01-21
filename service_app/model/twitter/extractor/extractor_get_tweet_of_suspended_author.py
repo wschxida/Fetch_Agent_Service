@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @File  : extractor_get_tweet_of_suspended_author.py
 # @Author: Cedar
 # @Date  : 2019/12/31
 # @Desc  :
@@ -11,7 +10,11 @@ from requests.adapters import HTTPAdapter
 from lxml import etree
 import html
 import json
+import datetime
+import sys
+sys.path.append('../../../../')
 from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
+from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 
 
 def fetch_author_profile(root):
@@ -70,6 +73,11 @@ def fetch_author_profile(root):
 
 
 def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='0'):
+    target_profile = []
+    status = 0
+    error = None
+    result_list = []
+
     headers = {
         'Host': 'web.archive.org',
         'Connection': 'keep-alive',
@@ -80,115 +88,127 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
     }
-    # 这里日期写20即可，网站会自动去获取最新一次的镜像
-    url = 'https://web.archive.org/web/20/https://twitter.com/' + target_account
-    # url = 'https://web.archive.org/web/20191206212201/https://twitter.com/M7MD_SHAMRANI'
-    author_list = []
-    target_profile = []
-    status = '0'
-    error = None
-    try:
-        # print('--------------1---------------')
-        # requests 重试机制
-        s = requests.Session()
-        s.mount('http://', HTTPAdapter(max_retries=5))
-        s.mount('https://', HTTPAdapter(max_retries=5))
-        response = s.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
-        response.encoding = "utf-8"
-        # 请求成功时就把status置为1,不管后面是否有数据
-        if response.content:
-            status = '1'
-        root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
-        items = root.xpath('//li[@data-item-type="tweet"]')
-
-        # 到这里可能会因为账户suspended，所以会跳转到已suspended的页面，
-        # https://web.archive.org/web/20191206214616/https://twitter.com/account/suspended
-        # 需要进行搜索，找到最近的有数据的镜像
-        if len(items) == 0:
-            search_url = 'https://web.archive.org/__wb/sparkline?url=https%3A%2F%2Ftwitter.com%2F' + target_account + '&collection=web&output=json'
-            search_response = requests.get(search_url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
-            search_response_json = search_response.json()
-            last_ts = search_response_json["last_ts"]
-            url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + target_account
-            # 请求最终数据
-            # print('--------------2---------------')
-            response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
+    # 这里日期写年即可，网站会自动去获取最新一次的镜像
+    cur_year = datetime.datetime.now().year  # 当前年份
+    years = [i for i in range(cur_year - 2, cur_year + 1)]  # 获取最近三年快照
+    years.reverse()
+    for year in years:
+        url = f'https://web.archive.org/web/{year}/https://twitter.com/{target_account}'
+        # url = 'https://web.archive.org/web/20201231233302/https://twitter.com/realDonaldTrump/'
+        print(url)
+        try:
+            # requests 重试机制
+            s = requests.Session()
+            s.mount('http://', HTTPAdapter(max_retries=2))
+            s.mount('https://', HTTPAdapter(max_retries=2))
+            response = s.get(url, headers=headers, timeout=60, allow_redirects=True)
             response.encoding = "utf-8"
+            # 请求成功时就把status置为1,不管后面是否有数据
+            if response.content:
+                status = '1'
             root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
             items = root.xpath('//li[@data-item-type="tweet"]')
 
-        # 获取target profile
-        target_profile = []
-        target_account_profile = fetch_author_profile(root)
+            # # 到这里可能会因为账户suspended，所以会跳转到已suspended的页面，
+            # # https://web.archive.org/web/20191206214616/https://twitter.com/account/suspended
+            # # 需要进行搜索，找到最近的有数据的镜像
+            # if len(items) == 0:
+            #     search_url = 'https://web.archive.org/__wb/sparkline?url=https%3A%2F%2Ftwitter.com%2F' + target_account + '&collection=web&output=json'
+            #     search_response = requests.get(search_url, headers=headers, timeout=30, allow_redirects=True,
+            #                                    proxies=proxies)
+            #     search_response_json = search_response.json()
+            #     last_ts = search_response_json["last_ts"]
+            #     url = 'https://web.archive.org/web/' + last_ts + '/https://twitter.com/' + target_account
+            #     # 请求最终数据
+            #     # print('--------------2---------------')
+            #     response = requests.get(url, headers=headers, timeout=30, allow_redirects=True, proxies=proxies)
+            #     response.encoding = "utf-8"
+            #     root = etree.HTML(response.content, parser=etree.HTMLParser(encoding='utf-8'))
+            #     items = root.xpath('//li[@data-item-type="tweet"]')
+
+            # 获取profile，只要有一次中请求成功获取了profile，就不再获取
+            target_account_profile = fetch_author_profile(root)
+            if target_account_profile and len(target_profile) == 0:
+                target_profile.append(target_account_profile)
+
+            # 解析数据到具体字段
+            for item in items:
+                # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
+                # author
+                author_id = "".join(item.xpath('.//div/@data-user-id'))
+                author_account = "".join(item.xpath('.//div/@data-screen-name'))
+                author_name = "".join(item.xpath('.//div/@data-name'))
+                author_url = "https://twitter.com/" + author_account
+                author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
+                author_description = "".join(item.xpath('//p[@class="ProfileHeaderCard-bio u-dir"]/text()'))
+                author_follower_count = "".join(item.xpath('//a[@data-nav="followers"]/span[@data-count]/@data-count'))
+                author_following_count = "".join(item.xpath('//a[@data-nav="following"]/span[@data-count]/@data-count'))
+                author_message_count = "".join(item.xpath('//a[@data-nav="tweets"]/span[@data-count]/@data-count'))
+                author_like_count = "".join(item.xpath('//a[@data-nav="favorites"]/span[@data-count]/@data-count'))
+                # article
+                article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
+                article_pubtime = "".join(item.xpath('.//span[@data-time]/@data-time'))
+                article_reply_count = "".join(item.xpath('.//button[contains(@class,"js-actionReply")][1]'
+                                                         '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+                article_retweet_count = "".join(item.xpath('.//button[contains(@class,"js-actionRetweet")][1]'
+                                                           '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+                article_favorite_count = "".join(item.xpath('.//button[contains(@class,"js-actionFavorite")][1]'
+                                                            '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
+                article_content_text = item.find('.//div[@class="js-tweet-text-container"]')
+                article_content_media = item.find('.//div[@class="AdaptiveMediaOuterContainer"]')
+                article_content_quote = item.find('.//div[@class="QuoteTweet-container"]')
+                article_content_text = etree.tostring(article_content_text)  # 转为bytes
+                article_content_text = str(article_content_text, encoding="utf-8")  # 转为字符串
+                article_content = article_content_text
+                if article_content_media is not None:
+                    article_content_media = etree.tostring(article_content_media)  # 转为bytes
+                    article_content_media = str(article_content_media, encoding="utf-8")  # 转为字符串
+                    article_content = article_content + article_content_media
+                if article_content_quote is not None:
+                    article_content_quote = etree.tostring(article_content_quote)  # 转为bytes
+                    article_content_quote = str(article_content_quote, encoding="utf-8")  # 转为字符串
+                    article_content = article_content + article_content_quote
+                article_content = clean_html_attr(article_content)  # html清洗
+
+                author_item = {
+                    "author_id": author_id,
+                    "author_account": author_account,
+                    "author_name": author_name,
+                    "author_url": author_url,
+                    "author_img_url": author_img_url,
+                    "author_description": author_description,
+                    "author_follower_count": author_follower_count,
+                    "author_following_count": author_following_count,
+                    "author_message_count": author_message_count,
+                    "author_like_count": author_like_count,
+                    "article_url": article_url,
+                    "article_pubtime": article_pubtime,
+                    "article_reply_count": article_reply_count,
+                    "article_retweet_count": article_retweet_count,
+                    "article_favorite_count": article_favorite_count,
+                    "article_content": article_content,
+                }
+                result_list.append(author_item)
+
+            print(year, 'result_list_count:', len(result_list))
+
+        except Exception as e:
+            status = '0'
+            error = str(e)
+            print(e)
+
+    # 如果都获取不到profile，就从get_author_profile方法获取（只能获取account、id）
+    if len(target_profile) == 0:
+        target_account_profile = get_author_profile(target_account, proxies)
         if target_account_profile:
             target_profile.append(target_account_profile)
 
-        # 解析数据到具体字段
-        for item in items:
-            # 不要写item.xpath('.//a[@class="person_link"]/text()')[0]，有可能导致list out of index
-            # author
-            author_id = "".join(item.xpath('.//div/@data-user-id'))
-            author_account = "".join(item.xpath('.//div/@data-screen-name'))
-            author_name = "".join(item.xpath('.//div/@data-name'))
-            author_url = "https://twitter.com/" + author_account
-            author_img_url = "".join(item.xpath('.//img[@class="avatar js-action-profile-avatar"]/@src'))
-            author_description = "".join(item.xpath('//p[@class="ProfileHeaderCard-bio u-dir"]/text()'))
-            author_follower_count = "".join(item.xpath('//a[@data-nav="followers"]/span[@data-count]/@data-count'))
-            author_following_count = "".join(item.xpath('//a[@data-nav="following"]/span[@data-count]/@data-count'))
-            author_message_count = "".join(item.xpath('//a[@data-nav="tweets"]/span[@data-count]/@data-count'))
-            author_like_count = "".join(item.xpath('//a[@data-nav="favorites"]/span[@data-count]/@data-count'))
-            # article
-            article_url = "https://twitter.com" + "".join(item.xpath('.//div/@data-permalink-path'))
-            article_pubtime = "".join(item.xpath('.//span[@data-time]/@data-time'))
-            article_reply_count = "".join(item.xpath('.//button[contains(@class,"js-actionReply")][1]'
-                                                     '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
-            article_retweet_count = "".join(item.xpath('.//button[contains(@class,"js-actionRetweet")][1]'
-                                                       '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
-            article_favorite_count = "".join(item.xpath('.//button[contains(@class,"js-actionFavorite")][1]'
-                                                        '//span[@class="ProfileTweet-actionCountForPresentation"]/text()'))
-            article_content_text = item.find('.//div[@class="js-tweet-text-container"]')
-            article_content_media = item.find('.//div[@class="AdaptiveMediaOuterContainer"]')
-            article_content_quote = item.find('.//div[@class="QuoteTweet-container"]')
-            article_content_text = etree.tostring(article_content_text)  # 转为bytes
-            article_content_text = str(article_content_text, encoding="utf-8")  # 转为字符串
-            article_content = article_content_text
-            if article_content_media is not None:
-                article_content_media = etree.tostring(article_content_media)  # 转为bytes
-                article_content_media = str(article_content_media, encoding="utf-8")  # 转为字符串
-                article_content = article_content + article_content_media
-            if article_content_quote is not None:
-                article_content_quote = etree.tostring(article_content_quote)  # 转为bytes
-                article_content_quote = str(article_content_quote, encoding="utf-8")  # 转为字符串
-                article_content = article_content + article_content_quote
-            article_content = clean_html_attr(article_content)  # html清洗
-
-            author_item = {
-                "author_id": author_id,
-                "author_account": author_account,
-                "author_name": author_name,
-                "author_url": author_url,
-                "author_img_url": author_img_url,
-                "author_description": author_description,
-                "author_follower_count": author_follower_count,
-                "author_following_count": author_following_count,
-                "author_message_count": author_message_count,
-                "author_like_count": author_like_count,
-                "article_url": article_url,
-                "article_pubtime": article_pubtime,
-                "article_reply_count": article_reply_count,
-                "article_retweet_count": article_retweet_count,
-                "article_favorite_count": article_favorite_count,
-                "article_content": article_content,
-            }
-            author_list.append(author_item)
-
-    except Exception as e:
-        status = '0'
-        error = str(e)
-        print(e)
+    # 如果 get_author_profile 都获取不到id，说明作者不存在
+    if len(target_profile) == 0:
+        error = 'author is not exist!'
 
     result = {"status": status, "error": error, "agent_type": "twitter", "fetch_type": "get_tweet_of_suspended_author", "target_profile": target_profile,
-              "data_item_count": len(author_list), "data": author_list}
+              "data_item_count": len(result_list), "data": result_list}
     json_result = json.dumps(result, ensure_ascii=False)
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
@@ -201,10 +221,15 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
 
 def main():
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
-    target_account = 'M7MD_SHAMRANI'
+    # proxies = None
+    # target_account = 'M7MD_SHAMRANI'
+    target_account = 'realDonaldTrump'
+    # target_account = 'sdfsrser'
+    # https://en.wikipedia.org/wiki/Twitter_suspensions
+
     result = extractor_get_tweet_of_suspended_author(target_account, proxies)
     print(result)
 

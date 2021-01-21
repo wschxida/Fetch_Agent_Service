@@ -16,6 +16,7 @@ import datetime
 import time
 from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
 from service_app.model.twitter.extractor.lib.clean_html_attr import clean_html_attr
+from service_app.model.twitter.extractor.extractor_get_tweet_of_suspended_author import extractor_get_tweet_of_suspended_author
 
 
 def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html_code='0'):
@@ -37,6 +38,7 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
     }
     url = 'https://politwoops.com/p/unknown/' + target_account
     # url = 'https://politwoops.com/p/unknown/RCoteNPD'
+    # url = 'https://projects.propublica.org/politwoops/user/realDonaldTrump'
     author_list = []
     status = '0'
     error = None
@@ -51,6 +53,7 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
             response = s.get(_url, headers=headers, timeout=30, proxies=proxies)
             response.encoding = "utf-8"
             response_list.append(response.content)
+            # print(response_list)
 
         for response_item in response_list:
 
@@ -97,6 +100,13 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
         error = str(e)
         print(e)
 
+    # 如果抓不到数据，从wayback搜索
+    if len(author_list) == 0:
+        _result = extractor_get_tweet_of_suspended_author(target_account, proxies)
+        _json = json.loads(_result)
+        target_profile = _json['target_profile']
+        author_list = _json['data']
+
     result = {"status": status, "error": error, "agent_type": "twitter", "fetch_type": "get_deleted_tweet", "target_profile": target_profile,
               "data_item_count": len(author_list), "data": author_list}
     json_result = json.dumps(result, ensure_ascii=False)
@@ -110,10 +120,11 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
 
 
 def main():
-    target_account = 'RCoteNPD'
+    # target_account = 'RCoteNPD'
+    target_account = 'realDonaldTrump'
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
     result = extractor_get_deleted_tweet(target_account, proxies)
     print(result)

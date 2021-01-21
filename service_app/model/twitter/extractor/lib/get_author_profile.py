@@ -162,11 +162,15 @@ def get_author_profile(target_account, proxies=None):
     except Exception as e:
         print(e)
 
+    if author_profile_dict["author_id"] == "":
+        return {}
     return author_profile_dict
 
 
 def main():
-    target_account = 'Billgates'
+    # target_account = 'Billgates'
+    target_account = 'realDonaldTrump'  # suspended
+    target_account = 'LLinWood'  # suspended
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'

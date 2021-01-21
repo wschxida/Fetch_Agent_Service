@@ -107,8 +107,8 @@ def extractor_get_mutual_following(target_list, proxies=None, page_count=1, html
 def main():
     target_list = 'BillGates,BillClinton'
     proxies = {
-        'http': 'http://127.0.0.1:4411',
-        'https': 'http://127.0.0.1:4411'
+        'http': 'http://127.0.0.1:7777',
+        'https': 'http://127.0.0.1:7777'
     }
     result = extractor_get_mutual_following(target_list, proxies)
     print(result)
