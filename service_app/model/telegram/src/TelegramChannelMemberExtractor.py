@@ -116,7 +116,6 @@ class TGMemExtractor(object):
             if chat_item.megagroup is False:
                 channel = channelEntity.channelEnitity()
                 channel.initWithChannel(chat_item)
-                channel.set_Member_Account(chat_item.participants_count)
                 reslut["data"] = channel.__dict__
                 # 将最后结果写到指定文件下
                 with open(memFilePath, "w") as f:

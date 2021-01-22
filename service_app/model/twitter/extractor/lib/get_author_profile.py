@@ -143,19 +143,19 @@ def get_author_profile(target_account, proxies=None):
     try:
         author_profile_dict["author_account"] = target_account
         legacy = json_data["data"]["user"]["legacy"]
-        author_profile_dict["author_name"] = legacy.get("name", '')
+        author_profile_dict["author_name"] = legacy.get("name", "")
         author_profile_dict["author_url"] = f"https://twitter.com/{target_account}"
-        author_profile_dict["author_img_url"] = legacy.get("profile_image_url_https", '')
-        author_profile_dict["banner_img_url"] = legacy.get("profile_banner_url", '')
-        author_profile_dict["author_message_count"] = legacy.get("statuses_count", '')
-        author_profile_dict["author_following_count"] = legacy.get("friends_count", '')
-        author_profile_dict["author_follower_count"] = legacy.get("followers_count", '')
-        author_profile_dict["author_list_count"] = legacy.get("listed_count", '')
-        author_profile_dict["author_location"] = legacy.get("location", '')
-        author_profile_dict["author_description"] = legacy.get("description", '')
-        author_profile_dict["author_is_protected"] = legacy.get("protected", '')
-        author_profile_dict["author_is_verified"] = legacy.get("verified", '')
-        created_at = time.strptime(legacy.get("created_at", ''), "%a %b %d %H:%M:%S %z %Y")
+        author_profile_dict["author_img_url"] = legacy.get("profile_image_url_https", "")
+        author_profile_dict["banner_img_url"] = legacy.get("profile_banner_url", "")
+        author_profile_dict["author_message_count"] = legacy.get("statuses_count", "")
+        author_profile_dict["author_following_count"] = legacy.get("friends_count", "")
+        author_profile_dict["author_follower_count"] = legacy.get("followers_count", "")
+        author_profile_dict["author_list_count"] = legacy.get("listed_count", "")
+        author_profile_dict["author_location"] = legacy.get("location", "")
+        author_profile_dict["author_description"] = legacy.get("description", "")
+        author_profile_dict["author_is_protected"] = legacy.get("protected", "")
+        author_profile_dict["author_is_verified"] = legacy.get("verified", "")
+        created_at = time.strptime(legacy.get("created_at", ""), "%a %b %d %H:%M:%S %z %Y")
         author_profile_dict["author_account_created_time"] = time.strftime("%Y-%m-%d %H:%M:%S", created_at)
 
 
@@ -168,9 +168,9 @@ def get_author_profile(target_account, proxies=None):
 
 
 def main():
-    # target_account = 'Billgates'
-    target_account = 'realDonaldTrump'  # suspended
-    target_account = 'LLinWood'  # suspended
+    target_account = 'Billgates'
+    # target_account = 'realDonaldTrump'  # suspended
+    # target_account = 'LLinWood'  # suspended
     proxies = {
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'

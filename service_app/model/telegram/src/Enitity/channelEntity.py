@@ -1,6 +1,5 @@
 
 # 2020-05-21
-# created by YHM
 # save channel message
 
 import parsedatetime
@@ -47,17 +46,14 @@ class channelEnitity(object):
         if channel.title is not None:
             self.channel_name = channel.title
         self.channel_type = "telegram"
-        # self.channel_create_time = channel.date.isoformat(timespec='microseconds')
-        self.channel_create_time = channel.date
+        self.channel_create_time = channel.date.strftime('%Y-%m-%d %H:%M:%S')
+        self.channel_member_count = channel.participants_count
 
     def set_Avatar(self, path, filename):
         self.channel_avatar_store_directory_root = path
         temp = filename.split('\\')
         self.channel_avatar_local_filename = temp[-1]
         self.channel_avatar_url = filename
-
-    def set_Member_Account(self,account):
-        self.channel_member_count = account
 
     def add_Member(self,mem,flag=False):
         if flag :

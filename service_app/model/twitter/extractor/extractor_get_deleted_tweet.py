@@ -128,6 +128,7 @@ def main():
     }
     result = extractor_get_deleted_tweet(target_account, proxies)
     print(result)
+    #     https://polititweet.org/figure?account=25073877
 
 
 if __name__ == '__main__':

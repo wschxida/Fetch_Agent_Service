@@ -12,7 +12,7 @@ import sys
 import io
 sys.path.append('../../../../')
 from service_app.model.twitter.extractor.lib.get_author_profile import get_author_profile
-from service_app.model.twitter.extractor.lib.get_twitter_result import get_tweet
+from service_app.model.twitter.extractor.lib.get_twitter_result import get_tweet_or_user
 
 
 def extractor_get_author_mention_the_target(target_account, proxies=None, page_count=1, html_code='0'):
@@ -28,7 +28,7 @@ def extractor_get_author_mention_the_target(target_account, proxies=None, page_c
     error = None
     try:
         # 假如get_tweet返回的值不是list，会报错，说明内容不对，进入except提示
-        author_list = [] + get_tweet(url, page_count, proxies)
+        author_list = [] + get_tweet_or_user(url, page_count, proxies)
         status = '1'
 
     except Exception as e:

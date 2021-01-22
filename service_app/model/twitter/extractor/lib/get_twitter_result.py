@@ -26,7 +26,7 @@ def get_token():
     return token_list
 
 
-def get_twitter_list(url, token, proxies=None):
+def get_twitter_data(url, token, proxies=None):
     headers = {
         "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
         "referer": "https://twitter.com/KlayThompson",
@@ -54,40 +54,67 @@ def get_twitter_list(url, token, proxies=None):
     return text
 
 
-def parse_html(text):
+def parse_html(text, result_type='tweet'):
     """
     解析获取到的message_html源码，提取必须字段，索引至ES
     :return:
     """
-    tweets_list = []
+    result_list = []
     json_data = json.loads(text)
     tweets = json_data["globalObjects"]["tweets"]
     users = json_data["globalObjects"]["users"]
+
+    # 翻页参数
     try:
         next_cursor = \
         json_data["timeline"]['instructions'][0]['addEntries']['entries'][-1]["content"]["operation"]["cursor"]["value"]
     except:
         next_cursor = ""
 
-    for tweet in tweets.values():
-        data = {}
-        author_id = tweet["user_id_str"]
-        data['author_id'] = author_id
-        data['author_account'] = users[author_id]["screen_name"]
-        data['author_name'] = users[author_id]["name"]
-        data['author_url'] = f"https://twitter.com/{data['author_account']}"
-        data['author_img_url'] = users[author_id]["profile_image_url_https"]
-        data['article_url'] = f"https://twitter.com/{data['author_account']}/status/{tweet['id_str']}"
-        created_at = time.strptime(tweet["created_at"], "%a %b %d %H:%M:%S %z %Y")
-        data['article_pubtime'] = time.strftime("%Y-%m-%d %H:%M:%S", created_at)
-        data['article_content'] = tweet["full_text"]
-        # article_content = clean_html_attr(article_content)  # html清洗
-        tweets_list.append(data)
+    # 返回可能是tweet获取user
+    if result_type == 'tweet':
+        for tweet in tweets.values():
+            data = {}
+            author_id = tweet["user_id_str"]
+            data['author_id'] = author_id
+            data['author_account'] = users[author_id]["screen_name"]
+            data['author_name'] = users[author_id]["name"]
+            data['author_url'] = f"https://twitter.com/{data['author_account']}"
+            data['author_img_url'] = users[author_id]["profile_image_url_https"]
+            data['article_url'] = f"https://twitter.com/{data['author_account']}/status/{tweet['id_str']}"
+            created_at = time.strptime(tweet["created_at"], "%a %b %d %H:%M:%S %z %Y")
+            data['article_pubtime'] = time.strftime("%Y-%m-%d %H:%M:%S", created_at)
+            data['article_content'] = tweet["full_text"]
+            # article_content = clean_html_attr(article_content)  # html清洗
+            result_list.append(data)
 
-    return [next_cursor, tweets_list]
+        return [next_cursor, result_list]
+
+    if result_type == 'user':
+        for user in users.values():
+            data = {
+                "author_id": user.get("id_str", ""),
+                "author_account": user.get("screen_name", ""),
+                "author_name": user.get("name", ""),
+                "author_url": f'https://twitter.com/{user.get("screen_name", "")}',
+                "author_img_url": user.get("profile_image_url", ""),
+                "banner_img_url": user.get("profile_banner_url", ""),
+                "author_message_count": user.get("statuses_count", ""),
+                "author_following_count": user.get("friends_count", ""),
+                "author_follower_count": user.get("followers_count", ""),
+                "author_list_count": user.get("listed_count", ""),
+                "author_location": user.get("location", ""),
+                "author_description": user.get("description", ""),
+                "author_is_protected": user.get("protected", ""),
+                "author_is_verified": user.get("verified", ""),
+                "author_account_created_time": time.strftime("%Y-%m-%d %H:%M:%S", time.strptime(user.get("created_at", ""), "%a %b %d %H:%M:%S %z %Y")),
+            }
+            result_list.append(data)
+
+        return [next_cursor, result_list]
 
 
-def get_tweet(url, page_count, proxies=None):
+def get_tweet_or_user(url, page_count, proxies=None, result_type='tweet'):
     results = []
     try:
         url_prefix = url
@@ -101,9 +128,11 @@ def get_tweet(url, page_count, proxies=None):
 
         for i in range(page_count):
             print(url)
+            json_data = ''
+            source = ''
             # 依据当前token个数进行重试
             for j in range(len(token_list)):
-                source = get_twitter_list(url, token, proxies)
+                source = get_twitter_data(url, token, proxies)
                 json_data = json.loads(source)
                 if "errors" in json_data:
                     error_code = json_data["errors"][0]["code"]
@@ -121,11 +150,12 @@ def get_tweet(url, page_count, proxies=None):
                         break
                 else:
                     break
+
             if "errors" not in json_data:
-                page_content = parse_html(source)
+                page_content = parse_html(source, result_type)
                 next_cursor = page_content[0]
-                tweets_list = page_content[1]
-                results = results + tweets_list
+                data_list = page_content[1]
+                results = results + data_list
                 # print(results)
                 if len(results) == 0:
                     if i == 0:
@@ -155,7 +185,7 @@ def main():
         'http': 'http://127.0.0.1:7777',
         'https': 'http://127.0.0.1:7777'
     }
-    result = get_tweet(url, 2, proxies)
+    result = get_tweet_or_user(url, 2, proxies)
     json_result = json.dumps(result)
     print(json_result)
     print(len(result))

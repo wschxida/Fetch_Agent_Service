@@ -2,13 +2,13 @@
     "data":{
         "group_account":"aboutiPad",
         "group_avatar_base64":"",
-        "group_avatar_local_filename":"aboutiPad.jpg",
+        "group_avatar_local_filename":"aboutiPad (2).jpg",
         "group_avatar_store_directory_root":"E:\\python_project\\Fetch_Agent_Service\\service_app\\model\\telegram\\avatar/group/",
-        "group_avatar_url":"E:\\python_project\\Fetch_Agent_Service\\service_app\\model\\telegram\\avatar/group/aboutiPad\\aboutiPad.jpg",
-        "group_create_time":"2018-07-27 01:27:35+00:00",
+        "group_avatar_url":"E:\\python_project\\Fetch_Agent_Service\\service_app\\model\\telegram\\avatar/group/aboutiPad\\aboutiPad (2).jpg",
+        "group_create_time":"2018-07-27 01:27:35",
         "group_description":"",
         "group_id":1389466731,
-        "group_member_count":139,
+        "group_member_count":146,
         "group_name":"iPad",
         "group_type":"telegram",
         "group_url":"https://t.me/aboutiPad",
@@ -2039,7 +2039,7 @@
                 "member_is_administrator":false,
                 "member_join_time":"",
                 "member_mobile":null,
-                "member_name":"ff fff",
+                "member_name":"5 ff fff",
                 "member_profile_url":[
                     null
                 ],

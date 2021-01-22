@@ -19,6 +19,7 @@ from service_app.model.twitter.extractor.extractor_get_tweet_of_suspended_author
 from service_app.model.twitter.extractor.extractor_get_tweet_of_advanced_search import extractor_get_tweet_of_advanced_search
 from service_app.model.twitter.extractor.extractor_get_tweet_of_url import extractor_get_tweet_of_url
 from service_app.model.twitter.extractor.extractor_get_profile import extractor_get_profile
+from service_app.model.twitter.extractor.extractor_get_author_by_name import extractor_get_author_by_name
 import sys
 import io
 # import codecs
@@ -84,4 +85,6 @@ class TwitterAgent(BaseFetchAgent):
             return extractor_get_tweet_of_url(query=self.query_dict, html_code=self.html_code)
         if self.fetch_type == 'get_profile':
             return extractor_get_profile(self.target_express, self.proxies, self.html_code)
+        if self.fetch_type == 'get_author_by_name':
+            return extractor_get_author_by_name(self.target_express, self.proxies, self.page_count, self.html_code)
 

@@ -47,7 +47,7 @@ class groupEnitity(object):
         if group.title is not None:
             self.group_name = group.title
         self.group_type = "telegram"
-        self.group_create_time = group.date
+        self.group_create_time = group.date.strftime('%Y-%m-%d %H:%M:%S')
 
     def set_Avatar(self, path, filename):
         self.group_avatar_store_directory_root = path
