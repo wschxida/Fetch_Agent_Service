@@ -2,9 +2,9 @@
     "data":{
         "channel_account":"tieliu",
         "channel_avatar_base64":"",
-        "channel_avatar_local_filename":"",
-        "channel_avatar_store_directory_root":"",
-        "channel_avatar_url":"",
+        "channel_avatar_local_filename":"tieliu.jpg",
+        "channel_avatar_store_directory_root":"E:\\python_project\\Fetch_Agent_Service\\service_app\\model\\telegram\\avatar/channel/",
+        "channel_avatar_url":"E:\\python_project\\Fetch_Agent_Service\\service_app\\model\\telegram\\avatar/channel/tieliu.jpg",
         "channel_create_time":"2018-10-31 07:47:18",
         "channel_description":"",
         "channel_id":1466835758,

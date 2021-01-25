@@ -35,7 +35,8 @@ def extractor_get_member(username, html_code='0'):
             'proxy_address': cfg.get('proxy', 'proxy_address'),
             'proxy_port': int(cfg.get('proxy', 'proxy_port') or 0),
             'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
-            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar'))
+            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar')),
+            'channel_avatar': os.path.join(curpath, cfg.get('download_addr', 'channel_avatar'))
         }
         # print(config)
         tg_mem_extrator = TGMemExtractor(config)

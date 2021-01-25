@@ -21,6 +21,7 @@ class TGMemExtractor(object):
         self.group_username = ''
         self.member_path = config['group_member']
         self.group_avatar_path = config['group_avatar']
+        self.channel_avatar_path = config['channel_avatar']
         if self.proxy_address:
             self.client = TelegramClient(self.session_name, self.api_id, self.api_hash,
                                          proxy=(socks.HTTP, self.proxy_address, self.proxy_port))
@@ -30,18 +31,6 @@ class TGMemExtractor(object):
     # 设置需要采集的telegram group username
     def set_channel(self, username):
         self.group_username = username
-
-    # 换账号连接
-    def TG_login(self, config):
-        session = config['TG_session_name']
-        api_id = config['TG_api_id']
-        api_hash = config['TG_api_hash']
-        proxy_address = config['proxy_address']
-        proxy_port = config['proxy_port']
-        if proxy_address:
-            self.client = TelegramClient(session, api_id, api_hash, proxy=(socks.HTTP, proxy_address, proxy_port))
-        else:
-            self.client = TelegramClient(session, api_id, api_hash)
 
     # 指定user，下载头像
     async def download_profile_pic(self, username):
@@ -115,7 +104,11 @@ class TGMemExtractor(object):
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
                 channel = channelEntity.channelEnitity()
+                # print(chat_item)
+                avatar_file = self.channel_avatar_path + chat_item.username + '.jpg'
+                channel_avatar = await self.client.download_profile_photo(chat_item, file=avatar_file)
                 channel.initWithChannel(chat_item)
+                channel.set_Avatar(self.channel_avatar_path, channel_avatar)
                 reslut["data"] = channel.__dict__
                 # 将最后结果写到指定文件下
                 with open(memFilePath, "w") as f:
@@ -139,8 +132,9 @@ class TGMemExtractor(object):
 
         # 获取群成员
         path = (self.group_avatar_path+chat_item.username).strip()
-        os.makedirs(path,exist_ok=True)
-        group_avatar = await self.client.download_profile_photo(chat_item, file=path)
+        os.makedirs(path, exist_ok=True)
+        avatar_file = os.path.join(path, chat_item.username + '.jpg')
+        group_avatar = await self.client.download_profile_photo(chat_item, file=avatar_file)
         group = groupEntity.groupEnitity()
         group.initWithGroup(chat_item)
         group.set_Member_Account(participants.total)
@@ -150,12 +144,17 @@ class TGMemExtractor(object):
         mem_file_path = self.member_path + chat_item.username.lower() + ".json"
         result = {"data": ""}
         for user in participants:
+            print(user)
             # 下载图片
             addr = None
             if download_pic_flag:
                 try:
                     if user.photo is not None:
-                        addr = await self.client.download_profile_photo(user, file=path)
+                        if user.username:
+                            user_avatar_file = os.path.join(path, str(user.username) + '.jpg')
+                        else:
+                            user_avatar_file = os.path.join(path, str(user.id) + '.jpg')
+                        addr = await self.client.download_profile_photo(user, file=user_avatar_file)
                         # print(addr)
                 except ChannelInvalidError:
                     print("download error")

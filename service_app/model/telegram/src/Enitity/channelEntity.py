@@ -51,11 +51,10 @@ class channelEnitity(object):
 
     def set_Avatar(self, path, filename):
         self.channel_avatar_store_directory_root = path
-        temp = filename.split('\\')
-        self.channel_avatar_local_filename = temp[-1]
+        self.channel_avatar_local_filename = filename.split('/')[-1]
         self.channel_avatar_url = filename
 
-    def add_Member(self,mem,flag=False):
-        if flag :
+    def add_Member(self, mem, flag=False):
+        if flag:
             self.members = []
         self.members.append(mem)

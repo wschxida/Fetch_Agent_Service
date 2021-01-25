@@ -46,7 +46,7 @@ def fetch_agent_service():
 
     except Exception as e:
         print(e)
-        return ''
+        return str(e)
 
 
 @app.route('/img/<path:img_src>')
