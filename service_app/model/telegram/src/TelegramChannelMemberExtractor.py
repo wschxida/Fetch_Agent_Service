@@ -104,7 +104,6 @@ class TGMemExtractor(object):
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
                 channel = channelEntity.channelEnitity()
-                # print(chat_item)
                 avatar_file = self.channel_avatar_path + chat_item.username + '.jpg'
                 channel_avatar = await self.client.download_profile_photo(chat_item, file=avatar_file)
                 channel.initWithChannel(chat_item)
@@ -144,7 +143,6 @@ class TGMemExtractor(object):
         mem_file_path = self.member_path + chat_item.username.lower() + ".json"
         result = {"data": ""}
         for user in participants:
-            # print(user)
             # 下载图片
             addr = None
             if download_pic_flag:
@@ -155,7 +153,6 @@ class TGMemExtractor(object):
                         else:
                             user_avatar_file = os.path.join(path, str(user.id) + '.jpg')
                         addr = await self.client.download_profile_photo(user, file=user_avatar_file)
-                        # print(addr)
                 except ChannelInvalidError:
                     print("download error")
             # 获取群成员信息

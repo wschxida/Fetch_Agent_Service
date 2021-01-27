@@ -39,7 +39,6 @@ class TelegramAgent(BaseFetchAgent):
             return extractor_get_profile(self.target_express, self.html_code)
 
 
-
 if __name__ == '__main__':
     tg_params = {
         'agent_type': 'telegram',

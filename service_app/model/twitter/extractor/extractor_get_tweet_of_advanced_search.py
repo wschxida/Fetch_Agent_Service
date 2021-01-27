@@ -38,7 +38,6 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
             query[i] = query_dict[i]
 
         q = ''
-        # print(query)
         if query['words']:
             q = q + query['words']
         if query['from_account']:
@@ -56,10 +55,8 @@ def extractor_get_tweet_of_advanced_search(query_dict='{}', proxies=None, page_c
         if query['since']:
             q = q + ' since:' + query['since']
 
-        # print(q)
         q = quote(q)
         url = 'https://twitter.com/i/api/2/search/adaptive.json?include_profile_interstitial_type=1&include_blocking=1&include_blocked_by=1&include_followed_by=1&include_want_retweets=1&include_mute_edge=1&include_can_dm=1&include_can_media_tag=1&skip_status=1&cards_platform=Web-12&include_cards=1&include_ext_alt_text=true&include_quote_count=true&include_reply_count=1&tweet_mode=extended&include_entities=true&include_user_entities=true&include_ext_media_color=true&include_ext_media_availability=true&send_error_codes=true&simple_quoted_tweet=true&q=' + q + '&count=20&query_source=typeahead_click&pc=1&spelling_corrections=1&ext=mediaStats%2ChighlightedLabel'
-        print(url)
 
         if query['from_account']:
             target_account_profile = get_author_profile(query['from_account'], proxies)

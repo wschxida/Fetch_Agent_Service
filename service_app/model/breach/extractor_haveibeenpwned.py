@@ -31,7 +31,6 @@ def extractor_haveibeenpwned(target_express, proxies=None, html_code='0'):
             status = '1'
 
         items = json.loads(response.content)
-        # print(items)
         for item in items:
 
             company_name = item["Name"]

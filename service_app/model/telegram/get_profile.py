@@ -27,7 +27,6 @@ def extractor_get_profile(username, html_code='0'):
         tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
         TG_api_id = int(tg_session_choice[1])
         TG_api_hash = tg_session_choice[2]
-        print(tg_session_name)
         config = {
             'TG_session_name': tg_session_name,
             'TG_api_id': TG_api_id,
@@ -46,7 +45,6 @@ def extractor_get_profile(username, html_code='0'):
 
         with client:
             username_entity = client.get_entity(username)
-            print(username_entity)
             author_profile_dict = {
                 "author_id": username_entity.id,
                 "author_account": username_entity.username,

@@ -95,7 +95,6 @@ def extractor_get_tweet_of_suspended_author(target_account, proxies, html_code='
     for year in years:
         url = f'https://web.archive.org/web/{year}/https://twitter.com/{target_account}'
         # url = 'https://web.archive.org/web/20201231233302/https://twitter.com/realDonaldTrump/'
-        print(url)
         try:
             # requests 重试机制
             s = requests.Session()

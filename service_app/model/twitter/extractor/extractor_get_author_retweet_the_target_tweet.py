@@ -72,7 +72,6 @@ def start_selenium(user_data_dir_list):
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     user_data_dir = user_data_dir_list[0]
     options.add_argument(r"user-data-dir=" + user_data_dir)
-    print(user_data_dir)
 
     # 打开chrome人工登录账号
     # google-chrome --user-data-dir="/home/kismanager/KIS/selenium/Twitter"
@@ -109,7 +108,6 @@ def start_selenium(user_data_dir_list):
     #         return "NotLogin"
     #     #     email = eval(twitter_email_password[index])["email"]
     #     #     password = eval(twitter_email_password[index])["password"]
-    #     #     print(email)
     #     #     login(email, password)
     #     #     driver.get(url)
     # except Exception as e:

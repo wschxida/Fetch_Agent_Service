@@ -54,7 +54,6 @@ class TGMsgExtractor:
             print("ValueError:No channel has\"", username, "\"as username")
             return path
         message = await self.client.get_messages(chat_item, ids=msg_id)
-        # print(message)
         if message.media:
             path = await message.download_media(".\media")
         else:
@@ -70,8 +69,6 @@ class TGMsgExtractor:
             return "ValueError:No channel has '" + self.channel_username + "' as username"
         messages = self.client.iter_messages(chat_item, limit=self.msg_lim)
         async for message in messages:
-            # print(message)
-
             post_author = message.post_author
             author_account = chat_item.username
             author_name = chat_item.title
@@ -86,7 +83,6 @@ class TGMsgExtractor:
             if message.media:
                 has_media = True
                 # path = await message.download_media(".\media")
-                # print(path)
             msg = {
                 "article_detail": {
                     "article_url": "https://t.me/" + self.channel_username + '/' + str(message.id),
@@ -110,13 +106,10 @@ class TGMsgExtractor:
             }
             msg_dict.append(msg)
         print("get channel Message successfully")
-        # print(msg_dict)
         os.makedirs(self.message_path, exist_ok=True)
         file = self.message_path + self.channel_username.lower() + ".json"
-        # print(file)
         with open(file, "w") as f:
             json.dump(msg_dict, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)
-        # print("加载入文件完成...")
 
         return msg_dict
 

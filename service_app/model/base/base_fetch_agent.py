@@ -48,7 +48,7 @@ class BaseFetchAgent:
                 if int(self.page_count) > 100:
                     self.page_count = 100
             except Exception as e:
-                self.page_count = 0
+                self.page_count = 1
                 print(e)
 
     def get_fetch_result(self):

@@ -53,7 +53,6 @@ def extractor_get_deleted_tweet(target_account, proxies=None, page_count=1, html
             response = s.get(_url, headers=headers, timeout=30, proxies=proxies)
             response.encoding = "utf-8"
             response_list.append(response.content)
-            # print(response_list)
 
         for response_item in response_list:
 

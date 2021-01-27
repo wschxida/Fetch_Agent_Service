@@ -13,9 +13,7 @@ curpath = os.path.dirname(os.path.realpath(__file__))
 
 
 def extractor_search_channel(search_str, html_code='0'):
-    status = '0'
     error = None
-    member_count = 0
     data_result = ''
     try:
         cfg = ConfigParser()
@@ -28,7 +26,6 @@ def extractor_search_channel(search_str, html_code='0'):
         tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
         TG_api_id = int(tg_session_choice[1])
         TG_api_hash = tg_session_choice[2]
-        # print(tg_session_name)
         config = {
             'TG_session_name': tg_session_name,
             'TG_api_id': TG_api_id,
@@ -42,7 +39,6 @@ def extractor_search_channel(search_str, html_code='0'):
         tg_channel_searcher = TGChannelSearcher(config)
         data_result = tg_channel_searcher.search_channel(search_str)
         status = '1'
-        # print(data_result)
 
     except Exception as e:
         status = '0'

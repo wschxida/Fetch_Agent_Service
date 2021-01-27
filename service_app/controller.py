@@ -46,7 +46,6 @@ class FetchAgentManager:
             cur_fetch_agent = VkAgent(self.request_params)
 
         response = cur_fetch_agent.get_fetch_result()
-
         return response
 
 

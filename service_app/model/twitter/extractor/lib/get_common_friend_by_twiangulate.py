@@ -70,7 +70,6 @@ def start_selenium(user_data_dir):
     # 取一个chrome user-data-dir目录，每个目录的Chromedriver是互相隔开的，登录不同的账号
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     options.add_argument(r"user-data-dir=" + user_data_dir)
-    print(user_data_dir)
 
     # 打开chrome人工登录账号
     # google-chrome --user-data-dir="/home/kismanager/KIS/selenium/Twitter"

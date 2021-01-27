@@ -1,7 +1,6 @@
 import json
 
 # 2019-12-16
-# created by YHM
 # save message
 class messageEnitity(json.JSONEncoder):
     def __init__(self):

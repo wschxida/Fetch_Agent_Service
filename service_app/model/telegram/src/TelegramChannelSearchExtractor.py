@@ -42,7 +42,6 @@ class TGChannelSearcher(object):
             for item in result.chats:
                 channel = channelEntity.channelEnitity()
                 channel.initWithChannel(item)
-                # print(channel.__dict__)
                 search_result.append(channel.__dict__)
 
             return search_result

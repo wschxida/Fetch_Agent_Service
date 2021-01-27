@@ -127,7 +127,6 @@ def get_tweet_or_user(url, page_count, proxies=None, result_type='tweet'):
         token = token_list.pop()
 
         for i in range(page_count):
-            print(url)
             json_data = ''
             source = ''
             # 依据当前token个数进行重试
@@ -146,7 +145,6 @@ def get_tweet_or_user(url, page_count, proxies=None, result_type='tweet'):
                         print("it's a private account")
                         break
                     else:
-                        # print(json_data)
                         break
                 else:
                     break
@@ -156,7 +154,6 @@ def get_tweet_or_user(url, page_count, proxies=None, result_type='tweet'):
                 next_cursor = page_content[0]
                 data_list = page_content[1]
                 results = results + data_list
-                # print(results)
                 if len(results) == 0:
                     if i == 0:
                         print("no post for this account")

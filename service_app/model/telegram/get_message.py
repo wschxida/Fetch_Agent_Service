@@ -25,7 +25,6 @@ def extractor_get_message(username, html_code='0'):
         tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
         TG_api_id = int(tg_session_choice[1])
         TG_api_hash = tg_session_choice[2]
-        # print(tg_session_name)
 
         config = {
             'msg_max_limit': int(cfg.get('message_lim', 'msg_max_limit')),
@@ -40,7 +39,6 @@ def extractor_get_message(username, html_code='0'):
         tg_msg_extrator = TGMsgExtractor(config)
         tg_msg_extrator.set_channel(username)
         msg_return = tg_msg_extrator.dump_to_json()
-        # print('msg_dict: ', msg_return)
         if 'ValueError' in msg_return:
             status = '1'
             message_count = 1

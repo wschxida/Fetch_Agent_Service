@@ -23,7 +23,6 @@ def get_middle_str(content, start_str, end_str):
         end_index = content.index(end_str)
         return content[:end_index]
     except Exception as e:
-        # print(e)
         return None
 
 

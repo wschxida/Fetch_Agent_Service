@@ -65,7 +65,6 @@ def get_id_via_twitter(target_account, proxies):
     json_data = {}
     author_id = ''
     for token in token_list:
-        print(token)
         url = f"https://twitter.com/i/api/graphql/ZRnOhhXPwue_JGILb9TNug/UserByScreenName?variables=%7B%22screen_name%22%3A%22{target_account}%22%2C%22withHighlightedLabel%22%3Atrue%7D"
         header = {
             "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
@@ -84,7 +83,6 @@ def get_id_via_twitter(target_account, proxies):
         s.mount('https://', HTTPAdapter(max_retries=5))
         response = s.get(url, headers=header,  proxies=proxies, timeout=40).text
         json_data = json.loads(response)
-        # print(json_data)
 
         if "errors" in json_data:
             if "data" in json_data:
