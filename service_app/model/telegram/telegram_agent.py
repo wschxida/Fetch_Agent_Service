@@ -6,10 +6,13 @@
 # @Desc  :
 
 
+import json
+import html
 from service_app.model.base.base_fetch_agent import BaseFetchAgent
 from service_app.model.telegram.get_member import extractor_get_member
 from service_app.model.telegram.get_message import extractor_get_message
 from service_app.model.telegram.search_channel import extractor_search_channel
+from service_app.model.telegram.get_profile import extractor_get_profile
 
 
 class TelegramAgent(BaseFetchAgent):
@@ -32,6 +35,9 @@ class TelegramAgent(BaseFetchAgent):
             return extractor_get_message(self.target_express, self.html_code)
         if self.fetch_type == 'search_channel':
             return extractor_search_channel(self.target_express, self.html_code)
+        if self.fetch_type == 'get_profile':
+            return extractor_get_profile(self.target_express, self.html_code)
+
 
 
 if __name__ == '__main__':

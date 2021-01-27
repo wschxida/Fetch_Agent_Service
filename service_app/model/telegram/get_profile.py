@@ -1,22 +1,21 @@
 
-# 获取telegram 群成员数据的程序入口
-
-import os
 import html
-import json
 import random
+import socks
+import json
+import os
+from telethon.sync import TelegramClient
 from configparser import ConfigParser
-from service_app.model.telegram.src.TelegramChannelSearchExtractor import TGChannelSearcher
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))
 
 
-def extractor_search_channel(search_str, html_code='0'):
+def extractor_get_profile(username, html_code='0'):
+    target_profile = []
     status = '0'
     error = None
-    member_count = 0
-    data_result = ''
+
     try:
         cfg = ConfigParser()
         telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
@@ -28,7 +27,7 @@ def extractor_search_channel(search_str, html_code='0'):
         tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
         TG_api_id = int(tg_session_choice[1])
         TG_api_hash = tg_session_choice[2]
-        # print(tg_session_name)
+        print(tg_session_name)
         config = {
             'TG_session_name': tg_session_name,
             'TG_api_id': TG_api_id,
@@ -36,26 +35,35 @@ def extractor_search_channel(search_str, html_code='0'):
             'proxy_address': cfg.get('proxy', 'proxy_address'),
             'proxy_port': int(cfg.get('proxy', 'proxy_port') or 0),
             'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
-            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar'))
+            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar')),
+            'channel_avatar': os.path.join(curpath, cfg.get('download_addr', 'channel_avatar'))
         }
+        if config['proxy_address']:
+            client = TelegramClient(config['TG_session_name'], config['TG_api_id'], config['TG_api_hash'],
+                                         proxy=(socks.HTTP, config['proxy_address'], config['proxy_port']))
+        else:
+            client = TelegramClient(config['TG_session_name'], config['TG_api_id'], config['TG_api_hash'])
 
-        tg_channel_searcher = TGChannelSearcher(config)
-        data_result = tg_channel_searcher.search_channel(search_str)
+        with client:
+            username_entity = client.get_entity(username)
+            print(username_entity)
+            author_profile_dict = {
+                "author_id": username_entity.id,
+                "author_account": username_entity.username,
+                "author_name": username_entity.title,
+                "author_url": "https://t.me/" + username_entity.username,
+            }
+            target_profile.append(author_profile_dict)
+
         status = '1'
-        # print(data_result)
 
     except Exception as e:
-        status = '0'
         error = str(e)
         print(e)
 
-    result = {"status": status, "error": error, "agent_type": "telegram", "fetch_type": "search_channel",
-              "data_item_count": len(data_result), "data": data_result}
+    result = {"status": status, "error": error, "agent_type": "telegram", "fetch_type": "get_profile",
+              "target_profile": target_profile, "data_item_count": 1, "data": ''}
     json_result = json.dumps(result, ensure_ascii=False)
-    # 为了在线显示图片
-    json_result = json_result.replace('/home/kismanager/KIS/Fetch_Agent_Service/service_app',
-                                      '/img')
-
     # 再进行html编码，这样最终flask输出才是合法的json
     html_result = html.escape(json_result)
     # html_code==1是方便浏览器展示字段内容为html的，默认情况返回json格式数据
@@ -66,8 +74,11 @@ def extractor_search_channel(search_str, html_code='0'):
 
 
 def main():
-    search_str = 'daily'
-    result = extractor_search_channel(search_str)
+    # username = 'drafts4'    # group
+    # username = 'aboutipad'  # group
+    username = 'tieliu'  # channel
+    # username = '1306732370'
+    result = extractor_get_profile(username)
     print(result)
 
 

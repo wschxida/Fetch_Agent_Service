@@ -144,7 +144,7 @@ class TGMemExtractor(object):
         mem_file_path = self.member_path + chat_item.username.lower() + ".json"
         result = {"data": ""}
         for user in participants:
-            print(user)
+            # print(user)
             # 下载图片
             addr = None
             if download_pic_flag:

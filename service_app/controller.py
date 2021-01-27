@@ -13,6 +13,7 @@ from service_app.model.video_download.video_download_agent import VideoDownloadA
 from service_app.model.match_account.match_account_agent import MatchAccountAgent
 from service_app.model.facebook.facebook_agent import FacebookAgent
 from service_app.model.instagram.instagram_agent import InstagramAgent
+from service_app.model.vk.vk_agent import VkAgent
 
 
 class FetchAgentManager:
@@ -41,6 +42,8 @@ class FetchAgentManager:
             cur_fetch_agent = FacebookAgent(self.request_params)
         if self.request_params['agent_type'] == 'instagram':
             cur_fetch_agent = InstagramAgent(self.request_params)
+        if self.request_params['agent_type'] == 'vk':
+            cur_fetch_agent = VkAgent(self.request_params)
 
         response = cur_fetch_agent.get_fetch_result()
 
