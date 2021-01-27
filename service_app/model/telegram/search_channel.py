@@ -1,44 +1,29 @@
 
-# 获取telegram 群成员数据的程序入口
 
 import os
 import html
 import json
-import random
-from configparser import ConfigParser
-from service_app.model.telegram.src.TelegramChannelSearchExtractor import TGChannelSearcher
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))
 
 
-def extractor_search_channel(search_str, html_code='0'):
+def extractor_search_channel(username, html_code='0'):
     error = None
+    status = '0'
     data_result = ''
     try:
-        cfg = ConfigParser()
-        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
-        cfg.read(telegram_extractor_config_path, encoding='utf-8')
-        tg_session = cfg.get('login_setting', 'tg_session')
-        tg_session_list = tg_session.split('||')
-        # 随机选取一个session
-        tg_session_choice = random.choice(tg_session_list).split(',')
-        tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
-        TG_api_id = int(tg_session_choice[1])
-        TG_api_hash = tg_session_choice[2]
-        config = {
-            'TG_session_name': tg_session_name,
-            'TG_api_id': TG_api_id,
-            'TG_api_hash': TG_api_hash,
-            'proxy_address': cfg.get('proxy', 'proxy_address'),
-            'proxy_port': int(cfg.get('proxy', 'proxy_port') or 0),
-            'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
-            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar'))
-        }
+        cmd = f'''python3 {curpath}/os_system_run.py search_channel {username}'''
+        print(cmd)
+        os.system(cmd)
 
-        tg_channel_searcher = TGChannelSearcher(config)
-        data_result = tg_channel_searcher.search_channel(search_str)
-        status = '1'
+        # 读取结果，返回
+        file_name = os.path.join(curpath, "author", username.lower() + "_search.json")
+        fl = open(file_name, 'r', encoding='utf-8')
+        file_read = fl.read()
+        if len(file_read) > 0:
+            status = '1'
+        data_result = json.loads(file_read)
 
     except Exception as e:
         status = '0'
@@ -64,7 +49,7 @@ def extractor_search_channel(search_str, html_code='0'):
 def main():
     search_str = 'daily'
     result = extractor_search_channel(search_str)
-    print(result)
+    # print(result)
 
 
 if __name__ == '__main__':

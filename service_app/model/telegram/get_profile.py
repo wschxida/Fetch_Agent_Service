@@ -1,11 +1,7 @@
 
 import html
-import random
-import socks
 import json
 import os
-from telethon.sync import TelegramClient
-from configparser import ConfigParser
 
 
 curpath = os.path.dirname(os.path.realpath(__file__))
@@ -17,43 +13,16 @@ def extractor_get_profile(username, html_code='0'):
     error = None
 
     try:
-        cfg = ConfigParser()
-        telegram_extractor_config_path = os.path.join(curpath, "./config/telegram_extractor.ini")
-        cfg.read(telegram_extractor_config_path, encoding='utf-8')
-        tg_session = cfg.get('login_setting', 'tg_session')
-        tg_session_list = tg_session.split('||')
-        # 随机选取一个session
-        tg_session_choice = random.choice(tg_session_list).split(',')
-        tg_session_name = os.path.join(curpath, 'config', tg_session_choice[0] + '.session')
-        TG_api_id = int(tg_session_choice[1])
-        TG_api_hash = tg_session_choice[2]
-        config = {
-            'TG_session_name': tg_session_name,
-            'TG_api_id': TG_api_id,
-            'TG_api_hash': TG_api_hash,
-            'proxy_address': cfg.get('proxy', 'proxy_address'),
-            'proxy_port': int(cfg.get('proxy', 'proxy_port') or 0),
-            'group_member': os.path.join(curpath, cfg.get('download_addr', 'group_member')),
-            'group_avatar': os.path.join(curpath, cfg.get('download_addr', 'group_avatar')),
-            'channel_avatar': os.path.join(curpath, cfg.get('download_addr', 'channel_avatar'))
-        }
-        if config['proxy_address']:
-            client = TelegramClient(config['TG_session_name'], config['TG_api_id'], config['TG_api_hash'],
-                                         proxy=(socks.HTTP, config['proxy_address'], config['proxy_port']))
-        else:
-            client = TelegramClient(config['TG_session_name'], config['TG_api_id'], config['TG_api_hash'])
+        cmd = f'''python3 {curpath}/os_system_run.py get_profile {username}'''
+        os.system(cmd)
 
-        with client:
-            username_entity = client.get_entity(username)
-            author_profile_dict = {
-                "author_id": username_entity.id,
-                "author_account": username_entity.username,
-                "author_name": username_entity.title,
-                "author_url": "https://t.me/" + username_entity.username,
-            }
-            target_profile.append(author_profile_dict)
-
-        status = '1'
+        # 读取结果，返回
+        file_name = os.path.join(curpath, "author", username.lower() + "_profile.json")
+        fl = open(file_name, 'r', encoding='utf-8')
+        file_read = fl.read()
+        if len(file_read) > 0:
+            status = '1'
+        target_profile = json.loads(file_read)
 
     except Exception as e:
         error = str(e)

@@ -66,7 +66,12 @@ class TGMsgExtractor:
             chat_item = await self.client.get_entity(self.channel_username)
         except ValueError:
             print("ValueError:No channel has '", self.channel_username, "' as username")
-            return "ValueError:No channel has '" + self.channel_username + "' as username"
+            msg_dict = "ValueError:No channel has '" + self.channel_username + "' as username"
+            os.makedirs(self.message_path, exist_ok=True)
+            file = self.message_path + self.channel_username.lower() + ".json"
+            with open(file, "w") as f:
+                json.dump(msg_dict, f, sort_keys=True, indent=4, separators=(',', ':'), default=str)
+            return msg_dict
         messages = self.client.iter_messages(chat_item, limit=self.msg_lim)
         async for message in messages:
             post_author = message.post_author

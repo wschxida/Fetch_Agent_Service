@@ -4,11 +4,14 @@
 import socks
 import json
 import os
+import sys
 from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import ChannelInvalidError
 from telethon.tl.types import Channel
 from telethon.tl.types import ChannelParticipantsAdmins
-from service_app.model.telegram.src.Enitity import memberEntity, groupEntity, channelEntity
+from os.path import abspath, join, dirname
+sys.path.insert(0, join(abspath(dirname(__file__)), 'src'))
+from enitity import GroupEnitity, MessageEnitity, MemberEnitity, ChannelEnitity
 
 
 class TGMemExtractor(object):
@@ -52,7 +55,7 @@ class TGMemExtractor(object):
     # 将采集的User信息转换成系统自定义的实体类处理
     def user_to_member_entity(self, user, pic_addr, admins):
         # 提取username，name
-        member = memberEntity.memberEnitity()
+        member = MemberEnitity()
         member.initWithUser(user)
 
         for i in range(admins.__len__()):
@@ -103,7 +106,7 @@ class TGMemExtractor(object):
         memFilePath = self.member_path + self.group_username.lower() + ".json"
         if isinstance(chat_item, Channel):
             if chat_item.megagroup is False:
-                channel = channelEntity.channelEnitity()
+                channel = ChannelEnitity()
                 avatar_file = self.channel_avatar_path + chat_item.username + '.jpg'
                 channel_avatar = await self.client.download_profile_photo(chat_item, file=avatar_file)
                 channel.initWithChannel(chat_item)
@@ -134,7 +137,7 @@ class TGMemExtractor(object):
         os.makedirs(path, exist_ok=True)
         avatar_file = os.path.join(path, chat_item.username + '.jpg')
         group_avatar = await self.client.download_profile_photo(chat_item, file=avatar_file)
-        group = groupEntity.groupEnitity()
+        group = GroupEnitity()
         group.initWithGroup(chat_item)
         group.set_Member_Account(participants.total)
         if group_avatar:
